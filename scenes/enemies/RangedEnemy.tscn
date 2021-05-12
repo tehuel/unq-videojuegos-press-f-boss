@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/enemies/RangedEnemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/weapons/RangedWeapon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/images/enemies/base_enemy.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 111.855
+
+[node name="RangedEnemy" type="KinematicBody2D"]
+modulate = Color( 0.156863, 0.396078, 0.462745, 1 )
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, 0.176777 )
+polygon = PoolVector2Array( -16, -16.1768, -16, 15.8232, 16, 15.8232, 16, -16.1768 )
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="SeekArea" type="Area2D" parent="Visual"]
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visual/SeekArea"]
+position = Vector2( 0.148651, 0.891907 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Visual"]
+modulate = Color( 0.341176, 0.694118, 0.882353, 1 )
+texture = ExtResource( 3 )
+
+[node name="HitTimer" type="Timer" parent="Visual"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Weapon" parent="Visual" instance=ExtResource( 2 )]
+weapon_damage = 10
+delay = 0.3
+[connection signal="body_entered" from="Visual/SeekArea" to="." method="_on_SeekArea_body_entered"]
+[connection signal="body_exited" from="Visual/SeekArea" to="." method="_on_SeekArea_body_exited"]
+[connection signal="timeout" from="Visual/HitTimer" to="." method="_on_Hit_Timer_timeout"]

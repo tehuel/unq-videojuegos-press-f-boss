@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "BaseAI",
+"language": "GDScript",
+"path": "res://scenes/enemies/BaseAI.gd"
+}, {
+"base": "Area2D",
+"class": "BaseProjectile",
+"language": "GDScript",
+"path": "res://scenes/weapons/Projectile.gd"
+}, {
+"base": "Area2D",
+"class": "BaseWeapon",
+"language": "GDScript",
+"path": "res://scenes/weapons/BaseWeapon.gd"
+} ]
 _global_script_class_icons={
-
+"BaseAI": "",
+"BaseProjectile": "",
+"BaseWeapon": ""
 }
 
 [application]
