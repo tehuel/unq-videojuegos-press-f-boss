@@ -19,7 +19,6 @@ script = ExtResource( 2 )
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
 [node name="TileMap" type="TileMap" parent="Navigation2D"]
-scale = Vector2( 1, 1.00941 )
 tile_set = ExtResource( 4 )
 occluder_light_mask = 0
 format = 1
