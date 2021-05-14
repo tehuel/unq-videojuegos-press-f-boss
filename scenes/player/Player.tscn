@@ -37,3 +37,8 @@ position = Vector2( 13.5502, -3.25181 )
 [node name="RangedWeapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 20.1691, -3.55066e-06 )
 delay = 0.3
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
