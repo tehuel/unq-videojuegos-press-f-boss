@@ -5,14 +5,21 @@ var attacking:bool = false
 
 onready var weaponPlayer = $WeaponPlayer
 onready var animatedSprite = $AnimatedSprite
+onready var rangedWeapon = $RangedWeapon
+var projectile_container
 
-func start(pos):
+func start(pos, sel):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	initialize(sel)
 
 func _ready():
 	hide()
+
+func initialize(projectile_container):
+	self.projectile_container = projectile_container
+	rangedWeapon.projectile_container = projectile_container
 
 func _process(delta):
 	var screen_size = get_viewport_rect().size
@@ -40,6 +47,12 @@ func _process(delta):
 		
 	if Input.is_action_pressed("left_click"):
 		playerAttack()
+		
+	if Input.is_action_just_pressed("right_click"):
+		if projectile_container == null:
+			projectile_container = get_parent()
+			rangedWeapon.projectile_container = projectile_container
+		rangedWeapon.fire()
 
 func on_hit(base_damage):
 	print("damaged for: ", base_damage)

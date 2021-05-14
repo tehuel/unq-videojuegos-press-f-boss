@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/weapons/axe.png" type="Texture" id=1]
+[ext_resource path="res://scenes/player/RangedWeapon.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/weapons/axe1.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/weapons/axe2.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/weapons/axe3.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/weapons/axe4.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/weapons/axe5.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 19.8907
+
+[node name="RangedWeapon" type="AnimatedSprite"]
+scale = Vector2( 0.15, 0.15 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
+script = ExtResource( 2 )
+
+[node name="LifeTimeTimer" type="Timer" parent="."]
+
+[node name="HitBox" type="Area2D" parent="."]
+scale = Vector2( 6.66667, 6.66667 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource( 2 )
