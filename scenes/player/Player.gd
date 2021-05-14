@@ -4,6 +4,7 @@ export var speed = 400
 var attacking:bool = false
 
 onready var weaponPlayer = $WeaponPlayer
+onready var animatedSprite = $AnimatedSprite
 
 func start(pos):
 	position = pos
@@ -21,21 +22,21 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite.play()
+		animatedSprite.play()
 	else:
-		$AnimatedSprite.stop()
+		animatedSprite.stop()
 		
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	
 	if velocity.x != 0:
-		$AnimatedSprite.animation = "walk"
-		$AnimatedSprite.flip_v = false
-		$AnimatedSprite.flip_h = velocity.x < 0
+		animatedSprite.animation = "walk"
+		animatedSprite.flip_v = false
+		animatedSprite.flip_h = velocity.x < 0
 	elif velocity.y != 0:
-		$AnimatedSprite.animation = "up"
-		$AnimatedSprite.flip_v = velocity.y > 0
+		animatedSprite.animation = "up"
+		animatedSprite.flip_v = velocity.y > 0
 		
 	if Input.is_action_pressed("left_click"):
 		playerAttack()
