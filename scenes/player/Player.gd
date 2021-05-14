@@ -27,8 +27,8 @@ func _process(delta):
 		animatedSprite.stop()
 		
 	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
+	position.x = clamp(position.x, 0, 3600)
+	position.y = clamp(position.y, 0, 3600)
 	
 	if velocity.x != 0:
 		animatedSprite.animation = "walk"

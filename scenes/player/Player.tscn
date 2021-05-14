@@ -76,7 +76,7 @@ current = true
 limit_left = -32
 limit_top = -32
 limit_right = 3016
-limit_bottom = 1670
+limit_bottom = 3016
 limit_smoothed = true
 smoothing_enabled = true
 
