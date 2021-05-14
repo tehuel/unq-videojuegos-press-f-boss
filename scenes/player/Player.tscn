@@ -33,9 +33,11 @@ smoothing_enabled = true
 
 [node name="MeleeWeapon" parent="." instance=ExtResource( 2 )]
 position = Vector2( 13.5502, -3.25181 )
+weapon_damage = 15
 
 [node name="RangedWeapon" parent="." instance=ExtResource( 3 )]
 position = Vector2( 20.1691, -3.55066e-06 )
+weapon_damage = 5
 delay = 0.3
 
 [node name="DashTimer" type="Timer" parent="."]

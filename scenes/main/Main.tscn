@@ -39,15 +39,60 @@ environment = SubResource( 1 )
 [node name="MeleeEnemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 496, 1816 )
 scale = Vector2( 2, 2 )
+hp = 30
+
+[node name="Label" type="Label" parent="MeleeEnemy"]
+margin_left = -20.0
+margin_top = 16.0
+margin_right = 20.0
+margin_bottom = 30.0
+text = "0 ARMOR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MeleeEnemy2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1488, 1864 )
 scale = Vector2( 2, 2 )
+hp = 30
+armor = 5
+
+[node name="Label" type="Label" parent="MeleeEnemy2"]
+margin_left = -20.0
+margin_top = 16.0
+margin_right = 20.0
+margin_bottom = 30.0
+text = "5 ARMOR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1816, 344 )
 scale = Vector2( 2, 2 )
+hp = 15
+
+[node name="Label" type="Label" parent="RangedEnemy"]
+margin_left = -16.0
+margin_top = 16.0
+margin_right = 24.0
+margin_bottom = 30.0
+text = "15hp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RangedEnemy2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1912, 696 )
 scale = Vector2( 2, 2 )
+hp = 30
+
+[node name="Label" type="Label" parent="RangedEnemy2"]
+margin_left = -20.0
+margin_top = 16.0
+margin_right = 20.0
+margin_bottom = 30.0
+text = "30hp"
+__meta__ = {
+"_edit_use_anchors_": false
+}
