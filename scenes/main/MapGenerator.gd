@@ -10,11 +10,15 @@ const tiles = {
 	"obstacle": 2,
 }
 
-func _ready():
+func _fill_map_with_floor():
+	map.clear()
+	for x in range(32):
+		for y in range(32):
+			map.set_cellv(Vector2(x,y), tiles.grass)
+
+func generate_random_map():
+	_fill_map_with_floor()
 	rng.randomize()
-	_generate_random_map()
-	
-func _generate_random_map():
 	# agrego paredes
 	for i in range(32):
 		map.set_cellv(Vector2(0,i), tiles.wall)
@@ -30,7 +34,7 @@ func _generate_random_map():
 		_add_obstacle(obstacleSize, obstaclePosition)
 	
 func _add_obstacle(size:Vector2, position:Vector2):
-	print("add obstacle: ", size, position)
+#	print("add obstacle: ", size, position)
 	for x in size.x:
 		for y in size.y:
 			var draw_x = position.x + x
