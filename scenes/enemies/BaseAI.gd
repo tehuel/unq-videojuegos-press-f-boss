@@ -78,12 +78,12 @@ func on_hit(damage):
 	get_damage(damage)
 	$Visual/HitTimer.start()
 
-func hit_target(target):
-	if target.has_method("on_hit"):
+func hit_target(target, _weapon):
+	if target.has_method("on_hit") && !target.is_in_group("enemies"):
 		target.on_hit(weapon.weapon_damage * strength)
 
 func get_damage(base_damage):
-	modulate = Color.white
+	$Visual/Sprite.modulate = Color.white
 	hp -= (base_damage - armor)
 
 func _on_SeekArea_body_entered(body):

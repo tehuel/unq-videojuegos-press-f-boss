@@ -15,11 +15,8 @@ func attack():
 func _on_timeout_complete():
 	_can_attack = true
 
-func hit(body):
-	_holder.hit_target(body)
-
 func _on_Weapon_body_entered(_body):
-	_holder.target_in_range()
+	_target_in_range()
 
 func _on_Weapon_body_exited(_body):
-	_holder.target_out_of_range()
+	_target_out_of_range()

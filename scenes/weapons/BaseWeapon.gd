@@ -27,10 +27,12 @@ func _on_timeout_complete():
 	_can_attack = true
 
 func hit(body):
-	_holder.hit_target(body)
+	_holder.hit_target(body, self)
 
 func _target_in_range():
-	_holder.target_in_range()
+	if _holder && _holder.has_method("target_in_range"):
+		_holder.target_in_range()
 
 func _target_out_of_range():
-	_holder.target_out_of_range()
+	if _holder && _holder.has_method("target_out_of_range"):
+		_holder.target_out_of_range()

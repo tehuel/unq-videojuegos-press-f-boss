@@ -36,10 +36,6 @@ config/name="Press F Boss"
 run/main_scene="res://scenes/main/Main.tscn"
 config/icon="res://icon.png"
 
-[display]
-
-window/size/resizable=false
-
 [input]
 
 izquierda={

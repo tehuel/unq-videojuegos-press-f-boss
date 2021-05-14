@@ -37,9 +37,17 @@ position = Vector2( 561.023, 1187.79 )
 environment = SubResource( 1 )
 
 [node name="MeleeEnemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 941.745, 539.904 )
+position = Vector2( 496, 1816 )
+scale = Vector2( 2, 2 )
+
+[node name="MeleeEnemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1488, 1864 )
 scale = Vector2( 2, 2 )
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1527.35, 421.436 )
+position = Vector2( 1816, 344 )
+scale = Vector2( 2, 2 )
+
+[node name="RangedEnemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1912, 696 )
 scale = Vector2( 2, 2 )

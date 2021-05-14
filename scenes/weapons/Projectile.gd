@@ -24,6 +24,6 @@ func _on_DeleteTimer_timeout():
 	queue_free()
 
 func _on_Projectile_body_entered(body):
-	if body.has_method("on_hit"):
+	if _origin && body.has_method("on_hit"):
 		_origin.hit(body)
 	queue_free()

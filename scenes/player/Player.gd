@@ -1,64 +1,48 @@
 extends KinematicBody2D
 
 export var speed = 400
-var attacking:bool = false
 
-onready var weaponPlayer = $WeaponPlayer
-onready var animatedSprite = $AnimatedSprite
-onready var rangedWeapon = $RangedWeapon
-var projectile_container
+onready var melee_weapon = $MeleeWeapon
+onready var ranged_weapon = $RangedWeapon
+var container
 
-func start(pos, sel):
+func start(pos, cont):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	initialize(sel)
+	container = cont
+	ranged_weapon.take_weapon(self)
+	melee_weapon.take_weapon(self)
 
 func _ready():
 	hide()
 
-func initialize(projectile_container):
-	self.projectile_container = projectile_container
-	rangedWeapon.projectile_container = projectile_container
-
-func _process(delta):
-	var screen_size = get_viewport_rect().size
+func _physics_process(_delta):
 	var velocity = Vector2()
 	velocity.x = int(Input.is_action_pressed("derecha")) - int(Input.is_action_pressed("izquierda"))
 	velocity.y = int(Input.is_action_pressed("abajo")) - int(Input.is_action_pressed("arriba"))
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		animatedSprite.play()
-	else:
-		animatedSprite.stop()
-		
-	position += velocity * delta
-	position.x = clamp(position.x, 0, 3600)
-	position.y = clamp(position.y, 0, 3600)
 	
-	if velocity.x != 0:
-		animatedSprite.animation = "walk"
-		animatedSprite.flip_v = false
-		animatedSprite.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		animatedSprite.animation = "up"
-		animatedSprite.flip_v = velocity.y > 0
-		
+	velocity = move_and_slide(velocity)
+	rotate(get_angle_to(get_global_mouse_position()))
+	
 	if Input.is_action_pressed("left_click"):
-		playerAttack()
+		melee_attack()
 		
 	if Input.is_action_just_pressed("right_click"):
-		if projectile_container == null:
-			projectile_container = get_parent()
-			rangedWeapon.projectile_container = projectile_container
-		rangedWeapon.fire()
+		ranged_attack()
 
 func on_hit(base_damage):
 	print("damaged for: ", base_damage)
 
-func playerAttack():
-	if !attacking:
-		attacking = true
-		attacking = weaponPlayer.attack()
+func melee_attack():
+	melee_weapon.attack()
+
+func ranged_attack():
+	ranged_weapon.attack()
 	
+func hit_target(target, weapon):
+	if target.has_method("on_hit"):
+		target.on_hit(weapon.weapon_damage)
