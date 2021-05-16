@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://font/PixelBit-Free.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/images/mainMenu/backGround.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/mainMenu/skyBackGround.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 960, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1920, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2880, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3840, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 600, 960, 600 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=8]
+size = 150
+outline_size = 3
+outline_color = Color( 0.211765, 0.196078, 0.196078, 1 )
+font_data = ExtResource( 3 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 2 )
+
+[node name="FakeBackGround" type="Sprite" parent="."]
+position = Vector2( 525.035, 354.978 )
+scale = Vector2( 11.5007, 7.86172 )
+texture = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 517.249, 397.728 )
+scale = Vector2( 1.1, 1.1 )
+frames = SubResource( 7 )
+frame = 2
+playing = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.49835
+margin_bottom = 2.50165
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 248.0
+margin_top = 56.0
+margin_right = 776.0
+margin_bottom = 243.0
+custom_fonts/font = SubResource( 8 )
+text = "Cuvikingo"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 300 )
+alignment = 1
+
+[node name="Start" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 98.0
+margin_bottom = 148.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Exit")
+text = "Start"
+arrow_margin_from_center = 82
+
+[node name="Exit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_bottom = 202.0
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Start")
+text = "Exit"
+arrow_margin_from_center = 61
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
