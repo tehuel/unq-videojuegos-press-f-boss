@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/weapons/axe.png" type="Texture" id=2]
 [ext_resource path="res://font/PixelBit-Free.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://audio/sfx/button.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -45,6 +46,10 @@ text = " Text button "
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
 [connection signal="focus_entered" from="." to="." method="_on_TextureButton_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_TextureButton_focus_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_TextureButton_mouse_entered"]

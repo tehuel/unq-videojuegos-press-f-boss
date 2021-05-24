@@ -4,6 +4,9 @@ extends TextureButton
 export(String) var text = "Text button"
 export(int) var arrow_margin_from_center = 100
 
+onready var buttonSFX = $ButtonSound
+var soundPlayed = false
+
 func _ready():
 	setup_text()
 	hide_arrows()
@@ -31,9 +34,13 @@ func hide_arrows():
 		arrow.visible = false
 
 func _on_TextureButton_focus_entered():
+	if(!soundPlayed):
+		buttonSFX.play()
+		soundPlayed = true
 	show_arrows()
 
 func _on_TextureButton_focus_exited():
+	soundPlayed = false
 	hide_arrows()
 
 func _on_TextureButton_mouse_entered():

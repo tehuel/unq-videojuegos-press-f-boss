@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://font/PixelBit-Free.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/images/mainMenu/backGround.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/mainMenu/skyBackGround.png" type="Texture" id=5]
+[ext_resource path="res://audio/bgm/The_Bards_Tale.ogg" type="AudioStream" id=6]
+[ext_resource path="res://audio/sfx/axe_start.ogg" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -62,7 +64,6 @@ texture = ExtResource( 5 )
 position = Vector2( 517.249, 397.728 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 7 )
-frame = 2
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -110,5 +111,14 @@ focus_neighbour_top = NodePath("../Start")
 focus_neighbour_bottom = NodePath("../Start")
 text = "Exit"
 arrow_margin_from_center = 61
+
+[node name="BackGround" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -30.0
+autoplay = true
+
+[node name="AxeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

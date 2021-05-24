@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/player/Hair/Braid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/player/player.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player/Hair/BraidTail.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1.3467, 1.42192 )
+
+[node name="Hair" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="PinJoint2D" type="GrooveJoint2D" parent="."]
+position = Vector2( 0, 1.6 )
+scale = Vector2( 0.1, 0.1 )
+node_a = NodePath("../StaticBody2D")
+node_b = NodePath("../Braid")
+length = 1.0
+
+[node name="Braid" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 5.196 )
+collision_mask = 2147483648
+
+[node name="PinJoint2D2" type="GrooveJoint2D" parent="."]
+position = Vector2( 0, 8 )
+scale = Vector2( 0.1, 0.1 )
+node_a = NodePath("../Braid")
+node_b = NodePath("../Braid2")
+length = 1.0
+
+[node name="Braid2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 11.239 )
+
+[node name="PinJoint2D3" type="GrooveJoint2D" parent="."]
+position = Vector2( 0, 14 )
+scale = Vector2( 0.1, 0.1 )
+node_a = NodePath("../Braid2")
+node_b = NodePath("../Braid3")
+length = 1.0
+
+[node name="Braid3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 17.056 )
+
+[node name="PinJoint2D4" type="GrooveJoint2D" parent="."]
+position = Vector2( 0, 19.449 )
+scale = Vector2( 0.1, 0.1 )
+node_a = NodePath("../Braid3")
+node_b = NodePath("../BraidTail")
+length = 1.0
+
+[node name="BraidTail" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 26 )
