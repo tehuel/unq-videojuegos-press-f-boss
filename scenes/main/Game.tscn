@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://scenes/main/EnemyGenerator.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main/MapGenerator.gd" type="Script" id=3]
 [ext_resource path="res://scenes/main/Game.gd" type="Script" id=4]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/RangedEnemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/enemies/MeleeEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/tilesets/tileset.tres" type="TileSet" id=9]
 
 [sub_resource type="Environment" id=1]
@@ -19,6 +18,9 @@ script = ExtResource( 4 )
 
 [node name="MapGenerator" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="EnemyGenerator" type="Node" parent="."]
+script = ExtResource( 1 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -36,64 +38,3 @@ position = Vector2( 496, 432 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
-
-[node name="MeleeEnemy" parent="." instance=ExtResource( 7 )]
-position = Vector2( 496, 1816 )
-scale = Vector2( 2, 2 )
-hp = 30
-
-[node name="Label" type="Label" parent="MeleeEnemy"]
-margin_left = -20.0
-margin_top = 16.0
-margin_right = 20.0
-margin_bottom = 30.0
-text = "0 ARMOR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MeleeEnemy2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1488, 1864 )
-scale = Vector2( 2, 2 )
-hp = 30
-armor = 5
-
-[node name="Label" type="Label" parent="MeleeEnemy2"]
-margin_left = -20.0
-margin_top = 16.0
-margin_right = 20.0
-margin_bottom = 30.0
-text = "5 ARMOR"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RangedEnemy" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1816, 344 )
-scale = Vector2( 2, 2 )
-hp = 15
-
-[node name="Label" type="Label" parent="RangedEnemy"]
-margin_left = -16.0
-margin_top = 16.0
-margin_right = 24.0
-margin_bottom = 30.0
-text = "15hp"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RangedEnemy2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1912, 696 )
-scale = Vector2( 2, 2 )
-hp = 30
-
-[node name="Label" type="Label" parent="RangedEnemy2"]
-margin_left = -20.0
-margin_top = 16.0
-margin_right = 20.0
-margin_bottom = 30.0
-text = "30hp"
-__meta__ = {
-"_edit_use_anchors_": false
-}
