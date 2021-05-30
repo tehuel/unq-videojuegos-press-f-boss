@@ -6,13 +6,12 @@
 [ext_resource path="res://scenes/player/Hair/Hair.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 0.297933, 9.58227 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.1311
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-scale = Vector2( 0.105359, 0.090981 )
 collision_layer = 2
 script = ExtResource( 5 )
 
@@ -26,7 +25,6 @@ __meta__ = {
 position = Vector2( 0, -10.9913 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 52.5656, 1.59684 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -56,4 +54,5 @@ delay = 0.3
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
