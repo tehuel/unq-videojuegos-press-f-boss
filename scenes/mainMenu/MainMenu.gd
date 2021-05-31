@@ -9,7 +9,7 @@ func _on_Start_pressed():
 	print("Start pressed")
 	axeSFX.play()
 	yield(axeSFX, "finished")
-	get_tree().change_scene("res://scenes/main/Game.tscn")
+	get_tree().change_scene("res://scenes/game/Game.tscn")
 
 func _on_Exit_pressed():
 	print("Exit pressed")
