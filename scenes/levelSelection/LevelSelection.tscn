@@ -30,7 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="elegi nivel" type="Label" parent="Control"]
+[node name="elegir nivel" type="Label" parent="Control"]
 margin_left = 392.951
 margin_top = 16.3721
 margin_right = 649.951
@@ -38,7 +38,7 @@ margin_bottom = 96.3721
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
-text = "elegi nivel"
+text = "elegir nivel"
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -10,7 +10,8 @@ onready var enemiesContainer = get_parent()
 
 
 func generate_enemies():
-	var config = _get_enemies_config(1)
+	
+	var config = _get_enemies_config(Game.currentLevel)
 	
 	# Para cada uno de los tipos de enemigos que hay
 	for enemyType in ["melee", "ranged"]:
@@ -36,12 +37,14 @@ func _on_enemy_died():
 	enemiesLeft -= 1
 	if (!enemiesLeft):
 		print("mission acomplished")
+		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 # Acá podría tener varias configs para cada nivel, para agregar un poco mas de variedad
 func _get_enemies_config(level):
+	var enemiesConfig
 	match level:
 		1:
-			return {
+			enemiesConfig =  {
 				"melee": {
 					"quantity": 5,
 					"atk": 1,
@@ -55,5 +58,50 @@ func _get_enemies_config(level):
 					"hp": 10,
 				},
 			}
+		2:
+			enemiesConfig =  {
+				"melee": {
+					"quantity": 8,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+				"ranged": {
+					"quantity": 4,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+			}
+		3:
+			enemiesConfig =  {
+				"melee": {
+					"quantity": 10,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+				"ranged": {
+					"quantity": 8,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+			}
 		_:
-			print("no config defined for level")
+			enemiesConfig =  {
+				"melee": {
+					"quantity": 99,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+				"ranged": {
+					"quantity": 99,
+					"atk": 1,
+					"def": 1,
+					"hp": 10,
+				},
+			}
+	
+	return enemiesConfig
