@@ -71,3 +71,4 @@ func hit_target(target, weapon):
 
 func _on_DashTimer_timeout():
 	_cur_speed = speed
+
