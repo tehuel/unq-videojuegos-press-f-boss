@@ -1,6 +1,6 @@
 extends Area2D
 
-export (float) var duration:float = 1.0
+export (float) var duration:float = 2.0
 
 var _duration_timer
 var _target
@@ -17,10 +17,10 @@ func _on_PowerUp_body_entered(body):
 	if body.is_in_group("player"):
 		$CollisionShape2D.set_deferred("set_monitoring",false)
 		_target = body
-		_target._invincible = true
+		_target.strength *=  2
 		self.hide()
 		_duration_timer.start()
 		
 func on_duration_finish():
-	_target._invincible = false
+	_target.strength /= 2
 	call_deferred("queue_free")

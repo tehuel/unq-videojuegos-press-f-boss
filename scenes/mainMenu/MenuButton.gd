@@ -12,7 +12,7 @@ func _ready():
 	hide_arrows()
 	set_focus_mode(true)
 
-func _process(delta):
+func _process(_delta):
 	if Engine.editor_hint:
 		setup_text()
 		show_arrows()

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var speed = 400
 export var health = 100
+export var strength = 1
 
 onready var melee_weapon = $MeleeWeapon
 onready var ranged_weapon = $RangedWeapon
@@ -67,7 +68,7 @@ func ranged_attack():
 	
 func hit_target(target, weapon):
 	if target.has_method("on_hit"):
-		target.on_hit(weapon.weapon_damage)
+		target.on_hit(weapon.weapon_damage * strength)
 
 func _on_DashTimer_timeout():
 	_cur_speed = speed

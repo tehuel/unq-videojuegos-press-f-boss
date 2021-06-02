@@ -14,7 +14,7 @@ func _ready():
 	
 	$Island4.get_node("AnimationPlayer").advance(5)
 
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_just_pressed("select_level_a")):
 		_start_level(1)
 
