@@ -44,6 +44,7 @@ one_shot = true
 [node name="Weapon" parent="Visual" instance=ExtResource( 3 )]
 position = Vector2( 11.9578, -3.56087 )
 weapon_damage = 5
+
 [connection signal="body_entered" from="Visual/SeekArea" to="." method="_on_SeekArea_body_entered"]
 [connection signal="body_exited" from="Visual/SeekArea" to="." method="_on_SeekArea_body_exited"]
 [connection signal="timeout" from="Visual/HitTimer" to="." method="_on_Hit_Timer_timeout"]

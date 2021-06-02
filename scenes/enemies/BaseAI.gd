@@ -18,6 +18,8 @@ var container
 
 enum states {IDLE, ATTACK, CHASE}
 
+signal enemy_died
+
 func initialize(navmap, cont):
 	_navmap = navmap
 	container = cont
@@ -38,6 +40,7 @@ func _physics_process(_delta):
 	sight_check()
 	
 	if hp <=0:
+		emit_signal("enemy_died")
 		queue_free()
 
 func _chase(delta):
