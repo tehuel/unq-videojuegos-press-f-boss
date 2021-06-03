@@ -8,6 +8,7 @@ export (int) var strength:int = 2
 export (int) var armor:int = 0
 
 onready var weapon = $Visual/Weapon
+onready var damage_text = load("res://scenes/utils/DamageText.tscn")
 
 var _state = states.IDLE
 var _target_in_attack_range = false
@@ -85,9 +86,20 @@ func hit_target(target, _weapon):
 	if target.has_method("on_hit") && !target.is_in_group("enemies"):
 		target.on_hit(weapon.weapon_damage * strength)
 
-func get_damage(base_damage):
+func get_damage(base_damage:int):
+	var damage_left:int = base_damage
 	$Visual/Sprite.modulate = Color.white
-	hp -= (base_damage - armor)
+	if armor > 0:
+# warning-ignore:narrowing_conversion
+		damage_left = max(base_damage - armor, 0)
+# warning-ignore:narrowing_conversion
+		armor = max(armor - base_damage, 0)
+	if damage_left > 0:
+		hp -= damage_left
+	var text = damage_text.instance()
+	text.text = '-' + str(base_damage)
+	text.get_font("font").set_outline_color(Color(0.6, 0, 0, 1))
+	add_child(text)
 
 func _on_SeekArea_body_entered(body):
 	if _target == null && body.is_in_group("player"):

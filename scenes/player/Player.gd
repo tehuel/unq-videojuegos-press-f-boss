@@ -7,6 +7,8 @@ export var strength = 1
 onready var melee_weapon = $MeleeWeapon
 onready var ranged_weapon = $RangedWeapon
 onready var dash_timer = $DashTimer
+onready var damage_text = load("res://scenes/utils/DamageText.tscn")
+
 var container
 var _cur_speed
 var _cur_health
@@ -27,7 +29,8 @@ func _ready():
 
 func _physics_process(_delta):
 	if !_invincible && _cur_health == 0:
-		queue_free() #Meter algo interesante, no este queue_free()
+		print("mission failed")
+		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn") #Meter algo interesante..
 	
 	var velocity = Vector2()
 	velocity.x = int(Input.is_action_pressed("derecha")) - int(Input.is_action_pressed("izquierda"))
@@ -50,14 +53,26 @@ func _physics_process(_delta):
 		ranged_attack()
 
 func on_hit(base_damage):
+	var text = damage_text.instance()
+	text.text = '-'
 	if !_invincible:
 		_cur_health -= base_damage
 		_cur_health = clamp(_cur_health, 0, health)
+		text.text += str(base_damage)
+		text.get_font("font").set_outline_color(Color(0.6, 0, 0, 1))
+	else:
+		text.text += '0'
+		text.get_font("font").set_outline_color(Color(0, 0, 0, 0.2))
+	add_child(text)
 	print("remaining health", _cur_health)
 
 func on_heal(amount):
 	_cur_health += amount
 	_cur_health = clamp(_cur_health, 0, health)
+	var text = damage_text.instance()
+	text.text = '+' + str(amount)
+	text.get_font("font").set_outline_color(Color(0, 0.8, 0, 1))
+	add_child(text)
 	print("remaining health", _cur_health)
 
 func melee_attack():

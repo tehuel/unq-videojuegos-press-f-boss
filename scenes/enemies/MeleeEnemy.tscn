@@ -4,8 +4,8 @@
 [ext_resource path="res://scenes/enemies/MeleeEnemy.gd" type="Script" id=2]
 [ext_resource path="res://scenes/weapons/MeleeWeapon.tscn" type="PackedScene" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.3866, 15.3681 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.001
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 172.806
@@ -13,6 +13,7 @@ radius = 172.806
 [node name="MeleeEnemy" type="KinematicBody2D" groups=[
 "enemies",
 ]]
+scale = Vector2( 1.5, 1.5 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 2 )
@@ -20,7 +21,6 @@ speed = 350
 strength = 3
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.176777 )
 shape = SubResource( 1 )
 
 [node name="Visual" type="Node2D" parent="."]
@@ -44,7 +44,6 @@ one_shot = true
 [node name="Weapon" parent="Visual" instance=ExtResource( 3 )]
 position = Vector2( 11.9578, -3.56087 )
 weapon_damage = 5
-
 [connection signal="body_entered" from="Visual/SeekArea" to="." method="_on_SeekArea_body_entered"]
 [connection signal="body_exited" from="Visual/SeekArea" to="." method="_on_SeekArea_body_exited"]
 [connection signal="timeout" from="Visual/HitTimer" to="." method="_on_Hit_Timer_timeout"]
