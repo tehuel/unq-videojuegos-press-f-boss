@@ -9,6 +9,9 @@ export (int) var armor:int = 0
 
 onready var weapon = $Visual/Weapon
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
+onready var healing_power_up = preload("res://scenes/environment/HealingPowerUp.tscn")
+onready var invincible_power_up = preload("res://scenes/environment/InvincibilityPowerUp.tscn")
+onready var damage_power_up = preload("res://scenes/environment/StrengthPowerUp.tscn")
 onready var sprite = $Visual/Sprite
 onready var armor_sprite = $Visual/Sprite/Sprite2
 
@@ -23,12 +26,15 @@ var _dieSound
 
 enum states {IDLE, ATTACK, CHASE}
 
+const DROP_RATE = 35 # % / 100
+
 signal enemy_died
 
 func initialize(navmap, cont, dieSound):
 	_navmap = navmap
 	container = cont
 	_dieSound = dieSound
+	randomize()
 
 func _ready():
 	_cur_health = health
@@ -52,12 +58,26 @@ func _physics_process(_delta):
 	
 	if _cur_health <=0:
 		emit_signal("enemy_died")
-		print(_dieSound)
+		drop_power_up()
 		if(_dieSound != null):
-			print('SE MURIOOOOOO')
 			_dieSound.play()
 		queue_free()
-
+	
+func drop_power_up():
+	var drop = randi() % 100
+	if drop < DROP_RATE:
+		var powerup
+		drop = randi() % 100
+		print(drop)
+		if drop < 60:
+			powerup = healing_power_up.instance()
+		elif drop < 85:
+			powerup = damage_power_up.instance()
+		else:
+			powerup = invincible_power_up.instance()
+		powerup.position = position
+		get_parent().add_child(powerup)
+	
 func _chase(delta):
 	var path_to_dest = _navmap.get_simple_path(position, _target.position, false)
 	var starting_point = position

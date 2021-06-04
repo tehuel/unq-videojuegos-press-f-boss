@@ -16,7 +16,8 @@ func generate_enemies():
 	
 	# Para cada uno de los tipos de enemigos que hay
 	for enemyType in ["melee", "ranged"]:
-		var quantity = config[enemyType].quantity
+		var enemyTypeConfig = config[enemyType]
+		var quantity = enemyTypeConfig.quantity
 		enemiesLeft += quantity
 		
 		# creo la cantidad definida en la config
@@ -29,7 +30,11 @@ func generate_enemies():
 					 new_enemy = rangedEnemy.instance()
 			
 			new_enemy.initialize(navigation, enemiesContainer, enemyAudioDie)
-			new_enemy.position = Vector2(64*rng.randi_range(1, 30), 64*rng.randi_range(1, 30))
+			new_enemy.position = Vector2(64*rng.randi_range(8, 30), 64*rng.randi_range(8, 30))
+			new_enemy.health = rng.randi_range(enemyTypeConfig.min_health, enemyTypeConfig.max_health)
+			new_enemy.armor = rng.randi_range(enemyTypeConfig.min_armor, enemyTypeConfig.max_armor)
+			new_enemy.strength = rng.randi_range(enemyTypeConfig.min_strength, enemyTypeConfig.max_strength)
+			new_enemy.speed = rng.randi_range(enemyTypeConfig.min_speed, enemyTypeConfig.max_speed)
 			new_enemy.connect("enemy_died", self, "_on_enemy_died")
 			enemiesContainer.add_child(new_enemy)
 
@@ -38,6 +43,7 @@ func _on_enemy_died():
 	enemiesLeft -= 1
 	if (!enemiesLeft):
 		print("mission acomplished")
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 # Acá podría tener varias configs para cada nivel, para agregar un poco mas de variedad
@@ -48,60 +54,100 @@ func _get_enemies_config(level):
 			enemiesConfig =  {
 				"melee": {
 					"quantity": 5,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"min_health": 10,
+					"max_health": 25,
+					"min_armor": 5,
+					"max_armor": 25,
+					"min_strength": 1,
+					"max_strength": 2,
+					"min_speed": 330,
+					"max_speed": 350
 				},
 				"ranged": {
-					"quantity": 1,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 2,
+					"min_health": 5,
+					"max_health": 15,
+					"min_armor": 0,
+					"max_armor": 15,
+					"min_strength": 1,
+					"max_strength": 1,
+					"min_speed": 280,
+					"max_speed": 300
 				},
 			}
 		2:
 			enemiesConfig =  {
 				"melee": {
-					"quantity": 8,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 7,
+					"min_health": 15,
+					"max_health": 30,
+					"min_armor": 7,
+					"max_armor": 30,
+					"min_strength": 1,
+					"max_strength": 3,
+					"min_speed": 330,
+					"max_speed": 365
 				},
 				"ranged": {
-					"quantity": 4,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 5,
+					"min_health": 9,
+					"max_health": 25,
+					"min_armor": 2,
+					"max_armor": 25,
+					"min_strength": 1,
+					"max_strength": 2,
+					"min_speed": 280,
+					"max_speed": 310
 				},
 			}
 		3:
 			enemiesConfig =  {
 				"melee": {
-					"quantity": 10,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 12,
+					"min_health": 20,
+					"max_health": 50,
+					"min_armor": 10,
+					"max_armor": 40,
+					"min_strength": 2,
+					"max_strength": 4,
+					"min_speed": 330,
+					"max_speed": 365
 				},
 				"ranged": {
 					"quantity": 8,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"min_health": 5,
+					"max_health": 15,
+					"min_armor": 5,
+					"max_armor": 30,
+					"min_strength": 1,
+					"max_strength": 3,
+					"min_speed": 280,
+					"max_speed": 310
 				},
 			}
 		_:
 			enemiesConfig =  {
 				"melee": {
-					"quantity": 99,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 25,
+					"min_health": 50,
+					"max_health": 100,
+					"min_armor": 30,
+					"max_armor": 75,
+					"min_strength": 2,
+					"max_strength": 5,
+					"min_speed": 330,
+					"max_speed": 370
 				},
 				"ranged": {
-					"quantity": 99,
-					"atk": 1,
-					"def": 1,
-					"hp": 10,
+					"quantity": 25,
+					"min_health": 35,
+					"max_health": 65,
+					"min_armor": 15,
+					"max_armor": 50,
+					"min_strength": 2,
+					"max_strength": 4,
+					"min_speed": 280,
+					"max_speed": 320
 				},
 			}
 	
