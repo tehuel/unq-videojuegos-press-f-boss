@@ -63,5 +63,5 @@ texture = ExtResource( 4 )
 
 [node name="InvincibilityAudio" type="AudioStreamPlayer" parent="." index="4"]
 stream = ExtResource( 5 )
-volume_db = -15.0
+volume_db = -10.0
 [connection signal="body_entered" from="." to="." method="_on_PowerUp_body_entered"]
