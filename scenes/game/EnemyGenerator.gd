@@ -2,23 +2,28 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 var enemiesLeft = 0
+var portal_phase_every = 0
+var next_portal_phase_in = -1
+var current_portal_phase = 0
 
 onready var meleeEnemy = load("res://scenes/enemies/MeleeEnemy.tscn")
 onready var rangedEnemy = load("res://scenes/enemies/RangedEnemy.tscn")
 onready var navigation = get_node("../Navigation2D")
 onready var enemiesContainer = get_parent()
 onready var enemyAudioDie = $AudioDie
-
+onready var portal = get_node("../Portal")
 
 func generate_enemies():
 	
 	var config = _get_enemies_config(Game.currentLevel)
+	enemiesLeft = config["melee"].quantity + config["ranged"].quantity
+	portal_phase_every = ceil(enemiesLeft / 5.0)
+	next_portal_phase_in = portal_phase_every
 	
 	# Para cada uno de los tipos de enemigos que hay
 	for enemyType in ["melee", "ranged"]:
 		var enemyTypeConfig = config[enemyType]
 		var quantity = enemyTypeConfig.quantity
-		enemiesLeft += quantity
 		
 		# creo la cantidad definida en la config
 		for _i in quantity:
@@ -37,14 +42,26 @@ func generate_enemies():
 			new_enemy.speed = rng.randi_range(enemyTypeConfig.min_speed, enemyTypeConfig.max_speed)
 			new_enemy.connect("enemy_died", self, "_on_enemy_died")
 			enemiesContainer.add_child(new_enemy)
+			
 
 func _on_enemy_died():
 	print("enemy died, signal received")
 	enemiesLeft -= 1
-	if (!enemiesLeft):
-		print("mission acomplished")
-# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
+	next_portal_phase_in -= 1
+	if next_portal_phase_in == 0:
+		next_portal_phase_in = portal_phase_every
+		match current_portal_phase:
+			0:
+				portal.enable_first()
+			1:
+				portal.enable_second()
+			2:
+				portal.enable_third()
+			3:
+				portal.enable_fourth()
+		current_portal_phase = (current_portal_phase + 1) % 5
+	if !enemiesLeft:
+		portal.enable_last()
 
 # Acá podría tener varias configs para cada nivel, para agregar un poco mas de variedad
 func _get_enemies_config(level):
@@ -64,7 +81,7 @@ func _get_enemies_config(level):
 					"max_speed": 350
 				},
 				"ranged": {
-					"quantity": 2,
+					"quantity": 3,
 					"min_health": 5,
 					"max_health": 15,
 					"min_armor": 0,
