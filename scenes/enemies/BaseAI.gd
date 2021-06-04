@@ -18,14 +18,16 @@ var _target_on_seek_area
 var _navmap
 var _target
 var container
+var _dieSound
 
 enum states {IDLE, ATTACK, CHASE}
 
 signal enemy_died
 
-func initialize(navmap, cont):
+func initialize(navmap, cont, dieSound):
 	_navmap = navmap
 	container = cont
+	_dieSound = dieSound
 
 func _ready():
 	_cur_health = health
@@ -48,6 +50,10 @@ func _physics_process(_delta):
 	
 	if _cur_health <=0:
 		emit_signal("enemy_died")
+		print(_dieSound)
+		if(_dieSound != null):
+			print('SE MURIOOOOOO')
+			_dieSound.play()
 		queue_free()
 
 func _chase(delta):

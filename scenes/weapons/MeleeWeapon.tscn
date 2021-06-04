@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/weapons/MeleeWeapon.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/weapons/axe.png" type="Texture" id=2]
+[ext_resource path="res://scenes/weapons/AudioStreamAxe2D.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.15578, 15.9839 )
@@ -77,6 +78,9 @@ collision_mask = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyDetection"]
 position = Vector2( -22.5913, 3.6166 )
 shape = SubResource( 1 )
+
+[node name="AudioStreamAxe2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_Weapon_body_entered"]
 [connection signal="body_entered" from="BodyDetection" to="." method="_on_BodyDetection_body_entered"]
 [connection signal="body_exited" from="BodyDetection" to="." method="_on_BodyDetection_body_exited"]

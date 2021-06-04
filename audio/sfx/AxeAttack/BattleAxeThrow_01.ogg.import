@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BattleAxeThrow_01.ogg-a9693b2f1abe653fe26d59879c26cd75.oggstr"
+
+[deps]
+
+source_file="res://audio/sfx/AxeAttack/BattleAxeThrow_01.ogg"
+dest_files=[ "res://.import/BattleAxeThrow_01.ogg-a9693b2f1abe653fe26d59879c26cd75.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://audio/sfx/AxeAttack/BattleAxeThrow_01.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/weapons/RangedWeapon.gd" type="Script" id=2]
 [ext_resource path="res://scenes/weapons/Projectile.tscn" type="PackedScene" id=3]
 
@@ -26,5 +27,9 @@ scale = Vector2( 0.522077, 0.140615 )
 [node name="BodyDetection" type="CollisionShape2D" parent="."]
 position = Vector2( -78.7372, 1.26257 )
 shape = SubResource( 1 )
+
+[node name="axe_throw" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
 [connection signal="body_entered" from="." to="." method="_on_Weapon_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Weapon_body_exited"]

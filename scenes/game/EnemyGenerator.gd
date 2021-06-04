@@ -7,6 +7,7 @@ onready var meleeEnemy = load("res://scenes/enemies/MeleeEnemy.tscn")
 onready var rangedEnemy = load("res://scenes/enemies/RangedEnemy.tscn")
 onready var navigation = get_node("../Navigation2D")
 onready var enemiesContainer = get_parent()
+onready var enemyAudioDie = $AudioDie
 
 
 func generate_enemies():
@@ -27,7 +28,7 @@ func generate_enemies():
 				"ranged":
 					 new_enemy = rangedEnemy.instance()
 			
-			new_enemy.initialize(navigation, enemiesContainer)
+			new_enemy.initialize(navigation, enemiesContainer, enemyAudioDie)
 			new_enemy.position = Vector2(64*rng.randi_range(1, 30), 64*rng.randi_range(1, 30))
 			new_enemy.connect("enemy_died", self, "_on_enemy_died")
 			enemiesContainer.add_child(new_enemy)

@@ -10,6 +10,7 @@ func attack():
 		var newProjectile = projectile_scene.instance()
 		_holder.container.add_child(newProjectile)
 		newProjectile.initialize(self, (fire_position.global_position - global_position).normalized(), fire_position.global_position)
+		$axe_throw.play()
 		_timer.start()
 
 func _on_timeout_complete():

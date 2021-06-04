@@ -1,11 +1,25 @@
 extends BaseWeapon
 
 onready var animation = $AnimationPlayer
+onready var outPutStreamAxe = $AudioStreamAxe2D
+
+var rng = RandomNumberGenerator.new()
+
+func playSound():
+	var numberSound = randomNumberBetween(0, 1)
+	outPutStreamAxe.set_stream(outPutStreamAxe.axe_hit[numberSound])
+	outPutStreamAxe.set_volume_db(-20.0)
+	outPutStreamAxe.play()
+	
+func randomNumberBetween(numberOne, numberTwo):
+	rng.randomize()
+	return rng.randi_range(numberOne, numberTwo)
 
 func attack():
 	if _can_attack:
 		self.monitoring = true
 		animation.play("swing")
+		playSound()
 		_can_attack = false
 
 func stop_attack():

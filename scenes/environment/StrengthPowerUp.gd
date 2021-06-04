@@ -18,6 +18,7 @@ func _on_PowerUp_body_entered(body):
 		$CollisionShape2D.set_deferred("set_monitoring",false)
 		_target = body
 		_target.strength *=  2
+		$StrengthAudio.play()
 		self.hide()
 		_duration_timer.start()
 		

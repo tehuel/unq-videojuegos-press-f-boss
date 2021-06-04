@@ -45,6 +45,7 @@ func _physics_process(_delta):
 		velocity = velocity.normalized()
 	
 	if Input.is_action_just_pressed("dash") && dash_timer.is_stopped():
+		$AudioStreamPlayerDash.play()
 		_cur_speed *= 2.5
 		dash_timer.start()
 		
@@ -61,6 +62,7 @@ func on_hit(base_damage):
 	var text = damage_text.instance()
 	text.text = '-'
 	if !_invincible:
+		$AudioPlayerHit.play()
 		_cur_health -= base_damage
 		_cur_health = clamp(_cur_health, 0, health)
 		text.text += str(base_damage)
