@@ -3,13 +3,15 @@ extends KinematicBody2D
 class_name BaseAI
 
 export (int) var speed:int = 300
-export (int) var hp:int = 3
+export (int) var health:int = 3
 export (int) var strength:int = 2
 export (int) var armor:int = 0
 
 onready var weapon = $Visual/Weapon
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
+onready var sprite = $Visual/Sprite
 
+var _cur_health
 var _state = states.IDLE
 var _target_in_attack_range = false
 var _target_on_seek_area
@@ -26,7 +28,11 @@ func initialize(navmap, cont):
 	container = cont
 
 func _ready():
+	_cur_health = health
+	sprite.material.set_shader_param("hp_color", sprite.modulate)
+	sprite.material.set_shader_param("damage_color", Color("8b0000"))
 	weapon.take_weapon(self)
+	_update_hp_shader()
 
 func _process(delta):
 	match _state:
@@ -40,7 +46,7 @@ func _process(delta):
 func _physics_process(_delta):
 	sight_check()
 	
-	if hp <=0:
+	if _cur_health <=0:
 		emit_signal("enemy_died")
 		queue_free()
 
@@ -88,18 +94,19 @@ func hit_target(target, _weapon):
 
 func get_damage(base_damage:int):
 	var damage_left:int = base_damage
-	$Visual/Sprite.modulate = Color.white
+	sprite.material.set_shader_param("hp_color", Color.white)
 	if armor > 0:
 # warning-ignore:narrowing_conversion
 		damage_left = max(base_damage - armor, 0)
 # warning-ignore:narrowing_conversion
 		armor = max(armor - base_damage, 0)
 	if damage_left > 0:
-		hp -= damage_left
+		_cur_health -= damage_left
 	var text = damage_text.instance()
 	text.text = '-' + str(base_damage)
 	text.get_font("font").set_outline_color(Color(0.6, 0, 0, 1))
 	add_child(text)
+	_update_hp_shader()
 
 func _on_SeekArea_body_entered(body):
 	if _target == null && body.is_in_group("player"):
@@ -114,3 +121,10 @@ func target_in_range():
 
 func target_out_of_range():
 	_target_in_attack_range = false
+	
+func _on_Hit_Timer_timeout():
+	sprite.material.set_shader_param("hp_color", sprite.modulate)
+	
+func _update_hp_shader():
+	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
+	sprite.material.set_shader_param("damage", normalized_damage)

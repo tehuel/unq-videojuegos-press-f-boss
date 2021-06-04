@@ -8,6 +8,7 @@ onready var melee_weapon = $MeleeWeapon
 onready var ranged_weapon = $RangedWeapon
 onready var dash_timer = $DashTimer
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
+onready var sprite = $Sprite
 
 var container
 var _cur_speed
@@ -23,6 +24,9 @@ func start(pos, cont):
 	melee_weapon.take_weapon(self)
 	_cur_speed = speed
 	_cur_health = health
+	sprite.material.set_shader_param("hp_color", "000000")
+	sprite.material.set_shader_param("damage_color", Color("8b0000"))
+	_update_hp_shader()
 
 func _ready():
 	hide()
@@ -30,6 +34,7 @@ func _ready():
 func _physics_process(_delta):
 	if !_invincible && _cur_health == 0:
 		print("mission failed")
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn") #Meter algo interesante..
 	
 	var velocity = Vector2()
@@ -64,6 +69,7 @@ func on_hit(base_damage):
 		text.text += '0'
 		text.get_font("font").set_outline_color(Color(0, 0, 0, 0.2))
 	add_child(text)
+	_update_hp_shader()
 	print("remaining health", _cur_health)
 
 func on_heal(amount):
@@ -73,7 +79,12 @@ func on_heal(amount):
 	text.text = '+' + str(amount)
 	text.get_font("font").set_outline_color(Color(0, 0.8, 0, 1))
 	add_child(text)
+	_update_hp_shader()
 	print("remaining health", _cur_health)
+	
+func _update_hp_shader():
+	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
+	sprite.material.set_shader_param("damage", normalized_damage)
 
 func melee_attack():
 	melee_weapon.attack()

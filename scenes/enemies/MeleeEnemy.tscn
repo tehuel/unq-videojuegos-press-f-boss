@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/images/enemies/base_enemy.png" type="Texture" id=1]
 [ext_resource path="res://scenes/enemies/MeleeEnemy.gd" type="Script" id=2]
@@ -9,6 +9,41 @@ radius = 16.001
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 172.806
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform vec4 hp_color:hint_color;
+uniform vec4 damage_color:hint_color;
+uniform float damage :hint_range(0.32, 0.57) = 0.30;
+
+void fragment() {
+	vec4 noiseColor = texture(noise, UV);
+	float gate = smoothstep(damage, damage, noiseColor.r);
+	vec3 albedo = mix(damage_color, hp_color, gate).rgb;
+	COLOR = vec4(albedo, 1.0);
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+octaves = 9
+period = 139.3
+persistence = 0.859
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=5]
+width = 256
+height = 128
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 3 )
+shader_param/hp_color = Color( 0, 0, 0, 1 )
+shader_param/damage_color = Color( 0, 0, 0, 1 )
+shader_param/damage = 0.33
+shader_param/noise = SubResource( 5 )
 
 [node name="MeleeEnemy" type="KinematicBody2D" groups=[
 "enemies",
@@ -34,7 +69,8 @@ position = Vector2( 0.148651, 0.891907 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Visual"]
-modulate = Color( 0.788235, 0, 0, 1 )
+modulate = Color( 0.737255, 0.160784, 0.945098, 1 )
+material = SubResource( 6 )
 texture = ExtResource( 1 )
 
 [node name="HitTimer" type="Timer" parent="Visual"]

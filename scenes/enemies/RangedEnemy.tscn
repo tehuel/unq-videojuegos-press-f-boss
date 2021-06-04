@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/enemies/RangedEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/weapons/RangedWeapon.tscn" type="PackedScene" id=2]
@@ -10,10 +10,44 @@ radius = 16.001
 [sub_resource type="CircleShape2D" id=2]
 radius = 191.983
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+uniform vec4 hp_color:hint_color;
+uniform vec4 damage_color:hint_color;
+uniform float damage :hint_range(0.32, 0.57) = 0.30;
+
+void fragment() {
+	vec4 noiseColor = texture(noise, UV);
+	float gate = smoothstep(damage, damage, noiseColor.r);
+	vec3 albedo = mix(damage_color, hp_color, gate).rgb;
+	COLOR = vec4(albedo, 1.0);
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=4]
+octaves = 9
+period = 139.3
+persistence = 0.859
+lacunarity = 4.0
+
+[sub_resource type="NoiseTexture" id=5]
+width = 256
+height = 128
+noise = SubResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 3 )
+shader_param/hp_color = Color( 0, 0, 0, 1 )
+shader_param/damage_color = Color( 0, 0, 0, 1 )
+shader_param/damage = 0.32
+shader_param/noise = SubResource( 5 )
+
 [node name="RangedEnemy" type="KinematicBody2D" groups=[
 "enemies",
 ]]
-modulate = Color( 0.156863, 0.396078, 0.462745, 1 )
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 4
 collision_mask = 7
@@ -35,6 +69,7 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Visual"]
 modulate = Color( 0.341176, 0.694118, 0.882353, 1 )
+material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="HitTimer" type="Timer" parent="Visual"]

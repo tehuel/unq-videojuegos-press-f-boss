@@ -28,10 +28,12 @@ func _process(_delta):
 		_start_level(4)
 
 	if (Input.is_action_just_pressed("ui_cancel")):
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/mainMenu/MainMenu.tscn")
 
 func _start_level(level): 
 	Game.currentLevel = level
 	print("starting level ", level)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/game/Game.tscn")
 	
