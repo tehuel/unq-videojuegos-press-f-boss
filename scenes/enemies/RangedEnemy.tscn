@@ -52,7 +52,6 @@ scale = Vector2( 1.5, 1.5 )
 collision_layer = 4
 collision_mask = 7
 script = ExtResource( 1 )
-health = 10
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -71,6 +70,11 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="Visual"]
 modulate = Color( 0.341176, 0.694118, 0.882353, 1 )
 material = SubResource( 6 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Visual/Sprite"]
+modulate = Color( 0.290196, 0.219608, 0.00784314, 1 )
+show_behind_parent = true
 texture = ExtResource( 3 )
 
 [node name="HitTimer" type="Timer" parent="Visual"]

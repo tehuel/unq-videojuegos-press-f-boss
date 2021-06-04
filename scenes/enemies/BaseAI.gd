@@ -10,6 +10,7 @@ export (int) var armor:int = 0
 onready var weapon = $Visual/Weapon
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
 onready var sprite = $Visual/Sprite
+onready var armor_sprite = $Visual/Sprite/Sprite2
 
 var _cur_health
 var _state = states.IDLE
@@ -35,6 +36,7 @@ func _ready():
 	sprite.material.set_shader_param("damage_color", Color("8b0000"))
 	weapon.take_weapon(self)
 	_update_hp_shader()
+	_update_armor_sprite()
 
 func _process(delta):
 	match _state:
@@ -106,6 +108,7 @@ func get_damage(base_damage:int):
 		damage_left = max(base_damage - armor, 0)
 # warning-ignore:narrowing_conversion
 		armor = max(armor - base_damage, 0)
+		_update_armor_sprite()
 	if damage_left > 0:
 		_cur_health -= damage_left
 	var text = damage_text.instance()
@@ -134,3 +137,8 @@ func _on_Hit_Timer_timeout():
 func _update_hp_shader():
 	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
 	sprite.material.set_shader_param("damage", normalized_damage)
+	
+func _update_armor_sprite():
+	var normalized_armor:float = float(armor) / 100.0 #100 = max armor (?)
+	var scaleFloat = 1.0 + (normalized_armor * 0.5)
+	armor_sprite.scale = Vector2(scaleFloat, scaleFloat)
