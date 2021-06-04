@@ -34,8 +34,8 @@ func _ready():
 func _physics_process(_delta):
 	if !_invincible && _cur_health == 0:
 		print("mission failed")
-# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn") #Meter algo interesante..
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://scenes/theEnd/youDie.tscn") #Meter algo interesante..
 	
 	var velocity = Vector2()
 	velocity.x = int(Input.is_action_pressed("derecha")) - int(Input.is_action_pressed("izquierda"))

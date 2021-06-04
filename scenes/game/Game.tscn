@@ -59,4 +59,4 @@ position = Vector2( 152, 240 )
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -20.0
+volume_db = -25.0
