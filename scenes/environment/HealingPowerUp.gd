@@ -1,6 +1,6 @@
 extends Area2D
 
-export (int) var heal_amount:int = 25
+export (int) var heal_amount:int = 15
 onready var soundHeal = $AudioStreamPlayer
 
 func _ready():

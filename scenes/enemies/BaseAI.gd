@@ -71,6 +71,7 @@ func drop_power_up():
 		print(drop)
 		if drop < 60:
 			powerup = healing_power_up.instance()
+			powerup.heal_amount = (randi() % 21) + 10
 		elif drop < 85:
 			powerup = damage_power_up.instance()
 		else:
