@@ -113,7 +113,7 @@ curve = SubResource( 8 )
 
 [sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 1
-emission_sphere_radius = 25.0
+emission_sphere_radius = 100.0
 flag_disable_z = true
 gravity = Vector3( 0, -150, 0 )
 angular_velocity = 1.0
@@ -162,6 +162,8 @@ disabled = true
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 3 )
 amount = 500
+local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 6 )
+
 [connection signal="body_entered" from="." to="." method="_on_Portal_body_entered"]

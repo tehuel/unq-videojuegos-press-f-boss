@@ -8,7 +8,6 @@ onready var last = $Particles2D
 onready var collision = $CollisionShape2D
 
 func _ready():
-	$AnimationPlayer.play("spin")
 	first.hide()
 	second.hide()
 	third.hide()
@@ -29,6 +28,7 @@ func enable_fourth():
 	fourth.show()
 
 func enable_last():
+	$AnimationPlayer.play("spin")
 	last.show()
 	collision.disabled = false
 
