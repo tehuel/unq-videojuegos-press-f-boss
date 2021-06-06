@@ -8,7 +8,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 5 )
-shader_param/color = Vector3( 0, 0.6, 0.8 )
+shader_param/color = Color( 0, 0.6, 0.8, 1 )
 shader_param/OCTAVES = 4
 
 [node name="LevelSelection" type="Node2D"]

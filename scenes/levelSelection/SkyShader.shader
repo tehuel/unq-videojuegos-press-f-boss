@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec3 color = vec3(0, 0.60, 0.80);
+uniform vec4 color : hint_color = vec4(0, 0.60, 0.80, 1.0);
 uniform int OCTAVES = 4;
 
 float rand(vec2 coord){
@@ -40,6 +40,6 @@ void fragment() {
 	vec2 motion = vec2( fbm(coord + vec2(TIME * -0.5, TIME * 0.5)) );
 
 	float final = fbm(coord + motion);
-
-	COLOR = vec4(color, final * 0.5);
+	
+	COLOR = vec4(color.rgb, final * 0.5);
 }
