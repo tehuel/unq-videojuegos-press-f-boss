@@ -1,6 +1,9 @@
 extends Node
 
 onready var map = get_node("../Navigation2D/TileMap")
+onready var rock2 = load("res://scenes/environment/Rock2.tscn")
+onready var rock3 = load("res://scenes/environment/Rock3.tscn")
+onready var tree = load("res://scenes/environment/Tree.tscn")
 
 var rng = RandomNumberGenerator.new()
 
@@ -29,9 +32,14 @@ func generate_random_map():
 
 	# agrego 15 obstáculos random
 	for _i in range(15):
-		var obstacleSize = _get_random_vector2(1, 3)
-		var obstaclePosition = _get_random_vector2(1, 29)
-		_add_obstacle(obstacleSize, obstaclePosition)
+		var obstacles = [rock2, rock3, tree]
+		var obstacle = obstacles[randi() % obstacles.size()].instance()
+		obstacle.position = _get_random_vector2(2, 28) * 64
+		print(obstacle.position)
+		get_parent().add_child(obstacle)		
+#		var obstacleSize = _get_random_vector2(1, 3)
+#		var obstaclePosition = _get_random_vector2(1, 29)
+#		_add_obstacle(obstacleSize, obstaclePosition)
 	
 func _add_obstacle(size:Vector2, position:Vector2):
 #	print("add obstacle: ", size, position)

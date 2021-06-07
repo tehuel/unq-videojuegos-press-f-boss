@@ -36,6 +36,8 @@ func generate_enemies():
 			
 			new_enemy.initialize(navigation, enemiesContainer, enemyAudioDie)
 			new_enemy.position = Vector2(64*rng.randi_range(8, 30), 64*rng.randi_range(8, 30))
+			new_enemy.z_index = -1;
+			new_enemy.z_as_relative = true;
 			new_enemy.health = rng.randi_range(enemyTypeConfig.min_health, enemyTypeConfig.max_health)
 			new_enemy.armor = rng.randi_range(enemyTypeConfig.min_armor, enemyTypeConfig.max_armor)
 			new_enemy.strength = rng.randi_range(enemyTypeConfig.min_strength, enemyTypeConfig.max_strength)
