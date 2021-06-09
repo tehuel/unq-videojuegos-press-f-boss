@@ -6,6 +6,7 @@ export (int) var speed:int = 300
 export (int) var health:int = 3
 export (int) var strength:int = 2
 export (int) var armor:int = 0
+export var enemy_color = Color("bc29f1")
 
 onready var weapon = $Visual/Weapon
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
@@ -38,8 +39,9 @@ func initialize(navmap, cont, dieSound):
 
 func _ready():
 	_cur_health = health
-	sprite.material.set_shader_param("hp_color", sprite.modulate)
+	sprite.material.set_shader_param("hp_color", enemy_color)
 	sprite.material.set_shader_param("damage_color", Color("8b0000"))
+	sprite.material.set_shader_param("sides", rand_range(4.0, 10.9))
 	weapon.take_weapon(self)
 	_update_hp_shader()
 	_update_armor_sprite()
@@ -158,7 +160,7 @@ func target_out_of_range():
 	_target_in_attack_range = false
 	
 func _on_Hit_Timer_timeout():
-	sprite.material.set_shader_param("hp_color", sprite.modulate)
+	sprite.material.set_shader_param("hp_color", enemy_color)
 	
 func _update_hp_shader():
 	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
