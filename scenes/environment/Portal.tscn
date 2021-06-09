@@ -85,7 +85,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 64.0
+radius = 160.798
 
 [sub_resource type="CanvasItemMaterial" id=3]
 blend_mode = 1
@@ -165,5 +165,4 @@ amount = 500
 local_coords = false
 process_material = SubResource( 10 )
 texture = ExtResource( 6 )
-
 [connection signal="body_entered" from="." to="." method="_on_Portal_body_entered"]

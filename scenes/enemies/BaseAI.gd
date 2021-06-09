@@ -49,7 +49,7 @@ func _process(delta):
 		states.IDLE:
 			pass
 		states.ATTACK:
-			weapon.attack()
+			attack()
 		states.CHASE:
 			_chase(delta)
 
@@ -62,6 +62,9 @@ func _physics_process(_delta):
 		if(_dieSound != null):
 			_dieSound.play()
 		queue_free()
+	
+func attack():
+	weapon.attack()
 	
 func drop_power_up():
 	var drop = randi() % 100
@@ -114,6 +117,8 @@ func sight_check():
 		_state = states.IDLE
 
 func on_hit(damage):
+	if !_target:
+		_target = get_parent().get_node("Player")
 	get_damage(damage)
 	$Visual/HitTimer.start()
 

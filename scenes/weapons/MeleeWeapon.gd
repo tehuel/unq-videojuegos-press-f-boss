@@ -18,12 +18,15 @@ func randomNumberBetween(numberOne, numberTwo):
 func attack():
 	if _can_attack:
 		self.monitoring = true
+		animation.playback_speed = 1.0
 		animation.play("swing")
 		playSound()
 		_can_attack = false
 
 func stop_attack():
 	self.monitoring = false
+	if _holder.is_in_group("enemies"):
+		animation.playback_speed = 0.3
 	animation.play_backwards("swing")
 	yield(animation, "animation_finished")
 	_can_attack = true
