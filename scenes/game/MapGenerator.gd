@@ -4,8 +4,11 @@ onready var map = get_node("../Navigation2D/TileMap")
 onready var rock2 = load("res://scenes/environment/Rock2.tscn")
 onready var rock3 = load("res://scenes/environment/Rock3.tscn")
 onready var tree = load("res://scenes/environment/Tree.tscn")
+onready var obstaclesList = [rock2, rock3, tree];
 
 var rng = RandomNumberGenerator.new()
+
+var obstaclesPlacedInLevel = [];
 
 const tiles = {
 	"wall": 0,
@@ -30,27 +33,26 @@ func generate_random_map():
 		map.set_cellv(Vector2(32,i), tiles.wall)
 		map.set_cellv(Vector2(32,32), tiles.wall)
 
+	# elimino obstáculos anteriores
+	var currentObstacle = obstaclesPlacedInLevel.pop_back()
+	while(currentObstacle):
+		print(currentObstacle)
+		currentObstacle.queue_free()
+		currentObstacle = obstaclesPlacedInLevel.pop_back()
+
 	# agrego 15 obstáculos random
 	for _i in range(15):
-		var obstacles = [rock2, rock3, tree]
-		var obstacle = obstacles[randi() % obstacles.size()].instance()
+		var obstacle = _get_random_obstacle().instance();
 		obstacle.position = _get_random_vector2(2, 28) * 64
-		print(obstacle.position)
-		get_parent().add_child(obstacle)		
-#		var obstacleSize = _get_random_vector2(1, 3)
-#		var obstaclePosition = _get_random_vector2(1, 29)
-#		_add_obstacle(obstacleSize, obstaclePosition)
+		get_parent().add_child(obstacle)
+		obstaclesPlacedInLevel.append(obstacle)
 	
-func _add_obstacle(size:Vector2, position:Vector2):
-#	print("add obstacle: ", size, position)
-	for x in size.x:
-		for y in size.y:
-			var draw_x = position.x + x
-			var draw_y = position.y + y
-			map.set_cellv(Vector2(draw_x,draw_y), tiles.obstacle)
-
 func _get_random_vector2(minimum, maximum):
 	rng.randomize()
 	var x = rng.randi_range(minimum, maximum)
 	var y = rng.randi_range(minimum, maximum)
 	return Vector2(x, y)
+
+func _get_random_obstacle():
+	var size = obstaclesList.size()
+	return obstaclesList[randi() % size]
