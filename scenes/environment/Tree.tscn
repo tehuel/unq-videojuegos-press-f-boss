@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/terrain/tree-shadow.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 25.0
+radius = 30.6905
 
 [node name="Tree" type="StaticBody2D"]
 
