@@ -10,7 +10,7 @@ radius = 25.0
 
 [node name="tree-shadow" type="Sprite" parent="."]
 position = Vector2( -94.5159, 38.5391 )
-scale = Vector2( 0.397659, 0.397659 )
+scale = Vector2( 0.282781, 0.282781 )
 texture = ExtResource( 2 )
 
 [node name="tree" type="Sprite" parent="."]
