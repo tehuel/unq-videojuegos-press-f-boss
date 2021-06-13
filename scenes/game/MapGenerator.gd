@@ -7,7 +7,6 @@ onready var tree = load("res://scenes/environment/Tree.tscn")
 onready var obstaclesList = [rock2, rock3, tree];
 
 var rng = RandomNumberGenerator.new()
-
 var obstaclesPlacedInLevel = [];
 
 const tiles = {
@@ -16,16 +15,35 @@ const tiles = {
 	"obstacle": 2,
 }
 
+func generate_random_map():
+	rng.randomize()
+
+	_fill_map_with_floor()
+	_fill_map_walls()
+	_delete_obstacles()
+	_place_random_obstacles(15)
+
+
+func _get_random_vector2(minimum, maximum):
+	rng.randomize()
+	var x = rng.randi_range(minimum, maximum)
+	var y = rng.randi_range(minimum, maximum)
+	return Vector2(x, y)
+
+
+func _get_random_obstacle_type():
+	var size = obstaclesList.size()
+	return obstaclesList[randi() % size]
+
+
 func _fill_map_with_floor():
 	map.clear()
 	for x in range(32):
 		for y in range(32):
 			map.set_cellv(Vector2(x,y), tiles.grass)
 
-func generate_random_map():
-	_fill_map_with_floor()
-	rng.randomize()
-	# agrego paredes
+
+func _fill_map_walls():
 	for i in range(32):
 		map.set_cellv(Vector2(0,i), tiles.wall)
 		map.set_cellv(Vector2(i,0), tiles.wall)
@@ -33,26 +51,17 @@ func generate_random_map():
 		map.set_cellv(Vector2(32,i), tiles.wall)
 		map.set_cellv(Vector2(32,32), tiles.wall)
 
-	# elimino obstáculos anteriores
+
+func _delete_obstacles():
 	var currentObstacle = obstaclesPlacedInLevel.pop_back()
 	while(currentObstacle):
-		print(currentObstacle)
 		currentObstacle.queue_free()
 		currentObstacle = obstaclesPlacedInLevel.pop_back()
 
-	# agrego 15 obstáculos random
-	for _i in range(15):
-		var obstacle = _get_random_obstacle().instance();
-		obstacle.position = _get_random_vector2(2, 28) * 64
-		get_parent().add_child(obstacle)
-		obstaclesPlacedInLevel.append(obstacle)
-	
-func _get_random_vector2(minimum, maximum):
-	rng.randomize()
-	var x = rng.randi_range(minimum, maximum)
-	var y = rng.randi_range(minimum, maximum)
-	return Vector2(x, y)
 
-func _get_random_obstacle():
-	var size = obstaclesList.size()
-	return obstaclesList[randi() % size]
+func _place_random_obstacles(amount):
+		for _i in range(amount):
+			var obstacle = _get_random_obstacle_type().instance();
+			obstacle.position = _get_random_vector2(2, 28) * 64
+			get_parent().add_child(obstacle)
+			obstaclesPlacedInLevel.append(obstacle)
