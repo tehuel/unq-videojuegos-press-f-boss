@@ -3,6 +3,7 @@ extends Node
 onready var axeSFX = $AxeSound
 onready var winfSFX = $Wind
 onready var camera = $CameraMainMenu
+onready var controls = $Controls/Control
 signal started_pressed
 
 func _ready():
@@ -22,3 +23,12 @@ func _on_Exit_pressed():
 	print("Exit pressed")
 	get_tree().quit()
 	
+
+func _on_Controls_pressed():
+	print("Controlls pressed")
+	#Paper Noise
+	controls.visible = true
+	
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		controls.visible = false
