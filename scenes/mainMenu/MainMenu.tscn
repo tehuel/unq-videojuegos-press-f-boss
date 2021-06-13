@@ -78,7 +78,7 @@ script = ExtResource( 2 )
 
 [node name="FakeBackGround" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 523.353, -3838.93 )
+position = Vector2( 1113.13, -3810.42 )
 rotation = -1.5708
 scale = Vector2( 80, 1200 )
 texture = SubResource( 4 )
