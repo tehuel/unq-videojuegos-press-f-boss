@@ -32,8 +32,8 @@ func _process(_delta):
 		get_tree().change_scene("res://scenes/mainMenu/MainMenu.tscn")
 
 func _start_level(level): 
-	Game.currentLevel = level
+	Game.set_current_level(level)
 	print("starting level ", level)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/game/Game.tscn")
 	

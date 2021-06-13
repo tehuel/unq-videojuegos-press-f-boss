@@ -15,7 +15,7 @@ onready var portal = get_node("../Portal")
 
 func generate_enemies():
 	
-	var config = _get_enemies_config(Game.currentLevel)
+	var config = _get_enemies_config(Game.level)
 	enemiesLeft = config["melee"].quantity + config["ranged"].quantity
 	portal_phase_every = ceil(enemiesLeft / 5.0)
 	next_portal_phase_in = portal_phase_every
