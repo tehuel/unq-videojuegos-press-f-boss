@@ -1,8 +1,14 @@
 extends Node
 
 onready var map = get_node("../Navigation2D/TileMap")
+onready var portal = get_node("../Portal")
+onready var rock2 = load("res://scenes/obstacles/Rock2.tscn")
+onready var rock3 = load("res://scenes/obstacles/Rock3.tscn")
+onready var tree = load("res://scenes/obstacles/Tree.tscn")
+onready var obstaclesList = [rock2, rock3, tree];
 
 var rng = RandomNumberGenerator.new()
+var obstaclesPlacedInLevel = [];
 
 const tiles = {
 	"wall": 0,
@@ -10,39 +16,62 @@ const tiles = {
 	"obstacle": 2,
 }
 
-func _fill_map_with_floor():
+func generate_random_map():
+	rng.randomize()
+	
+	_delete_obstacles()
+	_draw_empty_map(Game.level_size)
+	_place_random_obstacles(Game.level_obstacles)
+	
+	portal.position = Vector2(Game.level_center, Game.level_center)
+
+
+func _draw_empty_map(size:int):
 	map.clear()
-	for x in range(32):
-		for y in range(32):
+	_fill_map_with_floor(size)
+	_fill_map_walls(size)
+
+
+func _fill_map_with_floor(size:int):
+	map.clear()
+	for x in range(size):
+		for y in range(size):
 			map.set_cellv(Vector2(x,y), tiles.grass)
 
-func generate_random_map():
-	_fill_map_with_floor()
-	rng.randomize()
-	# agrego paredes
-	for i in range(32):
+
+func _fill_map_walls(size:int):
+	for i in range(size):
 		map.set_cellv(Vector2(0,i), tiles.wall)
 		map.set_cellv(Vector2(i,0), tiles.wall)
-		map.set_cellv(Vector2(i,32), tiles.wall)
-		map.set_cellv(Vector2(32,i), tiles.wall)
-		map.set_cellv(Vector2(32,32), tiles.wall)
+		map.set_cellv(Vector2(i,size), tiles.wall)
+		map.set_cellv(Vector2(size,i), tiles.wall)
+		map.set_cellv(Vector2(size,size), tiles.wall)
 
-	# agrego 15 obstáculos random
-	for _i in range(15):
-		var obstacleSize = _get_random_vector2(1, 3)
-		var obstaclePosition = _get_random_vector2(1, 29)
-		_add_obstacle(obstacleSize, obstaclePosition)
-	
-func _add_obstacle(size:Vector2, position:Vector2):
-#	print("add obstacle: ", size, position)
-	for x in size.x:
-		for y in size.y:
-			var draw_x = position.x + x
-			var draw_y = position.y + y
-			map.set_cellv(Vector2(draw_x,draw_y), tiles.obstacle)
+
+func _delete_obstacles():
+	var currentObstacle = obstaclesPlacedInLevel.pop_back()
+	while(currentObstacle):
+		currentObstacle.queue_free()
+		currentObstacle = obstaclesPlacedInLevel.pop_back()
+
+
+func _place_random_obstacles(amount):
+	for _i in range(amount):
+		var obstacle = _get_random_obstacle_type().instance();
+		obstacle.position = _get_random_vector2(2, (Game.level_size-2)) * 64
+		get_parent().add_child(obstacle)
+		obstaclesPlacedInLevel.append(obstacle)
+
+
+func _get_random_obstacle_type():
+	var size = obstaclesList.size()
+	return obstaclesList[randi() % size]
+
 
 func _get_random_vector2(minimum, maximum):
 	rng.randomize()
 	var x = rng.randi_range(minimum, maximum)
 	var y = rng.randi_range(minimum, maximum)
 	return Vector2(x, y)
+
+

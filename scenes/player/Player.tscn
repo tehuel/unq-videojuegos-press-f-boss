@@ -38,10 +38,6 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-limit_left = 0
-limit_top = 0
-limit_right = 2120
-limit_bottom = 2120
 limit_smoothed = true
 smoothing_enabled = true
 __meta__ = {
@@ -67,4 +63,5 @@ volume_db = -10.0
 
 [node name="AudioPlayerHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
