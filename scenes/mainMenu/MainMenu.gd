@@ -1,6 +1,7 @@
 extends Node
 
 onready var axeSFX = $AxeSound
+onready var camera = $CameraMainMenu
 
 func _ready():
 	$VBoxContainer/VBoxContainer/Start.grab_focus()
@@ -11,9 +12,9 @@ func _on_Start_pressed():
 	$VBoxContainer/VBoxContainer/Start.disabled = true
 	axeSFX.play()
 	yield(axeSFX, "finished")
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
+	camera.move_local_y(-7000)
 
 func _on_Exit_pressed():
 	print("Exit pressed")
 	get_tree().quit()
+	

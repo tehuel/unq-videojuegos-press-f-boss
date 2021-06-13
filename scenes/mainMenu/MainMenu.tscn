@@ -1,64 +1,90 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://font/Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/mainMenu/backGround.png" type="Texture" id=4]
-[ext_resource path="res://assets/images/mainMenu/skyBackGround.png" type="Texture" id=5]
+[ext_resource path="res://scenes/door/doorEffect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://audio/bgm/The_Bards_Tale.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/images/door/door01.png" type="Texture" id=7]
 [ext_resource path="res://audio/sfx/axe_start.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/mainMenu/RichTextLabel.gd" type="Script" id=9]
+[ext_resource path="res://audio/sfx/text/dialog.ogg" type="AudioStream" id=10]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 960, 600 )
+[sub_resource type="Shader" id=1]
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 960, 0, 960, 600 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 1920, 0, 960, 600 )
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.8 )
+colors = PoolColorArray( 0.509804, 0.815686, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 4 )
-region = Rect2( 2880, 0, 960, 600 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+width = 100
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 3840, 0, 960, 600 )
+region = Rect2( 0, 0, 960, 600 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 4 )
+region = Rect2( 960, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1920, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 2880, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 3840, 0, 960, 600 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 4 )
 region = Rect2( 0, 600, 960, 600 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFontData" id=12]
+antialiased = false
+font_path = "res://font/PixelBit-Free.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 28
+font_data = SubResource( 12 )
+
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
 
 [node name="FakeBackGround" type="Sprite" parent="."]
-position = Vector2( 525.035, 354.978 )
-scale = Vector2( 11.5007, 7.86172 )
-texture = ExtResource( 5 )
+material = SubResource( 2 )
+position = Vector2( 523.353, -3838.93 )
+rotation = -1.5708
+scale = Vector2( 80, 1200 )
+texture = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 517.249, 397.728 )
 scale = Vector2( 1.1, 1.1 )
-frames = SubResource( 7 )
-frame = 1
+frames = SubResource( 11 )
+frame = 2
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -115,5 +141,46 @@ autoplay = true
 [node name="AxeSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -15.0
+
+[node name="CameraMainMenu" type="Camera2D" parent="."]
+position = Vector2( 510, 300 )
+current = true
+smoothing_enabled = true
+smoothing_speed = 0.5
+
+[node name="door" type="Sprite" parent="."]
+position = Vector2( 520, -6776 )
+scale = Vector2( 0.304786, 0.296676 )
+texture = ExtResource( 7 )
+
+[node name="effect" parent="door" instance=ExtResource( 5 )]
+position = Vector2( -247.487, 338.478 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 40, -1088 )
+scale = Vector2( 0.866721, 0.833331 )
+color = Color( 0.0470588, 0.0470588, 0.0470588, 0.784314 )
+antialiased = true
+polygon = PoolVector2Array( 63.6119, -6591.16, 1043.01, -6595.22, 1043.01, -6403.22, 64, -6400 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Polygon2D"]
+margin_left = 96.0
+margin_top = -6560.0
+margin_right = 992.0
+margin_bottom = -6432.0
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog" type="AudioStreamPlayer" parent="Polygon2D/RichTextLabel"]
+stream = ExtResource( 10 )
+
+[node name="Timer" type="Timer" parent="Polygon2D"]
+wait_time = 0.02
+autostart = true
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="timeout" from="Polygon2D/Timer" to="Polygon2D/RichTextLabel" method="_on_Timer_timeout"]
