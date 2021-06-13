@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/MapGenerator.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/tilesets/tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://scenes/environment/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=7]
 [ext_resource path="res://audio/sfx/game/SuperHexagonSoundtrack.ogg" type="AudioStream" id=9]
 [ext_resource path="res://audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
 
@@ -53,3 +54,5 @@ volume_db = -25.0
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1080, 1144 )
 scale = Vector2( 0.4, 0.4 )
+
+[node name="Controls" parent="." instance=ExtResource( 7 )]

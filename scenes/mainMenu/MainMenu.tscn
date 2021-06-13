@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
@@ -13,13 +13,7 @@
 [ext_resource path="res://audio/sfx/ambience/wind.ogg" type="AudioStream" id=11]
 [ext_resource path="res://scenes/environment/star.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/mainMenu/Polygon2D.gd" type="Script" id=13]
-[ext_resource path="res://scenes/mainMenu/Control.gd" type="Script" id=14]
-[ext_resource path="res://assets/images/mainMenu/Scroll.png" type="Texture" id=15]
-[ext_resource path="res://scenes/mainMenu/CanvasLayer.gd" type="Script" id=16]
-[ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=17]
-[ext_resource path="res://font/montserrat_eb_32.tres" type="DynamicFont" id=18]
-[ext_resource path="res://assets/images/powerup/fist.png" type="Texture" id=19]
-[ext_resource path="res://assets/images/powerup/shield.png" type="Texture" id=20]
+[ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=14]
 
 [sub_resource type="Shader" id=1]
 
@@ -94,7 +88,7 @@ texture = SubResource( 4 )
 position = Vector2( 517.249, 397.728 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 11 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -316,154 +310,8 @@ scale = Vector2( 0.40625, 0.40625 )
 power = 0.3
 speed = 0.8
 
-[node name="Controls" type="CanvasLayer" parent="."]
-layer = 100
-script = ExtResource( 16 )
-isVisible = false
-
-[node name="Control" type="Control" parent="Controls"]
-pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BackOverlay" type="ColorRect" parent="Controls/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.352941 )
-
-[node name="Scroll" type="Sprite" parent="Controls/Control"]
-position = Vector2( 509.424, 289.923 )
-scale = Vector2( 0.871174, 0.550508 )
-texture = ExtResource( 15 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Control/Scroll"]
-anchor_left = 0.092
-anchor_top = 0.116
-anchor_right = 0.897
-anchor_bottom = 0.909
-margin_left = -535.44
-margin_top = -536.12
-margin_right = -534.79
-margin_bottom = -534.63
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Controls/Control/Scroll/VBoxContainer"]
-margin_right = 862.0
-margin_bottom = 458.0
-rect_min_size = Vector2( 100, 0 )
-size_flags_vertical = 3
-
-[node name="PowerUps" type="VBoxContainer" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer"]
-margin_right = 259.0
-margin_bottom = 458.0
-size_flags_horizontal = 2
-
-[node name="Label" type="Label" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
-margin_right = 259.0
-margin_bottom = 80.0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 3 )
-text = "Power ups"
-
-[node name="Heal" type="HBoxContainer" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
-margin_top = 84.0
-margin_right = 259.0
-margin_bottom = 206.0
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Heal"]
-margin_right = 100.0
-margin_bottom = 122.0
-rect_min_size = Vector2( 100, 0 )
-texture = ExtResource( 17 )
-expand = true
-
-[node name="HealDescription2" type="Label" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Heal"]
-margin_left = 104.0
-margin_top = 36.0
-margin_right = 259.0
-margin_bottom = 85.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.145098, 0.345098, 0.101961, 1 )
-text = "Recuperas un poco de vida."
-align = 1
-autowrap = true
-
-[node name="Shield" type="HBoxContainer" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
-margin_top = 210.0
-margin_right = 259.0
-margin_bottom = 332.0
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Shield"]
-margin_right = 100.0
-margin_bottom = 122.0
-rect_min_size = Vector2( 100, 0 )
-texture = ExtResource( 20 )
-expand = true
-
-[node name="ShieldDescription" type="Label" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Shield"]
-margin_left = 104.0
-margin_top = 23.0
-margin_right = 259.0
-margin_bottom = 98.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.278431, 0.32549, 0.34902, 1 )
-text = "Te vuelves invulnerable por un tiempo."
-align = 1
-autowrap = true
-
-[node name="Fist" type="HBoxContainer" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
-margin_top = 336.0
-margin_right = 259.0
-margin_bottom = 458.0
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Fist"]
-margin_right = 100.0
-margin_bottom = 122.0
-rect_min_size = Vector2( 100, 0 )
-texture = ExtResource( 19 )
-expand = true
-
-[node name="FistDescription" type="Label" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Fist"]
-margin_left = 104.0
-margin_top = 23.0
-margin_right = 259.0
-margin_bottom = 98.0
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 18 )
-custom_colors/font_color = Color( 0.364706, 0.137255, 0.0588235, 1 )
-text = "Aumenta tu poder de ataque."
-align = 1
-autowrap = true
-
-[node name="Attack" type="VBoxContainer" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer"]
-margin_left = 433.0
-margin_right = 862.0
-margin_bottom = 458.0
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Controls/Control/Scroll/VBoxContainer/HBoxContainer/Attack"]
-margin_right = 429.0
-margin_bottom = 80.0
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 3 )
-text = "Attack"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Controls/Control/Scroll/VBoxContainer"]
-margin_top = 462.0
-margin_right = 862.0
-margin_bottom = 920.0
-size_flags_vertical = 3
+[node name="Controls" parent="." instance=ExtResource( 14 )]
+isInputValid = false
 [connection signal="started_pressed" from="." to="VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]

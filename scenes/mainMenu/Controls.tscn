@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://font/montserrat_eb_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://font/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/mainMenu/Scroll.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/powerup/fist.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/powerup/shield.png" type="Texture" id=6]
+[ext_resource path="res://scenes/mainMenu/Control.gd" type="Script" id=7]
+[ext_resource path="res://scenes/mainMenu/CanvasLayer.gd" type="Script" id=8]
+
+[node name="Controls" type="CanvasLayer"]
+layer = 100
+script = ExtResource( 8 )
+isVisible = false
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackOverlay" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+
+[node name="Scroll" type="Sprite" parent="Control"]
+position = Vector2( 509.424, 289.923 )
+scale = Vector2( 0.871174, 0.550508 )
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Scroll"]
+anchor_left = 0.092
+anchor_top = 0.116
+anchor_right = 0.897
+anchor_bottom = 0.909
+margin_left = -535.44
+margin_top = -536.12
+margin_right = -534.79
+margin_bottom = -534.63
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Scroll/VBoxContainer"]
+margin_right = 862.0
+margin_bottom = 423.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+
+[node name="PowerUps" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer"]
+margin_right = 259.0
+margin_bottom = 423.0
+size_flags_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
+margin_right = 259.0
+margin_bottom = 80.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Power ups"
+
+[node name="Heal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
+margin_top = 84.0
+margin_right = 259.0
+margin_bottom = 194.0
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Heal"]
+margin_right = 100.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 0 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="HealDescription2" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Heal"]
+margin_left = 104.0
+margin_top = 30.0
+margin_right = 259.0
+margin_bottom = 79.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.145098, 0.345098, 0.101961, 1 )
+text = "Recuperas un poco de vida."
+align = 1
+autowrap = true
+
+[node name="Shield" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
+margin_top = 198.0
+margin_right = 259.0
+margin_bottom = 308.0
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Shield"]
+margin_right = 100.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 0 )
+texture = ExtResource( 6 )
+expand = true
+
+[node name="ShieldDescription" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Shield"]
+margin_left = 104.0
+margin_top = 17.0
+margin_right = 259.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.278431, 0.32549, 0.34902, 1 )
+text = "Te vuelves invulnerable por un tiempo."
+align = 1
+autowrap = true
+
+[node name="Fist" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
+margin_top = 312.0
+margin_right = 259.0
+margin_bottom = 423.0
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Fist"]
+margin_right = 100.0
+margin_bottom = 111.0
+rect_min_size = Vector2( 100, 0 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="FistDescription" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Fist"]
+margin_left = 104.0
+margin_top = 18.0
+margin_right = 259.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.364706, 0.137255, 0.0588235, 1 )
+text = "Aumenta tu poder de ataque."
+align = 1
+autowrap = true
+
+[node name="Attack" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer"]
+margin_left = 433.0
+margin_right = 862.0
+margin_bottom = 423.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/Attack"]
+margin_right = 429.0
+margin_bottom = 80.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Attack"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Scroll/VBoxContainer"]
+margin_top = 427.0
+margin_right = 862.0
+margin_bottom = 850.0
+size_flags_vertical = 3
