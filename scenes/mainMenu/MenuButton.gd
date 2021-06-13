@@ -45,3 +45,7 @@ func _on_TextureButton_focus_exited():
 
 func _on_TextureButton_mouse_entered():
 	grab_focus()
+
+func _on_MainMenu_started_pressed():
+	hide_arrows()
+	release_focus()

@@ -4,9 +4,10 @@ onready var camera = get_node("../../CameraMainMenu")
 onready var sfx_dialog = $Dialog
 
 var dialog = [
+	"[wave amp=50 freq=2][center]Preciona [color=blue]Click Izquierdo[/color] para continuar...[/center][/wave]",
 	"Esta es la historia de Cuvikingo que quiere llegar al Valhalla...",
 	"La unica forma de llegar al Valhalla es logrando atravezar las [color=red]tres islas[/color]...",
-	"Una vez dentro de la isla tienes que [color=red]matar a todos los enemigos[/color] y de esa forma pasar se abrira el portal a la siguiente isla con aun más enemigos...",
+	"Una vez dentro de la isla tienes que [color=red]matar a todos los enemigos[/color] y de esa forma se abrira el portal a la siguiente isla con aun más enemigos...",
 	"Buena suerte...",
 	""]
 var page = 0
