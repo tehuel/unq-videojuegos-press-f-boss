@@ -15,7 +15,7 @@ onready var portal = get_node("../Portal")
 
 func generate_enemies():
 	
-	var config = _get_enemies_config(Game.currentLevel)
+	var config = _get_enemies_config(Game.level)
 	enemiesLeft = config["melee"].quantity + config["ranged"].quantity
 	portal_phase_every = ceil(enemiesLeft / 5.0)
 	next_portal_phase_in = portal_phase_every
@@ -35,7 +35,9 @@ func generate_enemies():
 					 new_enemy = rangedEnemy.instance()
 			
 			new_enemy.initialize(navigation, enemiesContainer, enemyAudioDie)
-			new_enemy.position = Vector2(64*rng.randi_range(8, 30), 64*rng.randi_range(8, 30))
+			new_enemy.position = _get_random_vector2(64*5, 64 * (Game.level_size-2))
+			new_enemy.z_index = -1;
+			new_enemy.z_as_relative = true;
 			new_enemy.health = rng.randi_range(enemyTypeConfig.min_health, enemyTypeConfig.max_health)
 			new_enemy.armor = rng.randi_range(enemyTypeConfig.min_armor, enemyTypeConfig.max_armor)
 			new_enemy.strength = rng.randi_range(enemyTypeConfig.min_strength, enemyTypeConfig.max_strength)
@@ -70,7 +72,7 @@ func _get_enemies_config(level):
 		1:
 			enemiesConfig =  {
 				"melee": {
-					"quantity": 5,
+					"quantity": 2,
 					"min_health": 10,
 					"max_health": 25,
 					"min_armor": 5,
@@ -81,7 +83,7 @@ func _get_enemies_config(level):
 					"max_speed": 350
 				},
 				"ranged": {
-					"quantity": 3,
+					"quantity": 2,
 					"min_health": 5,
 					"max_health": 15,
 					"min_armor": 0,
@@ -169,3 +171,9 @@ func _get_enemies_config(level):
 			}
 	
 	return enemiesConfig
+
+func _get_random_vector2(minimum, maximum):
+	rng.randomize()
+	var x = rng.randi_range(minimum, maximum)
+	var y = rng.randi_range(minimum, maximum)
+	return Vector2(x, y)
