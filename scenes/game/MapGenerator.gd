@@ -60,8 +60,8 @@ func _delete_obstacles():
 
 
 func _place_random_obstacles(amount):
-		for _i in range(amount):
-			var obstacle = _get_random_obstacle_type().instance();
-			obstacle.position = _get_random_vector2(2, 28) * 64
-			get_parent().add_child(obstacle)
-			obstaclesPlacedInLevel.append(obstacle)
+	for _i in range(amount):
+		var obstacle = _get_random_obstacle_type().instance();
+		obstacle.position = _get_random_vector2(2, 28) * 64
+		get_parent().add_child(obstacle)
+		obstaclesPlacedInLevel.append(obstacle)
