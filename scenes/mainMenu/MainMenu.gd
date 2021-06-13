@@ -2,6 +2,7 @@ extends Node
 
 onready var axeSFX = $AxeSound
 onready var winfSFX = $Wind
+onready var pageSFX = $PageSFX
 onready var camera = $CameraMainMenu
 onready var controls = $Controls/Control
 signal started_pressed
@@ -26,7 +27,7 @@ func _on_Exit_pressed():
 
 func _on_Controls_pressed():
 	print("Controlls pressed")
-	#Paper Noise
+	pageSFX.play()
 	controls.visible = true
 	
 func _input(event):
