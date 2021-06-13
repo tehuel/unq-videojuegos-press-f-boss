@@ -1,9 +1,9 @@
 extends Node
 
 onready var map = get_node("../Navigation2D/TileMap")
-onready var rock2 = load("res://scenes/environment/Rock2.tscn")
-onready var rock3 = load("res://scenes/environment/Rock3.tscn")
-onready var tree = load("res://scenes/environment/Tree.tscn")
+onready var rock2 = load("res://scenes/obstacles/Rock2.tscn")
+onready var rock3 = load("res://scenes/obstacles/Rock3.tscn")
+onready var tree = load("res://scenes/obstacles/Tree.tscn")
 onready var obstaclesList = [rock2, rock3, tree];
 
 var rng = RandomNumberGenerator.new()
