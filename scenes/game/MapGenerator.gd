@@ -13,7 +13,6 @@ var obstaclesPlacedInLevel = [];
 const tiles = {
 	"wall": 0,
 	"grass": 1,
-	"obstacle": 2,
 }
 
 func generate_random_map():
@@ -36,7 +35,8 @@ func _fill_map_with_floor(size:int):
 	map.clear()
 	for x in range(size):
 		for y in range(size):
-			map.set_cellv(Vector2(x,y), tiles.grass)
+			var tile = int(min(int(rand_range(1,15)), 5))
+			map.set_cellv(Vector2(x,y), tile)
 
 
 func _fill_map_walls(size:int):
