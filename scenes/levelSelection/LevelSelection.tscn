@@ -1,66 +1,137 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/levelSelection/FloatingIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levelSelection/LevelSelection.gd" type="Script" id=2]
 [ext_resource path="res://font/Font.tres" type="DynamicFont" id=3]
-[ext_resource path="res://assets/images/mainMenu/skyBackGround.png" type="Texture" id=4]
-[ext_resource path="res://scenes/levelSelection/SkyShader.shader" type="Shader" id=5]
+[ext_resource path="res://assets/images/level/Group 18.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/level/ship.png" type="Texture" id=6]
 
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 5 )
-shader_param/color = Color( 0, 0.6, 0.8, 1 )
-shader_param/OCTAVES = 4
+[sub_resource type="Animation" id=1]
+resource_name = "to_level_1"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer2/ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.1 ),
+"transitions": PoolRealArray( 1, 0.615572 ),
+"update": 0,
+"values": [ Vector2( -83.9527, 252.401 ), Vector2( 528.487, 175.63 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 4 ),
+"transitions": PoolRealArray( 1, 0.707107, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 288, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "to_level_2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer2/ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.1 ),
+"transitions": PoolRealArray( 1, 0.615572 ),
+"update": 0,
+"values": [ Vector2( 528.487, 175.63 ), Vector2( 1190.74, 382.163 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 4 ),
+"transitions": PoolRealArray( 0.366022, 0.707107, 1 ),
+"update": 0,
+"values": [ Vector2( 288, 0 ), Vector2( 288, 0 ), Vector2( 864, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "to_level_3"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer2/ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3.1 ),
+"transitions": PoolRealArray( 0.615572, 1 ),
+"update": 0,
+"values": [ Vector2( 1190.74, 382.163 ), Vector2( 1760.95, 198.079 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 4 ),
+"transitions": PoolRealArray( 1, 0.707107, 1 ),
+"update": 0,
+"values": [ Vector2( 864, 0 ), Vector2( 864, 0 ), Vector2( 1240, 0 ) ]
+}
 
 [node name="LevelSelection" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Sky" type="Sprite" parent="."]
-material = SubResource( 1 )
-position = Vector2( 512.305, 297.376 )
-scale = Vector2( 10.4274, 6.14229 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+
+[node name="bg" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.443137, 0.443137, 0.443137, 1 )
+position = Vector2( 1197.36, 312.479 )
+scale = Vector2( 1.95942, 1.95942 )
 texture = ExtResource( 4 )
 
-[node name="Island1" parent="." instance=ExtResource( 1 )]
-position = Vector2( 196.191, 459.294 )
-scale = Vector2( 0.224903, 0.224903 )
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Island2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 352.304, 272.74 )
+[node name="Island1" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 1 )]
+position = Vector2( 529.991, 189.465 )
 scale = Vector2( 0.357465, 0.357465 )
 
-[node name="Island3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 562.398, 419.892 )
+[node name="Island2" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 1 )]
+position = Vector2( 1177.7, 397.049 )
 scale = Vector2( 0.483796, 0.483796 )
 
-[node name="Island4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 826.769, 232.432 )
+[node name="Island3" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 1 )]
+position = Vector2( 1763.23, 213.446 )
 scale = Vector2( 0.583559, 0.583559 )
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="ParallaxBackground/ParallaxLayer2"]
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="elegir nivel" type="Label" parent="Control"]
-margin_left = 392.951
-margin_top = 16.3721
-margin_right = 649.951
-margin_bottom = 96.3721
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 3 )
-text = "elegir nivel"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="a" type="Label" parent="Control"]
-margin_left = 151.705
-margin_top = 451.071
-margin_right = 235.705
-margin_bottom = 531.071
+[node name="a" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
+anchor_top = -0.0280632
+anchor_bottom = -0.0280624
+margin_left = 486.324
+margin_top = 210.379
+margin_right = 570.324
+margin_bottom = 290.379
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
@@ -70,11 +141,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="b" type="Label" parent="Control"]
-margin_left = 311.239
-margin_top = 280.425
-margin_right = 395.239
-margin_bottom = 360.425
+[node name="b" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
+margin_left = 1141.78
+margin_top = 441.423
+margin_right = 1225.78
+margin_bottom = 521.423
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
@@ -84,11 +155,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="c" type="Label" parent="Control"]
-margin_left = 514.426
-margin_top = 413.767
-margin_right = 598.426
-margin_bottom = 493.767
+[node name="c" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
+margin_left = 1722.95
+margin_top = 260.905
+margin_right = 1806.95
+margin_bottom = 340.905
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 3 )
@@ -98,16 +169,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="d" type="Label" parent="Control"]
-margin_left = 791.428
-margin_top = 221.692
-margin_right = 875.428
-margin_bottom = 301.692
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 3 )
-text = "D"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ship" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 1760.95, 198.079 )
+scale = Vector2( 0.0955011, 0.095501 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1240, 0 )
+anchor_mode = 0
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/to_level_1 = SubResource( 1 )
+anims/to_level_2 = SubResource( 2 )
+anims/to_level_3 = SubResource( 3 )

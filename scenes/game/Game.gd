@@ -12,5 +12,4 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("_debug_pass_map"):
 		Game.set_current_level(Game.level + 1)
-		$MapGenerator.generate_random_map()
-		get_tree().change_scene("res://scenes/game/Game.tscn")
+		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
