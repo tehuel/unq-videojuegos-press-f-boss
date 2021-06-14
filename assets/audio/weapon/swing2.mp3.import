@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/swing2.mp3-5ea2b7197ab4bfa14f1cde015afd4d71.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/weapon/swing2.mp3"
+dest_files=[ "res://.import/swing2.mp3-5ea2b7197ab4bfa14f1cde015afd4d71.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

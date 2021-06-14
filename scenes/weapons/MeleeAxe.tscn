@@ -1,0 +1,174 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/images/weapons/axe.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/weapons/trail.png" type="Texture" id=2]
+[ext_resource path="res://scenes/weapons/MeleeAxe.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 2.1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1.86607, 0.5 ),
+"update": 0,
+"values": [ Vector2( 108.173, -8.37107 ), Vector2( 108.173, -8.37107 ), Vector2( 107.657, -8.02619 ), Vector2( 108.173, -8.37107 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("axe:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.1, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.629623 ), Vector2( 1, 0.6 ), Vector2( 1, 0.629623 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("axe:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.1, 5 ),
+"transitions": PoolRealArray( 1, 0.420448, 2 ),
+"update": 0,
+"values": [ 63.6706, 60.0, 63.6706 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "swing"
+length = 0.75
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.225, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 108.173, -8.37107 ), Vector2( 172.216, -3.64872 ), Vector2( -123.783, -39.1409 ), Vector2( 7.951, -20.352 ), Vector2( 108.173, -8.37107 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("axe:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.225, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 3.86375, 0.307786 ),
+"update": 0,
+"values": [ Vector2( 1, 0.629623 ), Vector2( 1, 0.542794 ), Vector2( 1, 0.629623 ), Vector2( 1, 0.6 ), Vector2( 1, 0.629623 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("axe:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.025, 0.05, 0.225, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 63.6664, 94.7183, -77.908, 8.42704, 63.6664 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("trail:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.175 ),
+"transitions": PoolRealArray( 1, 0.34151, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("trail:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.05, 0.175 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -278.335, -271.589 ), Vector2( -299.662, -265.977 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("trail:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.05, 0.175 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.45861, 1 ) ]
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play"
+} ]
+}
+
+[node name="MeleeAxe" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="axe" type="Sprite" parent="."]
+position = Vector2( 108.173, -8.37107 )
+rotation = 1.11119
+scale = Vector2( 1, 0.629623 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -100 )
+
+[node name="trail" type="Sprite" parent="."]
+visible = false
+position = Vector2( -278.335, -271.589 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 1 )
+anims/swing = SubResource( 2 )
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
