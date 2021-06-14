@@ -73,25 +73,25 @@ func _get_enemies_config(level):
 			enemiesConfig =  {
 				"melee": {
 					"quantity": 2,
-					"min_health": 10,
-					"max_health": 25,
-					"min_armor": 5,
-					"max_armor": 25,
+					"min_health": 5,
+					"max_health": 15,
+					"min_armor": 0,
+					"max_armor": 10,
 					"min_strength": 1,
 					"max_strength": 2,
-					"min_speed": 330,
-					"max_speed": 350
+					"min_speed": 200,
+					"max_speed": 300
 				},
 				"ranged": {
 					"quantity": 2,
 					"min_health": 5,
 					"max_health": 15,
 					"min_armor": 0,
-					"max_armor": 15,
+					"max_armor": 10,
 					"min_strength": 1,
 					"max_strength": 1,
-					"min_speed": 280,
-					"max_speed": 300
+					"min_speed": 200,
+					"max_speed": 250
 				},
 			}
 		2:
