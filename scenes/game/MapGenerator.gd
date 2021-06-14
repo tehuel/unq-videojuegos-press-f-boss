@@ -57,11 +57,34 @@ func _delete_obstacles():
 
 func _place_random_obstacles(amount):
 	for _i in range(amount):
-		var obstacle = _get_random_obstacle_type().instance();
-		obstacle.position = _get_random_vector2(2, (Game.level_size-2)) * 64
-		get_parent().add_child(obstacle)
-		obstaclesPlacedInLevel.append(obstacle)
+		#print("ubicando nuevo objeto")
+		var newObstacle = _get_random_obstacle_type().instance();
+		
+		# asigno posiciones random hasta encontrar una posicion no ocupada
+		var newObstaclePossiblePosition
+		var positionInvalid = true
+		while(positionInvalid):
+			positionInvalid = false
+			# asigno una nueva posicion y pruebo con todos los obstáculos existentes en el nivel
+			newObstaclePossiblePosition = _get_random_vector2(2, (Game.level_size-2)) * 64
+			for curObstacle in obstaclesPlacedInLevel:
+				#print("chequeo contra objeto en ", newObstaclePossiblePosition, curObstacle.position)
+				if (_check_positions_in_tiles(newObstaclePossiblePosition, curObstacle.position)):
+					#print("posicion erronea, reacomodando!")
+					positionInvalid = true
+					break;
+		
+		#print("objeto ubicado en ", newObstaclePossiblePosition)
+		newObstacle.position = newObstaclePossiblePosition
+		get_parent().add_child(newObstacle)
+		obstaclesPlacedInLevel.append(newObstacle)
 
+# divido posiciones en base 64, que es el tamaño de un tile
+func _check_positions_in_tiles(pos1, pos2):
+	var res = 64 * 3
+	var simplifiedPos1 = Vector2(int(pos1.x / res), int(pos1.y / res))
+	var simplifiedPos2 = Vector2(int(pos2.x / res), int(pos2.y / res))
+	return simplifiedPos1 == simplifiedPos2
 
 func _get_random_obstacle_type():
 	var size = obstaclesList.size()
