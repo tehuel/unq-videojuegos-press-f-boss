@@ -900,7 +900,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 80.421, 77.4623 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 42 )
-frame = 31
+frame = 28
 playing = true
 
 [node name="Flechas" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer/Movement"]
@@ -908,7 +908,7 @@ modulate = Color( 0.0196078, 0, 0, 1 )
 position = Vector2( 208.983, 77.4623 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 84 )
-frame = 2
+frame = 39
 playing = true
 
 [node name="Attack" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer"]
@@ -926,7 +926,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 71.238, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="ClickDerecho" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer/Attack"]
@@ -934,7 +934,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 172.251, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
@@ -951,7 +951,7 @@ text = "Velocidad:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 117.153, 59.5069 )
 frames = SubResource( 134 )
-frame = 18
+frame = 14
 playing = true
 
 [node name="KeyBoard" type="HBoxContainer" parent="Control/Scroll/VBoxContainer"]

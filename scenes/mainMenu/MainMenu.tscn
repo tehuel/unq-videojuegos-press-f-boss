@@ -80,7 +80,7 @@ script = ExtResource( 2 )
 
 [node name="FakeBackGround" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( 1121.87, -3828 )
+position = Vector2( 523.353, -3838.93 )
 rotation = -1.5708
 scale = Vector2( 80, 1200 )
 texture = SubResource( 4 )
@@ -317,7 +317,6 @@ speed = 0.8
 
 [node name="Controls" parent="." instance=ExtResource( 14 )]
 isInputValid = false
-
 [connection signal="started_pressed" from="." to="VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
