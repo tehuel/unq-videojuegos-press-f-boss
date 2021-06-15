@@ -9,7 +9,6 @@ export (int) var armor:int = 0
 export var enemy_color = Color("bc29f1")
 
 onready var weapon = $Visual/Weapon
-onready var damage_text = load("res://scenes/utils/DamageText.tscn")
 onready var healing_power_up = preload("res://scenes/environment/HealingPowerUp.tscn")
 onready var invincible_power_up = preload("res://scenes/environment/InvincibilityPowerUp.tscn")
 onready var damage_power_up = preload("res://scenes/environment/StrengthPowerUp.tscn")
@@ -139,10 +138,11 @@ func get_damage(base_damage:int):
 		_update_armor_sprite()
 	if damage_left > 0:
 		_cur_health -= damage_left
-	var text = damage_text.instance()
-	text.text = '-' + str(base_damage)
-	text.get_font("font").set_outline_color(Color(0.6, 0, 0, 1))
-	add_child(text)
+
+	var textValue = '-' + str(base_damage)
+	var textColor = Color(0.6, 0, 0, 1)
+	get_parent().draw_text(textValue, textColor, position)
+
 	_update_hp_shader()
 
 func _on_SeekArea_body_entered(body):
