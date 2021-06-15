@@ -3,10 +3,12 @@ extends KinematicBody2D
 export var speed = 400
 export var health = 100
 export var strength = 1
+export(PackedScene) var dash_object
 
 onready var melee_weapon = $MeleeWeapon
 onready var ranged_weapon = $RangedWeapon
 onready var dash_timer = $DashTimer
+onready var slow_motion_timer = $SlowMotion
 onready var sprite = $Sprite
 
 var container
@@ -47,6 +49,11 @@ func _physics_process(_delta):
 		$AudioStreamPlayerDash.play()
 		_cur_speed *= 2.5
 		dash_timer.start()
+		
+		var dash_node = dash_object.instance()
+		dash_node.texture = sprite.texture
+		dash_node.global_position = global_position
+		get_parent().add_child(dash_node)
 		
 	velocity = move_and_slide(velocity * _cur_speed)
 	rotate(get_angle_to(get_global_mouse_position()))
@@ -96,8 +103,13 @@ func ranged_attack():
 	
 func hit_target(target, weapon):
 	if target.has_method("on_hit"):
+		$AudioPlayerHit.play()
+		slow_motion_timer.start()
+		Engine.set_time_scale(0.65)
 		target.on_hit(weapon.weapon_damage * strength)
 
 func _on_DashTimer_timeout():
 	_cur_speed = speed
 
+func _on_SlowMotion_timeout():
+	Engine.set_time_scale(1)
