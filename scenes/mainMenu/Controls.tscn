@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=159 format=2]
 
 [ext_resource path="res://font/montserrat_eb_32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://font/Font.tres" type="DynamicFont" id=2]
@@ -13,6 +13,11 @@
 [ext_resource path="res://assets/images/mainMenu/asdw_transparent.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/mainMenu/mouse_transparent.png" type="Texture" id=12]
 [ext_resource path="res://audio/sfx/ambience/page.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/images/portal/circle.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/portal/braid.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/portal/center.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/portal/runes.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/mainMenu/letraP.png" type="Texture" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -696,6 +701,39 @@ animations = [ {
 "speed": 15.0
 } ]
 
+[sub_resource type="AtlasTexture" id=135]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 42, 46 )
+
+[sub_resource type="AtlasTexture" id=136]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 42, 0, 42, 46 )
+
+[sub_resource type="AtlasTexture" id=137]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 84, 0, 42, 46 )
+
+[sub_resource type="AtlasTexture" id=138]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 126, 0, 42, 46 )
+
+[sub_resource type="AtlasTexture" id=139]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 168, 0, 42, 46 )
+
+[sub_resource type="SpriteFrames" id=140]
+animations = [ {
+"frames": [ SubResource( 135 ), SubResource( 136 ), SubResource( 137 ), SubResource( 138 ), SubResource( 139 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
 [node name="Controls" type="CanvasLayer"]
 layer = 100
 script = ExtResource( 8 )
@@ -743,12 +781,12 @@ rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
 
 [node name="PowerUps" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer"]
-margin_right = 259.0
+margin_right = 429.0
 margin_bottom = 423.0
-size_flags_horizontal = 2
+size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
-margin_right = 259.0
+margin_right = 429.0
 margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -756,7 +794,7 @@ text = "Power ups"
 
 [node name="Heal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
 margin_top = 84.0
-margin_right = 259.0
+margin_right = 429.0
 margin_bottom = 194.0
 size_flags_vertical = 3
 
@@ -769,9 +807,9 @@ expand = true
 
 [node name="HealDescription2" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Heal"]
 margin_left = 104.0
-margin_top = 30.0
-margin_right = 259.0
-margin_bottom = 79.0
+margin_top = 43.0
+margin_right = 429.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.145098, 0.345098, 0.101961, 1 )
@@ -781,7 +819,7 @@ autowrap = true
 
 [node name="Shield" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
 margin_top = 198.0
-margin_right = 259.0
+margin_right = 429.0
 margin_bottom = 308.0
 size_flags_vertical = 3
 
@@ -794,9 +832,9 @@ expand = true
 
 [node name="ShieldDescription" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Shield"]
 margin_left = 104.0
-margin_top = 17.0
-margin_right = 259.0
-margin_bottom = 92.0
+margin_top = 30.0
+margin_right = 429.0
+margin_bottom = 79.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.278431, 0.32549, 0.34902, 1 )
@@ -806,7 +844,7 @@ autowrap = true
 
 [node name="Fist" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps"]
 margin_top = 312.0
-margin_right = 259.0
+margin_right = 429.0
 margin_bottom = 423.0
 size_flags_vertical = 3
 
@@ -819,9 +857,9 @@ expand = true
 
 [node name="FistDescription" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/PowerUps/Fist"]
 margin_left = 104.0
-margin_top = 18.0
-margin_right = 259.0
-margin_bottom = 93.0
+margin_top = 44.0
+margin_right = 429.0
+margin_bottom = 67.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.364706, 0.137255, 0.0588235, 1 )
@@ -862,7 +900,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 80.421, 77.4623 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 42 )
-frame = 6
+frame = 31
 playing = true
 
 [node name="Flechas" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer/Movement"]
@@ -870,11 +908,11 @@ modulate = Color( 0.0196078, 0, 0, 1 )
 position = Vector2( 208.983, 77.4623 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 84 )
-frame = 11
+frame = 2
 playing = true
 
 [node name="Attack" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer"]
-margin_top = 114.0
+margin_top = 140.0
 margin_right = 429.0
 margin_bottom = 261.0
 size_flags_vertical = 3
@@ -888,7 +926,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 71.238, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="ClickDerecho" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer/Attack"]
@@ -896,12 +934,12 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 172.251, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Dash" type="Label" parent="Control/Scroll/VBoxContainer/HBoxContainer/KeyBoard/VBoxContainer"]
-margin_top = 265.0
+margin_top = 310.0
 margin_right = 429.0
 margin_bottom = 339.0
 size_flags_vertical = 3
@@ -913,7 +951,7 @@ text = "Velocidad:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 117.153, 59.5069 )
 frames = SubResource( 134 )
-frame = 27
+frame = 18
 playing = true
 
 [node name="KeyBoard" type="HBoxContainer" parent="Control/Scroll/VBoxContainer"]
@@ -921,6 +959,66 @@ margin_top = 427.0
 margin_right = 862.0
 margin_bottom = 850.0
 size_flags_vertical = 3
+
+[node name="Portal" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard"]
+margin_right = 429.0
+margin_bottom = 423.0
+size_flags_horizontal = 3
+
+[node name="Portal" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal"]
+margin_right = 429.0
+margin_bottom = 80.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Portal"
+
+[node name="Portal2" type="Node2D" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal"]
+position = Vector2( 83.7951, 170.75 )
+scale = Vector2( 0.2, 0.2 )
+
+[node name="braid" type="Sprite" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal/Portal2"]
+scale = Vector2( 0.841, 0.841 )
+texture = ExtResource( 15 )
+
+[node name="center" type="Sprite" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal/Portal2"]
+scale = Vector2( 0.689, 0.689 )
+texture = ExtResource( 16 )
+
+[node name="circle" type="Sprite" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal/Portal2"]
+scale = Vector2( 0.681, 0.681 )
+texture = ExtResource( 14 )
+
+[node name="runes" type="Sprite" parent="Control/Scroll/VBoxContainer/KeyBoard/Portal/Portal2"]
+scale = Vector2( 1.081, 1.081 )
+texture = ExtResource( 17 )
+
+[node name="KeyBoardPlus" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard"]
+margin_left = 433.0
+margin_right = 862.0
+margin_bottom = 423.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardPlus"]
+margin_right = 429.0
+margin_bottom = 423.0
+size_flags_vertical = 3
+
+[node name="Pause" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardPlus/VBoxContainer"]
+margin_top = 70.0
+margin_right = 429.0
+margin_bottom = 423.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pause:"
+
+[node name="Pause" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardPlus/VBoxContainer/Pause"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 52.872, 53.699 )
+frames = SubResource( 140 )
+frame = 2
+playing = true
 
 [node name="PageSFX" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource( 13 )
