@@ -30,6 +30,8 @@ func start(pos, cont):
 	_update_hp_shader()
 
 func _ready():
+	print("Ready set Engine time scale to 1")
+	Engine.set_time_scale(1)
 	hide()
 
 func _physics_process(_delta):
