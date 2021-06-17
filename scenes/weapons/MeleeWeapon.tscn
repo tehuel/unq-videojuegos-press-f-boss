@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -4.04522, -3.40221 ), Vector2( -7.16461, -13.0494 ), Vector2( -17.2841, 0.303406 ), Vector2( -9.40353, 13.6562 ), Vector2( -10.4034, -2.3438 ), Vector2( -10.1747, 5.81181 ) ]
+"values": [ Vector2( -4.04522, -3.40221 ), Vector2( -7.16461, -13.0494 ), Vector2( -17.2841, 0.303406 ), Vector2( -9.40353, 13.6562 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:rotation_degrees")
@@ -28,10 +28,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -30.0, 0.0, -90.0, -180.0, -60.0, -120.0 ]
+"values": [ -30.0, 0.0, -90.0, -180.0 ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -82,18 +82,18 @@ scale = Vector2( 1, -1 )
 monitoring = false
 monitorable = false
 collision_layer = 0
-collision_mask = 2147483654
+collision_mask = 2147483648
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -17.2841, 0.303406 )
-rotation = -1.5708
+position = Vector2( -9.40353, 13.6562 )
+rotation = -3.14159
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 2 )
 
 [node name="HitDetection" type="CollisionShape2D" parent="."]
-position = Vector2( -27.4766, 0.204319 )
-rotation = -1.5708
+position = Vector2( -9.26488, 23.7065 )
+rotation = -3.14159
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -101,7 +101,7 @@ anims/swing = SubResource( 2 )
 
 [node name="BodyDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BodyDetection"]
 position = Vector2( -19.703, -0.148705 )

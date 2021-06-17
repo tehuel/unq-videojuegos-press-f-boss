@@ -59,6 +59,7 @@ texture = ExtResource( 3 )
 [node name="Sprite2" type="Sprite" parent="Visual/Sprite"]
 modulate = Color( 0.290196, 0.219608, 0.00784314, 1 )
 show_behind_parent = true
+use_parent_material = true
 texture = ExtResource( 3 )
 
 [node name="HitTimer" type="Timer" parent="Visual"]
