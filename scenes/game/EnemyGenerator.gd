@@ -12,7 +12,7 @@ onready var enemiesContainer = get_parent()
 onready var enemyAudioDie = $AudioDie
 onready var portal = get_node("../Portal")
 
-func generate_enemies():
+func generate_enemies(placed_list):
 	
 	var config = _get_enemies_config(Game.level)
 	enemiesLeft = config["melee"].quantity + config["ranged"].quantity
@@ -34,7 +34,16 @@ func generate_enemies():
 					 new_enemy = rangedEnemy.instance()
 			
 			new_enemy.initialize(enemiesContainer, enemyAudioDie)
-			new_enemy.position = _get_random_vector2(64*5, 64 * (Game.level_size-2))
+			var _try_pos
+			var is_invalid_pos = true
+			while(is_invalid_pos):
+				is_invalid_pos = false
+				_try_pos = _get_random_vector2(64*5, 64 * (Game.level_size-2))
+				for placed in placed_list:
+					if (_check_positions_in_tiles(_try_pos, placed.position)):
+						is_invalid_pos = true
+						break;
+			new_enemy.position = _try_pos
 			new_enemy.z_index = -1;
 			new_enemy.z_as_relative = true;
 			new_enemy.health = rng.randi_range(enemyTypeConfig.min_health, enemyTypeConfig.max_health)
@@ -176,3 +185,14 @@ func _get_random_vector2(minimum, maximum):
 	var x = rng.randi_range(minimum, maximum)
 	var y = rng.randi_range(minimum, maximum)
 	return Vector2(x, y)
+
+func _check_positions_in_tiles(pos1, pos2):
+	var res = 64 * 3
+	var simplifiedPos1 = Vector2(int(pos1.x / res), int(pos1.y / res))
+	var simplifiedPos2 = Vector2(int(pos2.x / res), int(pos2.y / res))
+	var checkPos = simplifiedPos1 == simplifiedPos2
+	var checkLeft = Vector2(simplifiedPos1.x -64, simplifiedPos1.y) == simplifiedPos2
+	var checkRight = Vector2(simplifiedPos1.x +64, simplifiedPos1.y) == simplifiedPos2
+	var checkTop = Vector2(simplifiedPos1.x, simplifiedPos1.y -64) == simplifiedPos2
+	var checkDown = Vector2(simplifiedPos1.x, simplifiedPos1.y +64) == simplifiedPos2
+	return checkPos || checkLeft || checkRight || checkTop || checkDown

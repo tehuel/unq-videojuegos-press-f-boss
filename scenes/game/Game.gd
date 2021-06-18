@@ -4,7 +4,7 @@ onready var damage_text = load("res://scenes/utils/DamageText.tscn")
 
 func _ready():
 	$MapGenerator.generate_random_map()
-	$EnemyGenerator.generate_enemies()
+#	$EnemyGenerator.generate_enemies()
 	$Player.start($StartPosition.position, self)
 	$Soundtrack.play()
 

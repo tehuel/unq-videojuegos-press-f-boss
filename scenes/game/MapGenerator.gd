@@ -7,6 +7,8 @@ onready var rock3 = load("res://scenes/obstacles/Rock3.tscn")
 onready var tree = load("res://scenes/obstacles/Tree.tscn")
 onready var obstaclesList = [rock2, rock3, tree];
 onready var player_camera = get_node("../Player/Camera2D")
+onready var enemy_gen = get_node("../EnemyGenerator")
+
 var rng = RandomNumberGenerator.new()
 var placedInLevel = [];
 
@@ -20,12 +22,13 @@ func generate_random_map():
 	
 	_delete_obstacles()
 	_draw_empty_map(Game.level_size)
+	placedInLevel.append(get_node("../StartPosition"))
+	portal.position = Vector2(Game.level_center, Game.level_center)
+	placedInLevel.append(portal)
 	_place_random_obstacles(Game.level_obstacles)
+	enemy_gen.generate_enemies(placedInLevel)
 	player_camera.limit_bottom = Game.level_center * 2
 	player_camera.limit_right = Game.level_center * 2
-	portal.position = Vector2(Game.level_center, Game.level_center)
-	placedInLevel.append(get_node("../StartPosition"))
-	placedInLevel.append(portal)
 
 
 func _draw_empty_map(size:int):
@@ -69,7 +72,7 @@ func _place_random_obstacles(amount):
 		while(positionInvalid):
 			positionInvalid = false
 			# asigno una nueva posicion y pruebo con todos los obstáculos existentes en el nivel
-			newObstaclePossiblePosition = _get_random_vector2(2, (Game.level_size-2)) * 64
+			newObstaclePossiblePosition = _get_random_vector2(64*5, 64 * (Game.level_size-2))
 			for curObstacle in placedInLevel:
 				#print("chequeo contra objeto en ", newObstaclePossiblePosition, curObstacle.position)
 				if (_check_positions_in_tiles(newObstaclePossiblePosition, curObstacle.position)):
@@ -87,7 +90,12 @@ func _check_positions_in_tiles(pos1, pos2):
 	var res = 64 * 3
 	var simplifiedPos1 = Vector2(int(pos1.x / res), int(pos1.y / res))
 	var simplifiedPos2 = Vector2(int(pos2.x / res), int(pos2.y / res))
-	return simplifiedPos1 == simplifiedPos2
+	var checkPos = simplifiedPos1 == simplifiedPos2
+	var checkLeft = Vector2(simplifiedPos1.x -64, simplifiedPos1.y) == simplifiedPos2
+	var checkRight = Vector2(simplifiedPos1.x +64, simplifiedPos1.y) == simplifiedPos2
+	var checkTop = Vector2(simplifiedPos1.x, simplifiedPos1.y -64) == simplifiedPos2
+	var checkDown = Vector2(simplifiedPos1.x, simplifiedPos1.y +64) == simplifiedPos2
+	return checkPos || checkLeft || checkRight || checkTop || checkDown
 
 func _get_random_obstacle_type():
 	var size = obstaclesList.size()
