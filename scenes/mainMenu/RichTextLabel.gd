@@ -29,6 +29,7 @@ func _input(_event):
 				sfx_dialog.play()
 						
 		if page == last_page:
+# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 		else:

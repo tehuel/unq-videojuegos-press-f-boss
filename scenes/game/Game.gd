@@ -14,6 +14,7 @@ func _process(_delta):
 
 	if Input.is_action_just_pressed("_debug_pass_map"):
 		Game.set_current_level(Game.level + 1)
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 # dibujo texto flotante, con posicion relativa al game

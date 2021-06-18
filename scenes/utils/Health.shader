@@ -4,7 +4,7 @@ uniform sampler2D noise;
 uniform vec4 hp_color:hint_color;
 uniform vec4 damage_color:hint_color;
 uniform float damage :hint_range(0.32, 0.57) = 0.30;
-uniform float sides :hint_range(4.0, 10.9) = 4.0;
+uniform float sides :hint_range(4.0, 11.0, 1.0) = 4.0;
 
 const float PI = 3.14159265;
 

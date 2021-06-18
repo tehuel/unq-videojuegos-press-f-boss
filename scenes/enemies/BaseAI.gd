@@ -2,27 +2,29 @@ extends KinematicBody2D
 
 class_name BaseAI
 
+
 export (int) var speed:int = 300
 export (int) var health:int = 3
 export (int) var strength:int = 2
 export (int) var armor:int = 0
 export var enemy_color = Color("bc29f1")
 
-onready var weapon = $Visual/Weapon
+onready var weapon = $Weapon
 onready var healing_power_up = preload("res://scenes/environment/HealingPowerUp.tscn")
 onready var invincible_power_up = preload("res://scenes/environment/InvincibilityPowerUp.tscn")
 onready var damage_power_up = preload("res://scenes/environment/StrengthPowerUp.tscn")
-onready var sprite = $Visual/Sprite
-onready var armor_sprite = $Visual/Sprite/Sprite2
+onready var sprite = $Sprite
+onready var armor_sprite = $Sprite/Sprite2
 
 var _cur_health
+var _cur_armor
 var _state = states.IDLE
 var _target_in_attack_range = false
 var _target_on_seek_area
-var _navmap
 var _target
 var container
 var _dieSound
+var velocity = Vector2.ZERO
 
 enum states {IDLE, ATTACK, CHASE}
 
@@ -30,29 +32,30 @@ const DROP_RATE = 35 # % / 100
 
 signal enemy_died
 
-func initialize(navmap, cont, dieSound):
-	_navmap = navmap
+func initialize(cont, dieSound):
 	container = cont
 	_dieSound = dieSound
 	randomize()
 
 func _ready():
 	_cur_health = health
+	_cur_armor = armor
 	sprite.material.set_shader_param("hp_color", enemy_color)
 	sprite.material.set_shader_param("damage_color", Color("8b0000"))
-	sprite.material.set_shader_param("sides", rand_range(4.0, 10.9))
+	sprite.material.set_shader_param("sides", (randi() % 7) + 4)
 	weapon.take_weapon(self)
 	_update_hp_shader()
-	_update_armor_sprite()
+	if _cur_armor > 0:
+		_update_armor_sprite()
 
-func _process(delta):
+func _process(_delta):
 	match _state:
 		states.IDLE:
 			pass
 		states.ATTACK:
 			attack()
 		states.CHASE:
-			_chase(delta)
+			_chase()
 
 func _physics_process(_delta):
 	sight_check()
@@ -82,22 +85,40 @@ func drop_power_up():
 			powerup = invincible_power_up.instance()
 		powerup.position = position
 		get_parent().add_child(powerup)
+
+func _chase():
+	var steering = _pursuit()
+	velocity = _truncate(velocity + steering, speed)
+	velocity = move_and_slide(velocity)
+	rotation = velocity.angle()
+
+func _avoid(target):
+	var avoidance_force = Vector2.ZERO
+	var space_state = get_world_2d().direct_space_state
+	var _sight_check = space_state.intersect_ray(position, target, [self], 5) #Mm.. Hay cosas que no me cierran, debería revisar 1 o 2 pasos adelante (lo que se puede mover), no exactamente al punto al que pretende llegar..
+	if _sight_check && _sight_check.collider:
+		var collider_pos = _sight_check.collider.position
+		var collision_pos = _sight_check.position
+		avoidance_force = (collision_pos - collider_pos).normalized() * speed
+		if _check_points_aligned(position, collision_pos, collider_pos):
+			avoidance_force.rotate(PI/3)
+	return avoidance_force
+
+func _check_points_aligned(p0, p1, p2):
+	var vec1 = p1 - p0
+	var vec2 = p2 - p1
+	return vec2.x/vec1.x == vec2.y / vec1.y
 	
-func _chase(delta):
-	var path_to_dest = _navmap.get_simple_path(position, _target.position, false)
-	var starting_point = position
-	var move_distance = speed * delta
-	for _point in range(path_to_dest.size()):
-		var distance_to_next_point = starting_point.distance_to(path_to_dest[0])
-		if move_distance > 0 && move_distance <= distance_to_next_point:
-			$Visual.rotation = (_target.position - position).angle()
-			var move_rotation = get_angle_to(starting_point.linear_interpolate(path_to_dest[0], move_distance / distance_to_next_point))
-			var motion = Vector2(speed, 0).rotated(move_rotation)
-			motion = move_and_slide(motion)
-			break
-		move_distance -= distance_to_next_point
-		starting_point = path_to_dest[0]
-		path_to_dest.remove(0)
+func _pursuit():
+	var distance = _target.position - position
+	var t:int = distance.length() / _target.speed
+	var target = _target.position + _target.velocity * t
+	return (((target - position).normalized() * speed) - velocity) + _avoid(target)
+
+func _truncate(v, m):
+	var i = m / v.length()
+	i = min(i, 1.0)
+	return v * i
 
 func sight_check():
 	if _target:
@@ -113,7 +134,7 @@ func sight_check():
 		var _sight_check = space_state.intersect_ray(position, _target_on_seek_area.position, [self], collision_mask)
 		if _sight_check && _sight_check.collider.is_in_group("player"):
 			_target = _sight_check.collider
-			$Visual/SeekArea.set_deferred("set_monitoring",false)
+			$SeekArea.set_deferred("set_monitoring",false)
 	else:
 		_state = states.IDLE
 
@@ -121,7 +142,7 @@ func on_hit(damage):
 	if !_target:
 		_target = get_parent().get_node("Player")
 	get_damage(damage)
-	$Visual/HitTimer.start()
+	$HitTimer.start()
 
 func hit_target(target, _weapon):
 	if target.has_method("on_hit") && !target.is_in_group("enemies"):
@@ -130,11 +151,11 @@ func hit_target(target, _weapon):
 func get_damage(base_damage:int):
 	var damage_left:int = base_damage
 	sprite.material.set_shader_param("hp_color", Color.white)
-	if armor > 0:
+	if _cur_armor > 0:
 # warning-ignore:narrowing_conversion
-		damage_left = max(base_damage - armor, 0)
+		damage_left = max(base_damage - _cur_armor, 0)
 # warning-ignore:narrowing_conversion
-		armor = max(armor - base_damage, 0)
+		_cur_armor = max(_cur_armor - base_damage, 0)
 		_update_armor_sprite()
 	if damage_left > 0:
 		_cur_health -= damage_left
@@ -167,6 +188,6 @@ func _update_hp_shader():
 	sprite.material.set_shader_param("damage", normalized_damage)
 	
 func _update_armor_sprite():
-	var normalized_armor:float = float(armor) / 100.0 #100 = max armor (?)
+	var normalized_armor:float = float(_cur_armor) / float(armor) #Para que aparezcan siempre como si tuvieran una buena armadura, solo que se rompe más rápido en ciertos casos.
 	var scaleFloat = 1.0 + (normalized_armor * 0.5)
 	armor_sprite.scale = Vector2(scaleFloat, scaleFloat)

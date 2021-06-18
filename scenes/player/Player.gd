@@ -11,6 +11,7 @@ onready var dash_timer = $DashTimer
 onready var slow_motion_timer = $SlowMotion
 onready var sprite = $Sprite
 
+var velocity = Vector2.ZERO
 var container
 var _cur_speed
 var _cur_health
@@ -40,7 +41,6 @@ func _physics_process(_delta):
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/theEnd/youDie.tscn") #Meter algo interesante..
 	
-	var velocity = Vector2()
 	velocity.x = int(Input.is_action_pressed("derecha")) - int(Input.is_action_pressed("izquierda"))
 	velocity.y = int(Input.is_action_pressed("abajo")) - int(Input.is_action_pressed("arriba"))
 	
@@ -76,7 +76,7 @@ func on_hit(base_damage):
 		textValue = "-" + str(base_damage)
 		textColor = Color(0.6, 0, 0, 1)
 	else:
-		textValue += '0'
+		textValue = '0'
 		textColor = Color(0, 0, 0, 0.2)
 	
 	get_parent().draw_text(textValue, textColor, position)

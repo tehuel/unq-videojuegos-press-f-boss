@@ -1,14 +1,14 @@
 extends Node
 
-onready var map = get_node("../Navigation2D/TileMap")
+onready var map = get_node("../TileMap")
 onready var portal = get_node("../Portal")
 onready var rock2 = load("res://scenes/obstacles/Rock2.tscn")
 onready var rock3 = load("res://scenes/obstacles/Rock3.tscn")
 onready var tree = load("res://scenes/obstacles/Tree.tscn")
 onready var obstaclesList = [rock2, rock3, tree];
-
+onready var player_camera = get_node("../Player/Camera2D")
 var rng = RandomNumberGenerator.new()
-var obstaclesPlacedInLevel = [];
+var placedInLevel = [];
 
 const tiles = {
 	"wall": 0,
@@ -21,8 +21,11 @@ func generate_random_map():
 	_delete_obstacles()
 	_draw_empty_map(Game.level_size)
 	_place_random_obstacles(Game.level_obstacles)
-	
+	player_camera.limit_bottom = Game.level_center * 2
+	player_camera.limit_right = Game.level_center * 2
 	portal.position = Vector2(Game.level_center, Game.level_center)
+	placedInLevel.append(get_node("../StartPosition"))
+	placedInLevel.append(portal)
 
 
 func _draw_empty_map(size:int):
@@ -49,10 +52,10 @@ func _fill_map_walls(size:int):
 
 
 func _delete_obstacles():
-	var currentObstacle = obstaclesPlacedInLevel.pop_back()
+	var currentObstacle = placedInLevel.pop_back()
 	while(currentObstacle):
 		currentObstacle.queue_free()
-		currentObstacle = obstaclesPlacedInLevel.pop_back()
+		currentObstacle = placedInLevel.pop_back()
 
 
 func _place_random_obstacles(amount):
@@ -67,7 +70,7 @@ func _place_random_obstacles(amount):
 			positionInvalid = false
 			# asigno una nueva posicion y pruebo con todos los obstáculos existentes en el nivel
 			newObstaclePossiblePosition = _get_random_vector2(2, (Game.level_size-2)) * 64
-			for curObstacle in obstaclesPlacedInLevel:
+			for curObstacle in placedInLevel:
 				#print("chequeo contra objeto en ", newObstaclePossiblePosition, curObstacle.position)
 				if (_check_positions_in_tiles(newObstaclePossiblePosition, curObstacle.position)):
 					#print("posicion erronea, reacomodando!")
@@ -77,7 +80,7 @@ func _place_random_obstacles(amount):
 		#print("objeto ubicado en ", newObstaclePossiblePosition)
 		newObstacle.position = newObstaclePossiblePosition
 		get_parent().add_child(newObstacle)
-		obstaclesPlacedInLevel.append(newObstacle)
+		placedInLevel.append(newObstacle)
 
 # divido posiciones en base 64, que es el tamaño de un tile
 func _check_positions_in_tiles(pos1, pos2):
