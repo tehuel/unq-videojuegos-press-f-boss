@@ -44,8 +44,11 @@ func _start_level(level):
 
 	if(level == end_game):
 		print("end game")
+# warning-ignore:return_value_discarded
+		Game.set_current_level(1)
 		get_tree().change_scene("res://scenes/theEnd/theEnd.tscn")
 	else:
 		print("starting level ", level)
+# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/game/Game.tscn")
 		
