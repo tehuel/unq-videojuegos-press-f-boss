@@ -5,8 +5,8 @@ onready var sfx_dialog = $Dialog
 
 var dialog = [
 	"[wave amp=50 freq=2][center]Presiona [color=blue]Click Izquierdo[/color] para continuar...[/center][/wave]",
-	"Esta es la historia de Čuivi que quiere llegar al Valhalla...",
-	"La única forma de llegar al Valhalla es atravesar las [color=red]tres islas[/color]...",
+	"Esta es la historia de Cuivi que quiere llegar al Valhalla...",
+	"La única forma de llegar al Valhalla es atravesar [color=red]las tres islas[/color]...",
 	"Una vez dentro de la isla tienes que [color=red]eliminar a los enemigos[/color] para lograr activar el portal a la siguiente isla con aun más enemigos...",
 	"Buena suerte...",
 	""]
@@ -20,7 +20,7 @@ func _ready():
 	set_visible_characters(0)
 
 func _input(_event):
-	if Input.is_action_pressed("left_click") and camera.position.y == -6700:
+	if Input.is_action_just_pressed("left_click") and camera.position.y == -6700:
 		if get_visible_characters() > get_total_character_count():
 			if page < dialog.size()-1:
 				page += 1
