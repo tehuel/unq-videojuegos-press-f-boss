@@ -5,6 +5,8 @@ onready var i2 = $ParallaxBackground/ParallaxLayer2/Island1
 onready var i3 = $ParallaxBackground/ParallaxLayer2/Island1
 onready var animation = $AnimationPlayer
 
+var end_game:int = 4
+
 const animations = {
 	1: "to_level_1",
 	2: "to_level_2",
@@ -39,7 +41,11 @@ func _process(_delta):
 
 func _start_level(level): 
 	Game.set_current_level(level)
-	print("starting level ", level)
-	# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/game/Game.tscn")
-	
+
+	if(level == end_game):
+		print("end game")
+		get_tree().change_scene("res://scenes/theEnd/theEnd.tscn")
+	else:
+		print("starting level ", level)
+		get_tree().change_scene("res://scenes/game/Game.tscn")
+		
