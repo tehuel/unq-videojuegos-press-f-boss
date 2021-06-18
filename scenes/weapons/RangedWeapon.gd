@@ -12,6 +12,9 @@ func attack():
 		newProjectile.initialize(self, (fire_position.global_position - global_position).normalized(), fire_position.global_position)
 		$axe_throw.play()
 		_timer.start()
+		return true
+	else:
+		return false
 
 func _on_timeout_complete():
 	_can_attack = true

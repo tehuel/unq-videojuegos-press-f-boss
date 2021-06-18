@@ -25,6 +25,8 @@ func attack():
 
 func _on_timeout_complete():
 	_can_attack = true
+	if (is_instance_valid(_holder) && _holder.has_method("weapon_ready")):
+		_holder.weapon_ready()
 
 func hit(body):
 	_holder.hit_target(body, self)
