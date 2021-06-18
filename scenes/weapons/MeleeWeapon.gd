@@ -25,9 +25,9 @@ func attack():
 
 func stop_attack():
 	self.monitoring = false
-	if _holder.is_in_group("enemies"):
-		animation.playback_speed = 0.3
-	animation.play_backwards("swing")
+	if _holder.is_in_group("player"):
+		animation.playback_speed = 10.0
+#	animation.play_backwards("swing")
 	yield(animation, "animation_finished")
 	_can_attack = true
 
