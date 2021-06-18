@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/levelSelection/FloatingIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levelSelection/LevelSelection.gd" type="Script" id=2]
 [ext_resource path="res://font/Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/level/Group 18.png" type="Texture" id=4]
+[ext_resource path="res://scenes/utils/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/level/ship.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -90,6 +91,34 @@ tracks/1/keys = {
 "values": [ Vector2( 864, 0 ), Vector2( 864, 0 ), Vector2( 1240, 0 ) ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "to_valhalla"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("ParallaxBackground/ParallaxLayer2/ship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1760.95, 198.079 ), Vector2( 2343.6, 347.75 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1250, 0 ), Vector2( 1850, 0 ) ]
+}
+
 [node name="LevelSelection" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -99,9 +128,9 @@ script = ExtResource( 2 )
 motion_scale = Vector2( 0.8, 0.8 )
 
 [node name="bg" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color( 0.443137, 0.443137, 0.443137, 1 )
-position = Vector2( 1197.36, 312.479 )
-scale = Vector2( 1.95942, 1.95942 )
+modulate = Color( 0.462745, 0.462745, 0.462745, 1 )
+position = Vector2( 1431.88, 312.479 )
+scale = Vector2( 2.33406, 1.95942 )
 texture = ExtResource( 4 )
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -170,12 +199,17 @@ __meta__ = {
 }
 
 [node name="ship" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-position = Vector2( 1760.95, 198.079 )
+position = Vector2( 2343.6, 347.75 )
 scale = Vector2( 0.0955011, 0.095501 )
 texture = ExtResource( 6 )
 
+[node name="door" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 5 )]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 2331.81, 345.321 )
+scale = Vector2( 0.257424, 0.214396 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1240, 0 )
+position = Vector2( 1850, 0 )
 anchor_mode = 0
 current = true
 
@@ -183,3 +217,4 @@ current = true
 anims/to_level_1 = SubResource( 1 )
 anims/to_level_2 = SubResource( 2 )
 anims/to_level_3 = SubResource( 3 )
+anims/to_valhalla = SubResource( 4 )
