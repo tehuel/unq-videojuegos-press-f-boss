@@ -7,8 +7,9 @@
 [ext_resource path="res://assets/tilesets/tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://scenes/environment/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=7]
-[ext_resource path="res://audio/sfx/game/SuperHexagonSoundtrack.ogg" type="AudioStream" id=9]
-[ext_resource path="res://audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx/game/SuperHexagonSoundtrack.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
+
 
 [sub_resource type="Environment" id=1]
 background_mode = 4

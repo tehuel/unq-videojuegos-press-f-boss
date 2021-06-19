@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://audio/sfx/AxeAttack/BattleAxeThrow_01.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/audio/sfx/AxeAttack/BattleAxeThrow_01.ogg" type="AudioStream" id=1]
 [ext_resource path="res://scenes/weapons/RangedWeapon.gd" type="Script" id=2]
 [ext_resource path="res://scenes/weapons/Projectile.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 62.9204, 4.58045 )

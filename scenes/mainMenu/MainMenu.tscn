@@ -5,15 +5,16 @@
 [ext_resource path="res://font/Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/mainMenu/backGround.png" type="Texture" id=4]
 [ext_resource path="res://scenes/utils/Door.tscn" type="PackedScene" id=5]
-[ext_resource path="res://audio/bgm/The_Bards_Tale.ogg" type="AudioStream" id=6]
-[ext_resource path="res://audio/sfx/axe_start.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/bgm/The_Bards_Tale.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/axe_start.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/mainMenu/RichTextLabel.gd" type="Script" id=9]
-[ext_resource path="res://audio/sfx/text/dialog.ogg" type="AudioStream" id=10]
-[ext_resource path="res://audio/sfx/ambience/wind.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx/text/dialog.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx/ambience/wind.ogg" type="AudioStream" id=11]
 [ext_resource path="res://scenes/environment/star.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/mainMenu/Polygon2D.gd" type="Script" id=13]
 [ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=14]
-[ext_resource path="res://audio/sfx/ambience/page.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=15]
+
 
 [sub_resource type="Shader" id=1]
 

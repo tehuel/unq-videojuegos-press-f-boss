@@ -4,7 +4,8 @@
 [ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=2]
 [ext_resource path="res://scenes/environment/HealingPowerUp.gd" type="Script" id=3]
 [ext_resource path="res://assets/resources/offset_glow.png" type="Texture" id=4]
-[ext_resource path="res://audio/sfx/powerUps/Heal.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/powerUps/Heal.ogg" type="AudioStream" id=5]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 

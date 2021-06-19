@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BattleAxeSwing_01.ogg-e11e378e15f807f8ab0c3020473b2222.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/AxeAttack/BattleAxeSwing_01.ogg"
+dest_files=[ "res://.import/BattleAxeSwing_01.ogg-e11e378e15f807f8ab0c3020473b2222.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/player_dash.ogg-213c0d3d4f55c0e62636e9f1107d240f.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/player/player_dash.ogg"
+dest_files=[ "res://.import/player_dash.ogg-213c0d3d4f55c0e62636e9f1107d240f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
