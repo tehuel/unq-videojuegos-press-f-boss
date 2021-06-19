@@ -5,8 +5,6 @@
 [ext_resource path="res://assets/font/PixelBit-Free.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/audio/sfx/button.ogg" type="AudioStream" id=4]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 2
