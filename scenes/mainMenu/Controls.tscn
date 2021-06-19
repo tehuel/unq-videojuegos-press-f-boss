@@ -1,7 +1,7 @@
 [gd_scene load_steps=159 format=2]
 
-[ext_resource path="res://font/montserrat_eb_32.tres" type="DynamicFont" id=1]
-[ext_resource path="res://font/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/montserrat_eb_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/mainMenu/Scroll.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/powerup/fist.png" type="Texture" id=5]
