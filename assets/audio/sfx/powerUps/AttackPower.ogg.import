@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/AttackPower.ogg-1e24b0ef3b08b283476ea4d5f4af65c5.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/powerUps/AttackPower.ogg"
+dest_files=[ "res://.import/AttackPower.ogg-1e24b0ef3b08b283476ea4d5f4af65c5.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

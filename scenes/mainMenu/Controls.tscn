@@ -1,7 +1,7 @@
 [gd_scene load_steps=159 format=2]
 
-[ext_resource path="res://font/montserrat_eb_32.tres" type="DynamicFont" id=1]
-[ext_resource path="res://font/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/montserrat_eb_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/mainMenu/Scroll.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/powerup/fist.png" type="Texture" id=5]
@@ -12,12 +12,13 @@
 [ext_resource path="res://assets/images/mainMenu/barra_transparent.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/mainMenu/asdw_transparent.png" type="Texture" id=11]
 [ext_resource path="res://assets/images/mainMenu/mouse_transparent.png" type="Texture" id=12]
-[ext_resource path="res://audio/sfx/ambience/page.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=13]
 [ext_resource path="res://assets/images/portal/circle.png" type="Texture" id=14]
 [ext_resource path="res://assets/images/portal/braid.png" type="Texture" id=15]
 [ext_resource path="res://assets/images/portal/center.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/portal/runes.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/mainMenu/letraP.png" type="Texture" id=18]
+
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4

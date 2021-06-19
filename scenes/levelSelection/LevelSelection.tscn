@@ -2,10 +2,11 @@
 
 [ext_resource path="res://scenes/levelSelection/FloatingIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levelSelection/LevelSelection.gd" type="Script" id=2]
-[ext_resource path="res://font/Font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/images/level/Group 18.png" type="Texture" id=4]
 [ext_resource path="res://scenes/utils/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/level/ship.png" type="Texture" id=6]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_level_1"
