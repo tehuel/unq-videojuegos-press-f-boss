@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/offset_glow.png-8b179e2d464456e5474d907666b7b6f2.stex"
+path="res://.import/offset_glow.png-bb36b4c7d16b8641fb2fd19cde5c2678.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/resources/offset_glow.png"
-dest_files=[ "res://.import/offset_glow.png-8b179e2d464456e5474d907666b7b6f2.stex" ]
+source_file="res://assets/images/offset_glow.png"
+dest_files=[ "res://.import/offset_glow.png-bb36b4c7d16b8641fb2fd19cde5c2678.stex" ]
 
 [params]
 

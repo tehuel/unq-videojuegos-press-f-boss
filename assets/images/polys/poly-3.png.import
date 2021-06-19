@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/poly-7.png-99c111ce6d665053f6cffdd4f9401ea7.stex"
+path="res://.import/poly-3.png-b3ec6e9377f7498213b6584e59f75c34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/resources/polys/poly-7.png"
-dest_files=[ "res://.import/poly-7.png-99c111ce6d665053f6cffdd4f9401ea7.stex" ]
+source_file="res://assets/images/polys/poly-3.png"
+dest_files=[ "res://.import/poly-3.png-b3ec6e9377f7498213b6584e59f75c34.stex" ]
 
 [params]
 
