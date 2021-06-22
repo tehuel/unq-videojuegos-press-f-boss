@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=2]
+[gd_scene load_steps=160 format=2]
 
 [ext_resource path="res://assets/font/montserrat_eb_32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=2]
@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/images/portal/center.png" type="Texture" id=16]
 [ext_resource path="res://assets/images/portal/runes.png" type="Texture" id=17]
 [ext_resource path="res://assets/images/mainMenu/letraP.png" type="Texture" id=18]
-
+[ext_resource path="res://assets/images/player/player.png" type="Texture" id=19]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -791,6 +791,7 @@ margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 text = "Power ups"
+align = 1
 
 [node name="Heal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/PowerUps"]
 margin_top = 84.0
@@ -881,25 +882,78 @@ size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 text = "Portal"
 
-[node name="Portal2" type="Node2D" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
-position = Vector2( 83.7951, 170.75 )
+[node name="HBoxPortal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
+margin_top = 84.0
+margin_right = 429.0
+margin_bottom = 251.0
+size_flags_vertical = 3
+
+[node name="PortalImg" type="Node2D" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
+position = Vector2( 83.7951, 86.7499 )
 scale = Vector2( 0.2, 0.2 )
 
-[node name="braid" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/Portal2"]
+[node name="braid" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal/PortalImg"]
 scale = Vector2( 0.841, 0.841 )
 texture = ExtResource( 15 )
 
-[node name="center" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/Portal2"]
+[node name="center" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal/PortalImg"]
 scale = Vector2( 0.689, 0.689 )
 texture = ExtResource( 16 )
 
-[node name="circle" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/Portal2"]
+[node name="circle" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal/PortalImg"]
 scale = Vector2( 0.681, 0.681 )
 texture = ExtResource( 14 )
 
-[node name="runes" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/Portal2"]
+[node name="runes" type="Sprite" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal/PortalImg"]
 scale = Vector2( 1.081, 1.081 )
 texture = ExtResource( 17 )
+
+[node name="EmptyIcon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 160.0
+margin_bottom = 167.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 19 )
+expand = true
+
+[node name="PortalLabel" type="Label" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
+margin_left = 164.0
+margin_top = 33.0
+margin_right = 429.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.0588235, 0.364706, 1 )
+text = "Una vez que limpies una zona de los enemigos podrás utilizar el portal para ir a la siguiente Isla."
+align = 1
+autowrap = true
+
+[node name="Ghost" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 255.0
+margin_right = 429.0
+margin_bottom = 423.0
+size_flags_vertical = 3
+
+[node name="EmptyIcon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/Portal/Ghost"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 160.0
+margin_bottom = 168.0
+rect_min_size = Vector2( 160, 0 )
+texture = ExtResource( 19 )
+expand = true
+
+[node name="PortalLabel" type="Label" parent="Control/Scroll/VBoxContainer/Utils/Portal/Ghost"]
+margin_left = 164.0
+margin_top = 33.0
+margin_right = 429.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.0588235, 0.0588235, 0.364706, 1 )
+text = "Una vez que limpies una zona de los enemigos podrás utilizar el portal para ir a la siguiente Isla."
+align = 1
+autowrap = true
 
 [node name="KeyBoard" type="VBoxContainer" parent="Control/Scroll/VBoxContainer"]
 margin_left = 433.0
@@ -913,6 +967,7 @@ margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
 text = "KeyBoarD"
+align = 1
 
 [node name="KeyBoardContainer" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard"]
 margin_top = 84.0
@@ -940,7 +995,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 80.421, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 42 )
-frame = 25
+frame = 39
 playing = true
 
 [node name="Flechas" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Movement/Movement"]
@@ -948,7 +1003,7 @@ modulate = Color( 0.0196078, 0, 0, 1 )
 position = Vector2( 208.983, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 84 )
-frame = 36
+frame = 9
 playing = true
 
 [node name="Attack" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
@@ -971,7 +1026,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 71.238, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 4
+frame = 6
 playing = true
 
 [node name="ClickDerecho" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Attack/Attack"]
@@ -979,7 +1034,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 172.251, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 4
+frame = 6
 playing = true
 flip_h = true
 
@@ -1001,7 +1056,7 @@ text = "Dash:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 117.153, 75.8554 )
 frames = SubResource( 134 )
-frame = 11
+frame = 25
 playing = true
 
 [node name="Pause" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
@@ -1011,19 +1066,18 @@ margin_bottom = 766.0
 size_flags_vertical = 3
 
 [node name="Pause" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Pause"]
-margin_right = 63.0
+margin_right = 62.0
 margin_bottom = 189.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Pause:"
+text = "Pausa:"
 
 [node name="Pause" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Pause/Pause"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 52.872, 67.2115 )
 frames = SubResource( 140 )
-frame = 4
 playing = true
 
 [node name="PageSFX" type="AudioStreamPlayer" parent="Control"]
