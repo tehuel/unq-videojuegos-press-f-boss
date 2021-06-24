@@ -1,11 +1,25 @@
 extends Node
 
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
+onready var outPutStreamSoundTrack = $SoundTrack
+
+var rng = RandomNumberGenerator.new()
+
+func randomNumberBetween(numberOne, numberTwo):
+	rng.randomize()
+	return rng.randi_range(numberOne, numberTwo)
+	
+func playSoundTrack():
+	var numberSound = randomNumberBetween(0, 1)
+	outPutStreamSoundTrack.set_stream(outPutStreamSoundTrack.soundTracksLevel[numberSound])
+	outPutStreamSoundTrack.set_volume_db(-20.0)
+	outPutStreamSoundTrack.play()
+	
 
 func _ready():
 	$MapGenerator.generate_random_map()
 	$Player.start($StartPosition.position, self)
-	$Soundtrack.play()
+	playSoundTrack()
 
 #func _process(_delta):
 #	if Input.is_action_just_pressed("_debug_pass_map"):

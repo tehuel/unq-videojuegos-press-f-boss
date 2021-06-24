@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/amon-amarth-war-of-the-gods-8-bit.ogg-1ae016f16f9ba3e69db1d53442d6590c.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/game/amon-amarth-war-of-the-gods-8-bit.ogg"
+dest_files=[ "res://.import/amon-amarth-war-of-the-gods-8-bit.ogg-1ae016f16f9ba3e69db1d53442d6590c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

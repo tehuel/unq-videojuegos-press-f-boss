@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/amon-amarth-free-will-sacrifice-chiptune-8-bit.ogg-fb263708ff7934eb2c35503e1567852b.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/game/amon-amarth-free-will-sacrifice-chiptune-8-bit.ogg"
+dest_files=[ "res://.import/amon-amarth-free-will-sacrifice-chiptune-8-bit.ogg-fb263708ff7934eb2c35503e1567852b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

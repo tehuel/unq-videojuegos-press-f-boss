@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/images/mainMenu/backGround.png" type="Texture" id=4]
 [ext_resource path="res://scenes/utils/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/bgm/The_Bards_Tale.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/bgm/amon-amarth-the-way-of-vikings-8-bit.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/audio/sfx/axe_start.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/mainMenu/RichTextLabel.gd" type="Script" id=9]
 [ext_resource path="res://assets/audio/sfx/text/dialog.ogg" type="AudioStream" id=10]
@@ -92,7 +93,6 @@ texture = SubResource( 4 )
 position = Vector2( 517.249, 397.728 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 11 )
-frame = 4
 playing = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -146,6 +146,10 @@ focus_neighbour_top = NodePath("../Controls")
 focus_neighbour_bottom = NodePath("../Start")
 text = "Exit"
 arrow_margin_from_center = 61
+
+[node name="StartSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
 
 [node name="BackGround" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
