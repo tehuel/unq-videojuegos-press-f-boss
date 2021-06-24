@@ -6,8 +6,9 @@ onready var sfx_dialog = $Dialog
 var dialog = [
 	"[wave amp=50 freq=2][center]Presiona [color=blue]Click Izquierdo[/color] para continuar...[/center][/wave]",
 	"Esta es la historia de Cuivi que quiere llegar al Valhalla...",
-	"La única forma de llegar al Valhalla es atravesar [color=red]las tres islas[/color]...",
+	"Hace cientos de polígonos atrás, Odín el dios de la sabiduría, la guerra y la muerte. Llamó a las armas a aquellos que lograran pasar por [color=red]las tres islas[/color]...",
 	"Una vez dentro de la isla tienes que [color=red]eliminar a los enemigos[/color] para lograr activar el portal a la siguiente isla con aun más enemigos...",
+	"Solo los que lo lograran, podran entrar al Valhalla y ayudar a Odin en el Ragnarök.",
 	"Buena suerte...",
 	""]
 var page = 0

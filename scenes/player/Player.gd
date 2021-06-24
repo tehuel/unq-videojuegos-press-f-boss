@@ -16,6 +16,7 @@ var container
 var _cur_speed
 var _cur_health
 var _invincible = false
+var slowMotionActive = false
 
 func start(pos, cont):
 	position = pos
@@ -106,12 +107,18 @@ func ranged_attack():
 func hit_target(target, weapon):
 	if target.has_method("on_hit"):
 		$AudioPlayerHit.play()
-		slow_motion_timer.start()
-		Engine.set_time_scale(0.65)
+		slowMotion()
 		target.on_hit(weapon.weapon_damage * strength)
+
+func slowMotion():
+	if !slowMotionActive:
+		slow_motion_timer.start()
+		slowMotionActive = true
+		Engine.set_time_scale(0.65)
 
 func _on_DashTimer_timeout():
 	_cur_speed = speed
 
 func _on_SlowMotion_timeout():
 	Engine.set_time_scale(1)
+	slowMotionActive = false

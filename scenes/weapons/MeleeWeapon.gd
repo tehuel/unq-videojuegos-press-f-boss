@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 func playSound():
 	var numberSound = randomNumberBetween(0, 1)
 	outPutStreamAxe.set_stream(outPutStreamAxe.axe_hit[numberSound])
-	outPutStreamAxe.set_volume_db(-20.0)
+	outPutStreamAxe.set_volume_db(-15.0)
 	outPutStreamAxe.play()
 	
 func randomNumberBetween(numberOne, numberTwo):
