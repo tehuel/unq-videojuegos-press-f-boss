@@ -9,7 +9,7 @@
 extents = Vector2( 8.3, 5.171 )
 
 [sub_resource type="Animation" id=2]
-length = 1.3
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
@@ -17,10 +17,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -4.04522, -3.40221 ), Vector2( -7.16461, -13.0494 ), Vector2( -17.2841, 0.303406 ), Vector2( -9.40353, 13.6562 ), Vector2( -4.04522, -3.40221 ) ]
+"values": [ Vector2( -4.04522, -3.40221 ), Vector2( 9.04089, -23.4458 ), Vector2( -17.2841, 0.303406 ), Vector2( -4.29153e-05, 16 ), Vector2( -4.04522, -3.40221 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:rotation_degrees")
@@ -29,10 +29,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 1.3 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -30.0, 0.0, -90.0, -180.0, -30.0 ]
+"values": [ -30.0, 30.0, -90.0, -210.0, -30.0 ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -41,7 +41,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -55,10 +55,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -9.4, -11.8 ), Vector2( -7.68823, -23.2978 ), Vector2( -27.4766, 0.204319 ), Vector2( -9.26488, 23.7065 ), Vector2( -9.4, -11.8 ) ]
+"values": [ Vector2( -9.4, -11.8 ), Vector2( 13.9231, -32.6654 ), Vector2( -27.4766, 0.204319 ), Vector2( 5.06524, 24.9386 ), Vector2( -9.4, -11.8 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("HitDetection:rotation_degrees")
@@ -67,10 +67,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -30.0, 0.0, -90.0, -180.0, -30.0 ]
+"values": [ -30.0, 30.0, -90.0, -210.0, -30.0 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Trail:visible")
@@ -79,7 +79,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -91,7 +91,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.2, 0.9 ),
+"times": PoolRealArray( 0.4, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
@@ -103,10 +103,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
+"times": PoolRealArray( 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -21.7916, -15.426 ), Vector2( -20.2628, -2.26282 ) ]
+"values": [ Vector2( -21.7916, -15.426 ), Vector2( -16.12, 3.03333 ) ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Trail:rotation_degrees")
@@ -115,10 +115,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
+"times": PoolRealArray( 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -60.0, -90.0 ]
+"values": [ -60.0, -110.0 ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Trail:scale")
@@ -127,7 +127,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0.2, 0.3 ),
+"times": PoolRealArray( 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.02, 0.02 ), Vector2( 0.07, 0.07 ) ]
@@ -154,8 +154,8 @@ texture = ExtResource( 2 )
 
 [node name="Trail" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -20.2628, -2.26282 )
-rotation = -1.5708
+position = Vector2( -16.12, 3.03333 )
+rotation = -1.91986
 scale = Vector2( 0.07, 0.07 )
 texture = ExtResource( 4 )
 
@@ -177,6 +177,7 @@ shape = SubResource( 3 )
 
 [node name="AudioStreamAxe2D" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource( 3 )
+[connection signal="area_entered" from="." to="." method="_on_MeleeWeapon_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Weapon_body_entered"]
 [connection signal="body_entered" from="BodyDetection" to="." method="_on_BodyDetection_body_entered"]
 [connection signal="body_exited" from="BodyDetection" to="." method="_on_BodyDetection_body_exited"]
