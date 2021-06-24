@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/audio/sfx/player/player_hit.ogg" type="AudioStream" id=8]
 [ext_resource path="res://scenes/player/dash_sprite.tscn" type="PackedScene" id=9]
 
-
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.1311
 
@@ -54,7 +53,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="SlowMotion" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.23
 one_shot = true
 
 [node name="AudioStreamPlayerDash" type="AudioStreamPlayer2D" parent="."]
