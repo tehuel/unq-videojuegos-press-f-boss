@@ -40,7 +40,7 @@ __meta__ = {
 
 [node name="MeleeWeapon" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16.8835, -3.25181 )
-collision_mask = 2147483652
+collision_mask = 2147483660
 weapon_damage = 15
 
 [node name="RangedWeapon" parent="." instance=ExtResource( 3 )]

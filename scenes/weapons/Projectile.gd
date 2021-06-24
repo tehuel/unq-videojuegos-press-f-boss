@@ -20,10 +20,13 @@ func _physics_process(delta):
 	position += direction * projectile_speed * delta
 
 func _on_DeleteTimer_timeout():
-	get_parent().remove_child(self)
-	queue_free()
+	destroy()
 
 func _on_Projectile_body_entered(body):
 	if is_instance_valid(_origin) && body.has_method("on_hit"):
 		_origin.hit(body)
+	queue_free()
+
+func destroy():
+	get_parent().remove_child(self)
 	queue_free()
