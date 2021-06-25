@@ -6,6 +6,9 @@ export (PackedScene) var projectile_scene
 
 onready var fire_position = $FirePosition
 
+func _ready():
+	self._weapon_type = "range"
+
 func attack():
 	if _can_attack:
 		_can_attack = false

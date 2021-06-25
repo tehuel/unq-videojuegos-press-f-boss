@@ -8,6 +8,7 @@ export (float) var delay:float = 1
 var _can_attack = true
 var _timer = null
 var _holder
+var _weapon_type
 
 func take_weapon(holder):
 	_holder = holder

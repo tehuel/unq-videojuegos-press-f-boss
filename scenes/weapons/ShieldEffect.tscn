@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/enemies/AudioStreamPlayer2D.gd" type="Script" id=1]
+[ext_resource path="res://scenes/weapons/ShieldEffect.gd" type="Script" id=2]
+[ext_resource path="res://scenes/utils/Spark.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.496296, 0.666667, 1 )
+colors = PoolColorArray( 0.0117647, 0.0117647, 0.00392157, 0, 0.859375, 0.763945, 0.171204, 1, 0.55957, 0.521916, 0.00874329, 1, 0.0166016, 0.016466, 0.01511, 0.784314 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.209091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+direction = Vector3( 1, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.1
+angular_velocity = 100.0
+angular_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 80.0
+radial_accel = 80.0
+damping = 50.0
+scale = 0.5
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="ShieldEffect" type="Node"]
+script = ExtResource( 2 )
+
+[node name="shield_particle" parent="." instance=ExtResource( 3 )]
+material = SubResource( 1 )
+emitting = false
+one_shot = true
+process_material = SubResource( 6 )
+
+[node name="shield_sfx" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 1 )

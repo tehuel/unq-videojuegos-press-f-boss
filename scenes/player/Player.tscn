@@ -53,7 +53,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="SlowMotion" type="Timer" parent="."]
-wait_time = 0.23
+wait_time = 0.25
 one_shot = true
 
 [node name="AudioStreamPlayerDash" type="AudioStreamPlayer2D" parent="."]

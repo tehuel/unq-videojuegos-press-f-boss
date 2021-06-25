@@ -5,6 +5,9 @@ onready var outPutStreamAxe = $AudioStreamAxe2D
 
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	self._weapon_type = "mele"
+
 func playSound():
 	var numberSound = randomNumberBetween(0, 1)
 	outPutStreamAxe.set_stream(outPutStreamAxe.axe_hit[numberSound])
