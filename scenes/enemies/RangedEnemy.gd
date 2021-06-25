@@ -1,6 +1,6 @@
 extends BaseAI
 
-onready var _number_of_shoots_until_rest = (randi() % 2) + 3
+onready var _pattern_shoots = (randi() % 2) + 3
 onready var _wait_time = rand_range(1.3, 1.7)
 var _wait_timer = null
 var _pattern_ready = true
@@ -13,9 +13,9 @@ func _ready():
 	add_child(_wait_timer)
 	._ready()
 
-func attack():
+func _attack():
 	if _pattern_ready:
-		for _i in range(1, _number_of_shoots_until_rest, 1):
+		for _i in range(1, _pattern_shoots, 1):
 			weapon.attack()
 			yield(weapon, "attack_ready")
 		_pattern_ready = false

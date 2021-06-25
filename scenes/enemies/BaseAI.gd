@@ -18,15 +18,17 @@ onready var armor_sprite = $Sprite/Sprite2
 
 var _cur_health
 var _cur_armor
-var _state = states.IDLE
+var _state = states.WANDER
 var _target_in_attack_range = false
 var _target_on_seek_area
 var _target
 var container
 var _dieSound
 var velocity = Vector2.ZERO
+var _wander_wait_timer
+var _wander_target
 
-enum states {IDLE, ATTACK, CHASE}
+enum states {WANDER, ATTACK, CHASE}
 
 const DROP_RATE = 35 # % / 100
 
@@ -38,6 +40,12 @@ func initialize(cont, dieSound):
 	randomize()
 
 func _ready():
+	_wander_wait_timer = Timer.new()
+	_wander_wait_timer.set_one_shot(true)
+	_wander_wait_timer.set_wait_time(3.0)
+	_wander_wait_timer.connect("timeout", self, "_set_wander_target")
+	add_child(_wander_wait_timer)
+	_wander_wait_timer.start()
 	_cur_health = health
 	_cur_armor = armor
 	sprite.material.set_shader_param("hp_color", enemy_color)
@@ -50,10 +58,10 @@ func _ready():
 
 func _process(_delta):
 	match _state:
-		states.IDLE:
-			pass
+		states.WANDER:
+			_wander()
 		states.ATTACK:
-			attack()
+			_attack()
 		states.CHASE:
 			_chase()
 
@@ -67,9 +75,26 @@ func _physics_process(_delta):
 			_dieSound.play()
 		queue_free()
 	
-func attack():
+func _attack():
 	weapon.attack()
 	
+func _wander():
+	if _wander_target:
+		if position.distance_to(_wander_target) <= 16:
+			_wander_target = null
+			_wander_wait_timer.start()
+		else:
+			var steering = _wander_steering()
+			velocity = _truncate(velocity + steering, speed)
+			velocity = move_and_slide(velocity)
+			rotation = velocity.angle()
+
+func _wander_steering():
+	return (((_wander_target - position).normalized() * (speed)) - velocity) + _avoid(_wander_target)
+
+func _set_wander_target():
+	_wander_target = Vector2(rand_range(-128,128), rand_range(-128,128)) + position
+
 func drop_power_up():
 	var drop = randi() % 100
 	if drop < DROP_RATE:
@@ -136,7 +161,7 @@ func sight_check():
 			_target = _sight_check.collider
 			$SeekArea.set_deferred("set_monitoring",false)
 	else:
-		_state = states.IDLE
+		_state = states.WANDER
 
 func on_hit(damage):
 	if !_target:
