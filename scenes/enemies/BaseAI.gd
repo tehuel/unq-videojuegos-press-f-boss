@@ -197,6 +197,7 @@ func get_damage(base_damage:int):
 	sprite.material.set_shader_param("hp_color", Color.white)
 	if _cur_armor > 0:
 		_shield_effect()
+# warning-ignore:narrowing_conversion
 		damage_left = max(base_damage - _cur_armor, 0)
 		_cur_armor = max(_cur_armor - base_damage, 0)
 		_update_armor_sprite()
