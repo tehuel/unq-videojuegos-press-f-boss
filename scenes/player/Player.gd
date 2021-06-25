@@ -18,6 +18,7 @@ var _cur_health
 var _invincible = false
 var slowMotionActive = false
 
+
 func start(pos, cont):
 	position = pos
 	show()
@@ -107,8 +108,9 @@ func ranged_attack():
 func hit_target(target, weapon):
 	if target.has_method("on_hit"):
 		$AudioPlayerHit.play()
-		slowMotion()
 		target.on_hit(weapon.weapon_damage * strength)
+		if weapon._weapon_type == "mele":
+			slowMotion()
 
 func slowMotion():
 	if !slowMotionActive:

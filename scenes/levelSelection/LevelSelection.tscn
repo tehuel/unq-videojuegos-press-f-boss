@@ -7,7 +7,6 @@
 [ext_resource path="res://scenes/utils/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/images/level/ship.png" type="Texture" id=6]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "to_level_1"
 length = 4.0

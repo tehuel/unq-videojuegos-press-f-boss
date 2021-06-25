@@ -15,6 +15,7 @@ onready var invincible_power_up = preload("res://scenes/environment/Invincibilit
 onready var damage_power_up = preload("res://scenes/environment/StrengthPowerUp.tscn")
 onready var sprite = $Sprite
 onready var armor_sprite = $Sprite/Sprite2
+onready var shield_effect = $Sprite/ShieldEffect
 
 var _cur_health
 var _cur_armor
@@ -25,6 +26,7 @@ var _target
 var container
 var _dieSound
 var velocity = Vector2.ZERO
+var rng = RandomNumberGenerator.new()
 
 enum states {IDLE, ATTACK, CHASE}
 
@@ -148,18 +150,33 @@ func hit_target(target, _weapon):
 	if target.has_method("on_hit") && !target.is_in_group("enemies"):
 		target.on_hit(weapon.weapon_damage * strength)
 
+func randomNumberBetween(numberOne, numberTwo):
+	rng.randomize()
+	return rng.randi_range(numberOne, numberTwo)
+
+func _shield_effect():
+	if shield_effect != null:
+			#Play sound effect
+			var sfx = shield_effect.shield_sfx
+			var numberSound = randomNumberBetween(0, 1)
+			sfx.set_stream(sfx.sfx_list[numberSound])
+			sfx.set_volume_db(-15.0)
+			sfx.play()
+			
+			#Emmit particle
+			shield_effect.shield_particle.position = position
+			shield_effect.shield_particle.emitting = true
+
 func get_damage(base_damage:int):
 	var damage_left:int = base_damage
 	sprite.material.set_shader_param("hp_color", Color.white)
 	if _cur_armor > 0:
-# warning-ignore:narrowing_conversion
+		_shield_effect()
 		damage_left = max(base_damage - _cur_armor, 0)
-# warning-ignore:narrowing_conversion
 		_cur_armor = max(_cur_armor - base_damage, 0)
 		_update_armor_sprite()
 	if damage_left > 0:
 		_cur_health -= damage_left
-
 	var textValue = '-' + str(base_damage)
 	var textColor = Color(0.6, 0, 0, 1)
 	get_parent().draw_text(textValue, textColor, position)

@@ -34,10 +34,6 @@ func _process(_delta):
 	var inputEnter = Input.is_action_just_pressed("ui_accept") || Input.is_action_just_pressed("left_click")
 	if (inputEnter && !animation.is_playing()):
 		_start_level(Game.level)
-	
-	if (Input.is_action_just_pressed("ui_cancel")):
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/mainMenu/MainMenu.tscn")
 
 func _start_level(level): 
 	Game.set_current_level(level)

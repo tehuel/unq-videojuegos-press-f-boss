@@ -30,12 +30,14 @@ func _input(_event):
 				sfx_dialog.play()
 						
 		if page == last_page:
-# warning-ignore:return_value_discarded
 			get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 		else:
 			set_visible_characters(get_total_character_count())
 			sfx_dialog.stop()
+			
+	if Input.is_action_just_pressed("ui_cancel") and camera.position.y == -6700:
+		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
 func _on_Timer_timeout():
 	set_visible_characters(get_visible_characters()+1)
