@@ -110,6 +110,7 @@ func hit_target(target, weapon):
 		$AudioPlayerHit.play()
 		target.on_hit(weapon.weapon_damage * strength)
 		if weapon._weapon_type == "mele":
+			$Camera2D.shake(8, 0.15, 0)
 			slowMotion()
 
 func slowMotion():

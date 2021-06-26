@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/MapGenerator.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/environment/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/game/Soundtrack.gd" type="Script" id=8]
+[ext_resource path="res://scenes/game/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://assets/audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
 
 [sub_resource type="Environment" id=1]
@@ -46,6 +47,7 @@ limit_left = 0
 limit_top = 0
 limit_smoothed = true
 smoothing_enabled = true
+script = ExtResource( 9 )
 
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 160, 152 )
