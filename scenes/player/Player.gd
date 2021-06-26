@@ -108,7 +108,7 @@ func ranged_attack():
 func hit_target(target, weapon):
 	if target.has_method("on_hit"):
 		$AudioPlayerHit.play()
-		target.on_hit(weapon.weapon_damage * strength)
+		target.on_hit(weapon.weapon_damage * strength, weapon, global_position)
 		if weapon._weapon_type == "mele":
 			$Camera2D.shake(8, 0.15, 0)
 			slowMotion()

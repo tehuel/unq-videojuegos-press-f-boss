@@ -165,11 +165,17 @@ func sight_check():
 	else:
 		_state = states.WANDER
 
-func on_hit(damage):
+func on_hit(damage, weapon, playerPosition):
 	if !_target:
 		_target = get_parent().get_node("Player")
 	get_damage(damage)
 	$HitTimer.start()
+	if weapon._weapon_type == "mele":
+		knockback(playerPosition)
+
+func knockback(pushBack):
+	velocity-= (pushBack - self.global_position).normalized() * 2800
+	move_and_slide(velocity)
 
 func hit_target(target, _weapon):
 	if target.has_method("on_hit") && !target.is_in_group("enemies"):
