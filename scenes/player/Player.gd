@@ -47,7 +47,10 @@ func _physics_process(_delta):
 	velocity.y = int(Input.is_action_pressed("abajo")) - int(Input.is_action_pressed("arriba"))
 	
 	if velocity.length() > 0:
+		set_scale(Vector2(1.3,1.3))
 		velocity = velocity.normalized()
+	else:
+		set_scale(Vector2(1.5,1.5))
 	
 	if Input.is_action_just_pressed("dash") && dash_timer.is_stopped():
 		$AudioStreamPlayerDash.play()
