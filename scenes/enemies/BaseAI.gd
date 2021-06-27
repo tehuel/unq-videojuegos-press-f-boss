@@ -179,7 +179,7 @@ func knockback(pushBack):
 
 func hit_target(target, _weapon):
 	if target.has_method("on_hit") && !target.is_in_group("enemies"):
-		target.on_hit(weapon.weapon_damage * strength)
+		target.on_hit(weapon.weapon_damage * strength, global_position)
 
 func randomNumberBetween(numberOne, numberTwo):
 	rng.randomize()

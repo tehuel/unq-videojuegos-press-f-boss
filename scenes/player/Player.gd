@@ -71,7 +71,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("right_click"):
 		ranged_attack()
 
-func on_hit(base_damage):
+func on_hit(base_damage, playerPosition):
 	var textValue
 	var textColor
 	if !_invincible:
@@ -80,6 +80,8 @@ func on_hit(base_damage):
 		_cur_health = clamp(_cur_health, 0, health)
 		textValue = "-" + str(base_damage)
 		textColor = Color(0.6, 0, 0, 1)
+		#if weapon._weapon_type == "mele":
+		knockback(playerPosition)
 	else:
 		textValue = '0'
 		textColor = Color(0, 0, 0, 0.2)
@@ -87,6 +89,10 @@ func on_hit(base_damage):
 	get_parent().draw_text(textValue, textColor, position)
 	_update_hp_shader()
 	print("remaining health", _cur_health)
+	
+func knockback(pushBack):
+	velocity-= (pushBack - self.global_position).normalized() * 2800
+	move_and_slide(velocity)
 
 func on_heal(amount):
 	_cur_health += amount
