@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/MapGenerator.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/game/Soundtrack.gd" type="Script" id=8]
 [ext_resource path="res://scenes/game/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://assets/audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
+[ext_resource path="res://scenes/game/Pause.gd" type="Script" id=11]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -62,4 +63,8 @@ script = ExtResource( 8 )
 position = Vector2( 1080, 1144 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="Controls" parent="." instance=ExtResource( 7 )]
+[node name="Pause" type="Node2D" parent="."]
+pause_mode = 2
+script = ExtResource( 11 )
+
+[node name="Controls" parent="Pause" instance=ExtResource( 7 )]

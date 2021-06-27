@@ -2,6 +2,7 @@ extends Node
 
 onready var damage_text = load("res://scenes/utils/DamageText.tscn")
 onready var outPutStreamSoundTrack = $SoundTrack
+var pause = false
 
 var rng = RandomNumberGenerator.new()
 

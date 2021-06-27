@@ -1026,7 +1026,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 71.238, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="ClickDerecho" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Attack/Attack"]
@@ -1034,7 +1034,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 172.251, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
@@ -1078,7 +1078,7 @@ text = "Pausa:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 52.872, 67.2115 )
 frames = SubResource( 140 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="PageSFX" type="AudioStreamPlayer" parent="Control"]

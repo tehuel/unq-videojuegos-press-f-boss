@@ -9,3 +9,5 @@ func _ready():
 	control.visible = isVisible
 	control.isInputValid = isInputValid
 	
+func openControls():
+	$Control.openControls()
