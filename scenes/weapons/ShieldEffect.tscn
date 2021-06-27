@@ -50,4 +50,5 @@ one_shot = true
 process_material = SubResource( 6 )
 
 [node name="shield_sfx" type="AudioStreamPlayer2D" parent="."]
+max_distance = 4000.0
 script = ExtResource( 1 )

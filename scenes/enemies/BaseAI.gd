@@ -217,6 +217,7 @@ func get_damage(base_damage:int):
 		_update_armor_sprite()
 	if damage_left > 0:
 		blood_floor(0.28)
+		$AudioPlayerHit.play()
 		_cur_health -= damage_left
 	var textValue = '-' + str(base_damage)
 	var textColor = Color(0.6, 0, 0, 1)

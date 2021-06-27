@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=5]
 [ext_resource path="res://scenes/utils/CompleteHealthShader.tres" type="Material" id=6]
 [ext_resource path="res://assets/audio/sfx/player/player_dash.ogg" type="AudioStream" id=7]
-[ext_resource path="res://assets/audio/sfx/player/player_hit.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/sfx/AudioPlayerHit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/player/dash_sprite.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -60,7 +60,6 @@ one_shot = true
 stream = ExtResource( 7 )
 volume_db = -10.0
 
-[node name="AudioPlayerHit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+[node name="AudioPlayerHit" parent="." instance=ExtResource( 8 )]
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="SlowMotion" to="." method="_on_SlowMotion_timeout"]

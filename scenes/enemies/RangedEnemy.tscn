@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/enemies/RangedEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/weapons/RangedWeapon.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/images/enemies/base_enemy.png" type="Texture" id=3]
 [ext_resource path="res://scenes/utils/Health.shader" type="Shader" id=4]
 [ext_resource path="res://scenes/weapons/ShieldEffect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/sfx/AudioPlayerHit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 213.187
@@ -74,6 +75,8 @@ delay = 0.3
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
+
+[node name="AudioPlayerHit" parent="." instance=ExtResource( 6 )]
 [connection signal="body_entered" from="SeekArea" to="." method="_on_SeekArea_body_entered"]
 [connection signal="body_exited" from="SeekArea" to="." method="_on_SeekArea_body_exited"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_Hit_Timer_timeout"]

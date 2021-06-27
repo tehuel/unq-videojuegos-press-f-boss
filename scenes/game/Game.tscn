@@ -31,6 +31,8 @@ script = ExtResource( 3 )
 [node name="AudioDie" type="AudioStreamPlayer" parent="EnemyGenerator"]
 stream = ExtResource( 10 )
 volume_db = -10.0
+mix_target = 2
+bus = "AudioDie"
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -10

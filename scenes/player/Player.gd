@@ -17,7 +17,7 @@ var _cur_speed
 var _cur_health
 var _invincible = false
 var slowMotionActive = false
-
+var blood = load("res://scenes/utils/blood.tscn")
 
 func start(pos, cont):
 	position = pos
@@ -80,6 +80,7 @@ func on_hit(base_damage, playerPosition):
 	var textColor
 	if !_invincible:
 		$AudioPlayerHit.play()
+		blood_floor(0.6)
 		_cur_health -= base_damage
 		_cur_health = clamp(_cur_health, 0, health)
 		textValue = "-" + str(base_damage)
@@ -93,6 +94,13 @@ func on_hit(base_damage, playerPosition):
 	get_parent().draw_text(textValue, textColor, position)
 	_update_hp_shader()
 	print("remaining health", _cur_health)
+	
+func blood_floor(scale = 1):
+	var blood_instance : CPUParticles2D = blood.instance()
+	blood_instance.scale = Vector2(scale, scale)
+	get_tree().current_scene.add_child(blood_instance)
+	blood_instance.global_position = global_position
+	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)	
 	
 func knockback(pushBack):
 	velocity-= (pushBack - self.global_position).normalized() * 2800
@@ -120,7 +128,6 @@ func ranged_attack():
 	
 func hit_target(target, weapon):
 	if target.has_method("on_hit") and target != self:
-		$AudioPlayerHit.play()
 		target.on_hit(weapon.weapon_damage * strength, weapon, global_position)
 		if weapon._weapon_type == "mele":
 			$Camera2D.shake(8, 0.15, 0)
