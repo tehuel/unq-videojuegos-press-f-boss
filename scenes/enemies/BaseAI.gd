@@ -29,6 +29,7 @@ var velocity = Vector2.ZERO
 var _wander_wait_timer
 var _wander_target
 var rng = RandomNumberGenerator.new()
+var blood = load("res://scenes/utils/blood.tscn")
 
 enum states {WANDER, ATTACK, CHASE}
 
@@ -75,8 +76,16 @@ func _physics_process(_delta):
 		drop_power_up()
 		if(_dieSound != null):
 			_dieSound.play()
+		blood_floor()
 		queue_free()
-	
+
+func blood_floor(scale = 1):
+	var blood_instance : CPUParticles2D = blood.instance()
+	blood_instance.scale = Vector2(scale, scale)
+	get_tree().current_scene.add_child(blood_instance)
+	blood_instance.global_position = global_position
+	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)	
+
 func _attack():
 	weapon.attack()
 	
@@ -203,11 +212,11 @@ func get_damage(base_damage:int):
 	sprite.material.set_shader_param("hp_color", Color.white)
 	if _cur_armor > 0:
 		_shield_effect()
-# warning-ignore:narrowing_conversion
 		damage_left = max(base_damage - _cur_armor, 0)
 		_cur_armor = max(_cur_armor - base_damage, 0)
 		_update_armor_sprite()
 	if damage_left > 0:
+		blood_floor(0.28)
 		_cur_health -= damage_left
 	var textValue = '-' + str(base_damage)
 	var textColor = Color(0.6, 0, 0, 1)

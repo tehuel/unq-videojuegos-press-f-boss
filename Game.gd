@@ -4,6 +4,7 @@ var level = 1
 var level_size
 var level_obstacles
 var level_center
+var player_position : KinematicBody2D = null
 
 func _ready():
 	set_current_level(1)

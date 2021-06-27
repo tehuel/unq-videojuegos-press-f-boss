@@ -34,8 +34,12 @@ func start(pos, cont):
 
 func _ready():
 	print("Ready set Engine time scale to 1")
+	Game.player_position = self
 	Engine.set_time_scale(1)
 	hide()
+	
+func _exit_tree():
+	Game.player_position = null
 
 func _physics_process(_delta):
 	if !_invincible && _cur_health == 0:
@@ -115,7 +119,7 @@ func ranged_attack():
 	ranged_weapon.attack()
 	
 func hit_target(target, weapon):
-	if target.has_method("on_hit"):
+	if target.has_method("on_hit") and target != self:
 		$AudioPlayerHit.play()
 		target.on_hit(weapon.weapon_damage * strength, weapon, global_position)
 		if weapon._weapon_type == "mele":
