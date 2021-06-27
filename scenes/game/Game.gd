@@ -21,6 +21,7 @@ func _ready():
 	$MapGenerator.generate_random_map()
 	$Player.start($StartPosition.position, self)
 	playSoundTrack()
+	$BloodBackGroundCanvas.bloodSprite.visible = false
 
 #func _process(_delta):
 #	if Input.is_action_just_pressed("_debug_pass_map"):
@@ -35,3 +36,7 @@ func draw_text(value, color, position):
 	text.text = value
 	text.get_font("font").set_outline_color(color)
 	text.rect_position = position
+
+
+func _on_Player_bloodBackgroundSignal(value):
+	$BloodBackGroundCanvas.bloodSprite.visible = value

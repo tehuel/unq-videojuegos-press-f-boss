@@ -5,6 +5,8 @@ export var health = 100
 export var strength = 1
 export(PackedScene) var dash_object
 
+signal bloodBackgroundSignal(value)
+
 onready var melee_weapon = $MeleeWeapon
 onready var ranged_weapon = $RangedWeapon
 onready var dash_timer = $DashTimer
@@ -42,6 +44,11 @@ func _exit_tree():
 	Game.player_position = null
 
 func _physics_process(_delta):
+	if _cur_health <= health * 0.35:
+		emit_signal("bloodBackgroundSignal", true)
+	else:
+		emit_signal("bloodBackgroundSignal", false)
+	
 	if !_invincible && _cur_health == 0:
 		print("mission failed")
 		# warning-ignore:return_value_discarded

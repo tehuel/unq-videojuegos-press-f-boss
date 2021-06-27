@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/MapGenerator.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/game/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://assets/audio/sfx/enemy/died.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/game/Pause.gd" type="Script" id=11]
+[ext_resource path="res://scenes/utils/bloodPlayerView.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -70,3 +71,6 @@ pause_mode = 2
 script = ExtResource( 11 )
 
 [node name="Controls" parent="Pause" instance=ExtResource( 7 )]
+
+[node name="BloodBackGroundCanvas" parent="." instance=ExtResource( 12 )]
+[connection signal="bloodBackgroundSignal" from="Player" to="." method="_on_Player_bloodBackgroundSignal"]

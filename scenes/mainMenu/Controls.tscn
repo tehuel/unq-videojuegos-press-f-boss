@@ -995,7 +995,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 80.421, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 42 )
-frame = 27
+frame = 8
 playing = true
 
 [node name="Flechas" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Movement/Movement"]
@@ -1003,7 +1003,7 @@ modulate = Color( 0.0196078, 0, 0, 1 )
 position = Vector2( 208.983, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 84 )
-frame = 38
+frame = 19
 playing = true
 
 [node name="Attack" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
@@ -1054,7 +1054,7 @@ text = "Dash:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 117.153, 75.8554 )
 frames = SubResource( 134 )
-frame = 13
+frame = 35
 playing = true
 
 [node name="Pause" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
@@ -1076,7 +1076,7 @@ text = "Pausa:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 52.872, 67.2115 )
 frames = SubResource( 140 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="PageSFX" type="AudioStreamPlayer" parent="Control"]
