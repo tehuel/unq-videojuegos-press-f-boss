@@ -85,63 +85,11 @@ shape = SubResource( 5 )
 
 [node name="AudioPlayerHit" parent="." instance=ExtResource( 6 )]
 
-[node name="Telegraph" type="Node2D" parent="."]
-
-[node name="Top" type="Node2D" parent="Telegraph"]
-
-[node name="Label" type="Label" parent="Telegraph/Top"]
-margin_left = -2.0
-margin_top = -38.6667
-margin_right = 5.0
-margin_bottom = -11.6667
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Left" type="Node2D" parent="Telegraph"]
-position = Vector2( -18.6667, -19.3333 )
-rotation = -1.5708
-
-[node name="Label" type="Label" parent="Telegraph/Left"]
-margin_left = -20.6667
-margin_top = -20.6667
-margin_right = -13.6667
-margin_bottom = 6.33334
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Right" type="Node2D" parent="Telegraph"]
-position = Vector2( 19.3333, 19.3333 )
-rotation = 1.5708
-
-[node name="Label" type="Label" parent="Telegraph/Right"]
-margin_left = -21.3333
-margin_top = -20.0
-margin_right = -14.3333
-margin_bottom = 7.0
-custom_fonts/font = SubResource( 6 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-text = "!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bottom" type="Node2D" parent="Telegraph"]
-position = Vector2( -18.6667, 18 )
-rotation = 3.14159
-
-[node name="Label" type="Label" parent="Telegraph/Bottom"]
-margin_left = -21.3333
-margin_top = -21.3333
-margin_right = -14.3333
-margin_bottom = 5.66666
+[node name="Telegraph" type="Label" parent="."]
+margin_left = -3.33333
+margin_top = -14.6667
+margin_right = 3.66667
+margin_bottom = 12.3333
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "!"
