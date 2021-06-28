@@ -20,6 +20,11 @@ var _cur_health
 var _invincible = false
 var slowMotionActive = false
 var blood = load("res://scenes/utils/blood.tscn")
+var invincibilityEffect = load("res://scenes/powerUpsEffect/invincibilityEffect.tscn")
+var powerEffect = load("res://scenes/powerUpsEffect/powerEffect.tscn")
+
+var invi = null
+var power = null
 
 func start(pos, cont):
 	position = pos
@@ -81,6 +86,12 @@ func _physics_process(_delta):
 		
 	if Input.is_action_just_pressed("right_click"):
 		ranged_attack()
+		
+	if invi != null:
+		invi.global_position = global_position
+		
+	if power != null:
+		power.global_position = global_position
 
 func on_hit(base_damage, playerPosition):
 	var textValue
@@ -122,6 +133,20 @@ func on_heal(amount):
 	get_parent().draw_text(textValue, textColor, position)
 	_update_hp_shader()
 	print("remaining health", _cur_health)
+	
+func on_invincibility(isEffectOn):
+	if isEffectOn:
+		invi = invincibilityEffect.instance()
+		get_tree().current_scene.add_child(invi)
+	elif invi != null:
+		invi.queue_free()
+		
+func on_power(isEffectOn):
+	if isEffectOn:
+		power = powerEffect.instance()
+		get_tree().current_scene.add_child(power)
+	elif power != null:
+		power.queue_free()
 	
 func _update_hp_shader():
 	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))

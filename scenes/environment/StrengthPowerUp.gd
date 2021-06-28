@@ -1,6 +1,6 @@
 extends Area2D
 
-export (float) var duration:float = 2.0
+export (float) var duration:float = 8.0
 
 var _duration_timer
 var _target
@@ -14,14 +14,16 @@ func _ready():
 	add_child(_duration_timer)
 
 func _on_PowerUp_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") && body.has_method("on_power"):
 		$CollisionShape2D.set_deferred("set_monitoring",false)
 		_target = body
 		_target.strength *=  2
+		_target.on_power(true)
 		$StrengthAudio.play()
 		self.hide()
 		_duration_timer.start()
 		
 func on_duration_finish():
 	_target.strength /= 2
+	_target.on_power(false)
 	call_deferred("queue_free")
