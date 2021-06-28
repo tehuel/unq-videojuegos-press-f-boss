@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/enemies/RangedEnemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/weapons/RangedWeapon.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/utils/Health.shader" type="Shader" id=4]
 [ext_resource path="res://scenes/weapons/ShieldEffect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/sfx/AudioPlayerHit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/font/KOMTITP_.ttf" type="DynamicFontData" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 213.187
@@ -32,6 +33,12 @@ shader_param/noise = SubResource( 3 )
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 16.001
+
+[sub_resource type="DynamicFont" id=6]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 7 )
 
 [node name="RangedEnemy" type="KinematicBody2D" groups=[
 "enemies",
@@ -77,6 +84,70 @@ delay = 0.3
 shape = SubResource( 5 )
 
 [node name="AudioPlayerHit" parent="." instance=ExtResource( 6 )]
+
+[node name="Telegraph" type="Node2D" parent="."]
+
+[node name="Top" type="Node2D" parent="Telegraph"]
+
+[node name="Label" type="Label" parent="Telegraph/Top"]
+margin_left = -2.0
+margin_top = -38.6667
+margin_right = 5.0
+margin_bottom = -11.6667
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Node2D" parent="Telegraph"]
+position = Vector2( -18.6667, -19.3333 )
+rotation = -1.5708
+
+[node name="Label" type="Label" parent="Telegraph/Left"]
+margin_left = -20.6667
+margin_top = -20.6667
+margin_right = -13.6667
+margin_bottom = 6.33334
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Node2D" parent="Telegraph"]
+position = Vector2( 19.3333, 19.3333 )
+rotation = 1.5708
+
+[node name="Label" type="Label" parent="Telegraph/Right"]
+margin_left = -21.3333
+margin_top = -20.0
+margin_right = -14.3333
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="Node2D" parent="Telegraph"]
+position = Vector2( -18.6667, 18 )
+rotation = 3.14159
+
+[node name="Label" type="Label" parent="Telegraph/Bottom"]
+margin_left = -21.3333
+margin_top = -21.3333
+margin_right = -14.3333
+margin_bottom = 5.66666
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="SeekArea" to="." method="_on_SeekArea_body_entered"]
 [connection signal="body_exited" from="SeekArea" to="." method="_on_SeekArea_body_exited"]
 [connection signal="timeout" from="HitTimer" to="." method="_on_Hit_Timer_timeout"]
