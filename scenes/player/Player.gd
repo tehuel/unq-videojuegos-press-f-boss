@@ -136,6 +136,8 @@ func on_heal(amount):
 	
 func on_invincibility(isEffectOn):
 	if isEffectOn:
+		if invi != null:
+			invi.queue_free()
 		invi = invincibilityEffect.instance()
 		get_tree().current_scene.add_child(invi)
 	elif invi != null:
@@ -143,6 +145,8 @@ func on_invincibility(isEffectOn):
 		
 func on_power(isEffectOn):
 	if isEffectOn:
+		if power != null:
+			power.queue_free()
 		power = powerEffect.instance()
 		get_tree().current_scene.add_child(power)
 	elif power != null:

@@ -19,6 +19,7 @@ radius = 16.1311
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 2
 script = ExtResource( 5 )
+strength = 20
 dash_object = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
