@@ -143,7 +143,7 @@ func _avoid(target):
 func _check_points_aligned(p0, p1, p2):
 	var vec1 = p1 - p0
 	var vec2 = p2 - p1
-	if vec1.x == 0 || vec2.y == 0:
+	if vec1.x == 0 || vec1.y == 0:
 		return false
 	return vec2.x/vec1.x == vec2.y / vec1.y
 	
