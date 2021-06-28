@@ -15,7 +15,7 @@ func _ready():
 
 func _on_PowerUp_body_entered(body):
 	if body.is_in_group("player") && body.has_method("on_invincibility"):
-		$CollisionShape2D.set_deferred("set_monitoring",false)
+		$CollisionShape2D.set_deferred("disabled", true)
 		_target = body
 		_target._invincible = true
 		_target.on_invincibility(true)

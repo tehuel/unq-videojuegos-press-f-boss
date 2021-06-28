@@ -8,7 +8,7 @@ func _ready():
 
 func _on_PowerUp_body_entered(body):
 	if body.is_in_group("player") && body.has_method("on_heal"):
-		$CollisionShape2D.set_deferred("set_monitoring",false)
+		$CollisionShape2D.set_deferred("disabled", true)
 		body.on_heal(heal_amount)
 		soundHeal.play()
 		yield(soundHeal, "finished")
