@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/images/terrain/tut-tiles.png" type="Texture" id=1]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/Tutorial.gd" type="Script" id=3]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 64, 0, 384, 0, 384, 384, 64, 384 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 0, 64, 64, 64, 64, 0, 0, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 64, 256, 0, 256, 0, 0, 64, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
+
+[sub_resource type="TileSet" id=5]
+0/name = "tut-tiles.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 384, 384 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [ Vector2( 0, 0 ), SubResource( 1 ), Vector2( 0, 1 ), SubResource( 2 ), Vector2( 0, 2 ), SubResource( 3 ) ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 4 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="TileMap" type="TileMap"]
+z_index = -10
+tile_set = SubResource( 5 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 65536, 0, 0, 65537, 0, 5, 65538, 0, 5, 65539, 0, 5, 65540, 0, 5, 65541, 0, 5, 65542, 0, 5, 65543, 0, 5, 65544, 0, 5, 65545, 0, 5, 65546, 0, 5, 65547, 0, 5, 65548, 0, 5, 65549, 0, 5, 65550, 0, 5, 65551, 0, 5, 65552, 0, 0, 131072, 0, 0, 131073, 0, 5, 131074, 0, 5, 131075, 0, 65536, 131076, 0, 2, 131077, 0, 2, 131078, 0, 5, 131079, 0, 5, 131080, 0, 5, 131081, 0, 5, 131082, 0, 5, 131083, 0, 5, 131084, 0, 3, 131085, 0, 5, 131086, 0, 5, 131087, 0, 5, 131088, 0, 0, 196608, 0, 0, 196609, 0, 5, 196610, 0, 65537, 196611, 0, 65538, 196612, 0, 65539, 196613, 0, 2, 196614, 0, 131074, 196615, 0, 131075, 196616, 0, 5, 196617, 0, 5, 196618, 0, 65540, 196619, 0, 65541, 196620, 0, 3, 196621, 0, 5, 196622, 0, 5, 196623, 0, 5, 196624, 0, 0, 262144, 0, 0, 262145, 0, 5, 262146, 0, 5, 262147, 0, 5, 262148, 0, 5, 262149, 0, 5, 262150, 0, 131072, 262151, 0, 131073, 262152, 0, 2, 262153, 0, 2, 262154, 0, 5, 262155, 0, 5, 262156, 0, 5, 262157, 0, 3, 262158, 0, 5, 262159, 0, 5, 262160, 0, 0, 327680, 0, 0, 327681, 0, 5, 327682, 0, 5, 327683, 0, 5, 327684, 0, 5, 327685, 0, 5, 327686, 0, 5, 327687, 0, 5, 327688, 0, 5, 327689, 0, 5, 327690, 0, 5, 327691, 0, 5, 327692, 0, 5, 327693, 0, 3, 327694, 0, 3, 327695, 0, 5, 327696, 0, 0, 393216, 0, 0, 393217, 0, 5, 393218, 0, 5, 393219, 0, 5, 393220, 0, 5, 393221, 0, 5, 393222, 0, 5, 393223, 0, 5, 393224, 0, 5, 393225, 0, 5, 393226, 0, 1, 393227, 0, 5, 393228, 0, 5, 393229, 0, 5, 393230, 0, 5, 393231, 0, 3, 393232, 0, 0, 458752, 0, 0, 458753, 0, 5, 458754, 0, 5, 458755, 0, 5, 458756, 0, 5, 458757, 0, 5, 458758, 0, 5, 458759, 0, 5, 458760, 0, 1, 458761, 0, 1, 458762, 0, 5, 458763, 0, 5, 458764, 0, 5, 458765, 0, 5, 458766, 0, 5, 458767, 0, 5, 458768, 0, 0, 524288, 0, 0, 524289, 0, 5, 524290, 0, 5, 524291, 0, 5, 524292, 0, 5, 524293, 0, 5, 524294, 0, 1, 524295, 0, 1, 524296, 0, 1, 524297, 0, 5, 524298, 0, 5, 524299, 0, 5, 524300, 0, 5, 524301, 0, 5, 524302, 0, 5, 524303, 0, 5, 524304, 0, 0, 589824, 0, 0, 589825, 0, 5, 589826, 0, 5, 589827, 0, 5, 589828, 0, 5, 589829, 0, 5, 589830, 0, 5, 589831, 0, 5, 589832, 0, 5, 589833, 0, 5, 589834, 0, 5, 589835, 0, 5, 589836, 0, 5, 589837, 0, 5, 589838, 0, 5, 589839, 0, 5, 589840, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 224, 352 )
