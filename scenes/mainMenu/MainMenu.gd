@@ -13,6 +13,14 @@ func _ready():
 	$VBoxContainer/VBoxContainer/Start.grab_focus()
 	$VBoxContainer/VBoxContainer/Start.disabled = false
 
+
+func _process(delta):
+	# agrego offset a la camara
+	var offset = get_viewport().get_mouse_position();
+	var smoothness = 40;
+	$CameraMainMenu.offset = offset / smoothness;
+
+
 func _on_Start_pressed():
 	print("Start pressed")
 	$VBoxContainer/VBoxContainer/Start.disabled = true
