@@ -14,8 +14,8 @@ func initialize(origin, fire_direction:Vector2, initial_position:Vector2):
 	direction = fire_direction
 	timer.connect("timeout", self, "_on_DeleteTimer_timeout")
 	timer.start()
-	
-	
+
+
 func _physics_process(delta):
 	position += direction * projectile_speed * delta
 

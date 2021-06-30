@@ -45,8 +45,9 @@ func _on_BodyDetection_body_exited(_body):
 
 
 func _on_MeleeWeapon_area_entered(area):
-	if is_instance_valid(area) && area.has_method("destroy"):
-		outPutStreamAxe.set_stream(outPutStreamAxe.parry)
-		outPutStreamAxe.set_volume_db(-20.0)
-		outPutStreamAxe.play()
-		area.destroy()
+	pass
+#	if is_instance_valid(area) && area.has_method("destroy"):
+#		outPutStreamAxe.set_stream(outPutStreamAxe.parry)
+#		outPutStreamAxe.set_volume_db(-20.0)
+#		outPutStreamAxe.play()
+#		area.destroy()

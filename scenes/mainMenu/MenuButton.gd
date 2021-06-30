@@ -16,10 +16,10 @@ func _process(_delta):
 	if Engine.editor_hint:
 		setup_text()
 		show_arrows()
-	
+
 func setup_text():
 	$RichTextLabel.bbcode_text = "[center] %s [/center]" % [text]
-	
+
 func show_arrows():
 	for arrow in [$LeftArrow, $RightArrow]:
 		arrow.visible = true
