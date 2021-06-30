@@ -13,7 +13,7 @@ func playSound():
 	outPutStreamAxe.set_stream(outPutStreamAxe.axe_hit[numberSound])
 	outPutStreamAxe.set_volume_db(-15.0)
 	outPutStreamAxe.play()
-	
+
 func randomNumberBetween(numberOne, numberTwo):
 	rng.randomize()
 	return rng.randi_range(numberOne, numberTwo)

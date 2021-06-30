@@ -44,7 +44,7 @@ func _ready():
 	Game.player_position = self
 	Engine.set_time_scale(1)
 	hide()
-	
+
 func _exit_tree():
 	Game.player_position = null
 
@@ -53,73 +53,64 @@ func _physics_process(_delta):
 		emit_signal("bloodBackgroundSignal", true)
 	else:
 		emit_signal("bloodBackgroundSignal", false)
-	
+
 	if !_invincible && _cur_health == 0:
 		print("mission failed")
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/theEnd/youDie.tscn") #Meter algo interesante..
-	
+
 	velocity.x = int(Input.is_action_pressed("derecha")) - int(Input.is_action_pressed("izquierda"))
 	velocity.y = int(Input.is_action_pressed("abajo")) - int(Input.is_action_pressed("arriba"))
-	
+
 	if velocity.length() > 0:
 		set_scale(Vector2(1.3,1.3))
 		velocity = velocity.normalized()
 	else:
 		set_scale(Vector2(1.5,1.5))
-	
+
 	if Input.is_action_just_pressed("dash") && dash_timer.is_stopped():
 		$AudioStreamPlayerDash.play()
 		_cur_speed *= 2.5
 		dash_timer.start()
-		
+
 		var dash_node = dash_object.instance()
 		dash_node.texture = sprite.texture
 		dash_node.global_position = global_position
 		get_parent().add_child(dash_node)
-		
+
 	velocity = move_and_slide(velocity * _cur_speed)
 	rotate(get_angle_to(get_global_mouse_position()))
-	
+
 	if Input.is_action_pressed("left_click"):
 		melee_attack()
-		
+
 	if Input.is_action_just_pressed("right_click"):
 		ranged_attack()
-		
+
 	if invi != null:
 		invi.global_position = global_position
-		
+
 	if power != null:
 		power.global_position = global_position
 
 func on_hit(base_damage, playerPosition):
-	var textValue
-	var textColor
 	if !_invincible:
 		$AudioPlayerHit.play()
 		blood_floor(0.6)
 		_cur_health -= base_damage
 		_cur_health = clamp(_cur_health, 0, health)
-		textValue = "-" + str(base_damage)
-		textColor = Color(0.6, 0, 0, 1)
 		#if weapon._weapon_type == "mele":
 		knockback(playerPosition)
-	else:
-		textValue = '0'
-		textColor = Color(0, 0, 0, 0.2)
-	
-	get_parent().draw_text(textValue, textColor, position)
 	_update_hp_shader()
 	print("remaining health", _cur_health)
-	
+
 func blood_floor(scale = 1):
 	var blood_instance : CPUParticles2D = blood.instance()
 	blood_instance.scale = Vector2(scale, scale)
 	get_tree().current_scene.add_child(blood_instance)
 	blood_instance.global_position = global_position
-	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)	
-	
+	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)
+
 func knockback(pushBack):
 	velocity-= (pushBack - self.global_position).normalized() * 2800
 	move_and_slide(velocity)
@@ -127,13 +118,9 @@ func knockback(pushBack):
 func on_heal(amount):
 	_cur_health += amount
 	_cur_health = clamp(_cur_health, 0, health)
-
-	var textValue = '+' + str(amount)
-	var textColor = Color(0, 0.8, 0, 1)
-	get_parent().draw_text(textValue, textColor, position)
 	_update_hp_shader()
 	print("remaining health", _cur_health)
-	
+
 func on_invincibility(isEffectOn):
 	if isEffectOn:
 		if invi != null:
@@ -142,7 +129,7 @@ func on_invincibility(isEffectOn):
 		get_tree().current_scene.add_child(invi)
 	elif invi != null:
 		invi.queue_free()
-		
+
 func on_power(isEffectOn):
 	if isEffectOn:
 		if power != null:
@@ -151,7 +138,7 @@ func on_power(isEffectOn):
 		get_tree().current_scene.add_child(power)
 	elif power != null:
 		power.queue_free()
-	
+
 func _update_hp_shader():
 	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
 	sprite.material.set_shader_param("damage", normalized_damage)
@@ -161,7 +148,7 @@ func melee_attack():
 
 func ranged_attack():
 	ranged_weapon.attack()
-	
+
 func hit_target(target, weapon):
 	if target.has_method("on_hit") and target != self:
 		target.on_hit(weapon.weapon_damage * strength, weapon, global_position)

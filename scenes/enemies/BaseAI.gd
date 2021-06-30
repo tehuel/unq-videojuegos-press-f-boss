@@ -70,7 +70,7 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	sight_check()
-	
+
 	if _cur_health <=0:
 		emit_signal("enemy_died")
 		drop_power_up()
@@ -84,11 +84,11 @@ func blood_floor(scale = 1):
 	blood_instance.scale = Vector2(scale, scale)
 	get_tree().current_scene.add_child(blood_instance)
 	blood_instance.global_position = global_position
-	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)	
+	blood_instance.rotation = global_position.angle_to_point(Game.player_position.global_position)
 
 func _attack():
 	weapon.attack()
-	
+
 func _wander():
 	if _wander_target:
 		if position.distance_to(_wander_target) <= 16:
@@ -146,7 +146,7 @@ func _check_points_aligned(p0, p1, p2):
 	if vec1.x == 0 || vec1.y == 0:
 		return false
 	return vec2.x/vec1.x == vec2.y / vec1.y
-	
+
 func _pursuit():
 	var distance = _target.position - position
 	var t:int = distance.length() / _target.speed
@@ -204,7 +204,7 @@ func _shield_effect():
 			sfx.set_stream(sfx.sfx_list[numberSound])
 			sfx.set_volume_db(-15.0)
 			sfx.play()
-			
+
 			#Emmit particle
 			shield_effect.shield_particle.position = position
 			shield_effect.shield_particle.emitting = true
@@ -221,9 +221,6 @@ func get_damage(base_damage:int):
 		blood_floor(0.28)
 		$AudioPlayerHit.play()
 		_cur_health -= damage_left
-	var textValue = '-' + str(base_damage)
-	var textColor = Color(0.6, 0, 0, 1)
-	get_parent().draw_text(textValue, textColor, position)
 
 	_update_hp_shader()
 
@@ -240,14 +237,14 @@ func target_in_range():
 
 func target_out_of_range():
 	_target_in_attack_range = false
-	
+
 func _on_Hit_Timer_timeout():
 	sprite.material.set_shader_param("hp_color", enemy_color)
-	
+
 func _update_hp_shader():
 	var normalized_damage:float = 0.57 - (0.25*(float(_cur_health) -1.0) / (float(health) - 1.0))
 	sprite.material.set_shader_param("damage", normalized_damage)
-	
+
 func _update_armor_sprite():
 	var normalized_armor:float = float(_cur_armor) / float(armor) #Para que aparezcan siempre como si tuvieran una buena armadura, solo que se rompe más rápido en ciertos casos.
 	var scaleFloat = 1.0 + (normalized_armor * 0.5)
