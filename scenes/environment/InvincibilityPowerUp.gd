@@ -1,6 +1,6 @@
 extends Area2D
 
-export (float) var duration:float = 6.0
+export (float) var duration:float = 3.5
 
 var _duration_timer
 var _target
