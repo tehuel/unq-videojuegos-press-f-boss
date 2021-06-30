@@ -12,7 +12,7 @@ layer = 0
 motion_scale = Vector2( 0.2, 0.2 )
 
 [node name="mountains" type="Sprite" parent="ParallaxLayer-3"]
-self_modulate = Color( 0.54902, 0.494118, 0.482353, 1 )
+self_modulate = Color( 0.462745, 0.407843, 0.396078, 1 )
 position = Vector2( 474.089, 31.7866 )
 scale = Vector2( 0.806347, 0.326626 )
 texture = ExtResource( 3 )
@@ -22,17 +22,17 @@ flip_h = true
 motion_scale = Vector2( 0.3, 0.3 )
 
 [node name="mountains" type="Sprite" parent="ParallaxLayer-2"]
-self_modulate = Color( 0.658824, 0.603922, 0.545098, 1 )
-position = Vector2( 437.818, 5.71714 )
+self_modulate = Color( 0.564706, 0.52549, 0.482353, 1 )
+position = Vector2( 437.818, -2.28286 )
 scale = Vector2( 0.678424, 0.193434 )
 texture = ExtResource( 3 )
 
 [node name="ParallaxLayer-1" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.75, 0.75 )
+motion_scale = Vector2( 0.35, 0.35 )
 
 [node name="mountains" type="Sprite" parent="ParallaxLayer-1"]
-self_modulate = Color( 0.776471, 0.764706, 0.686275, 1 )
-position = Vector2( 236.563, 215.634 )
+self_modulate = Color( 0.721569, 0.717647, 0.678431, 1 )
+position = Vector2( 238.062, 119.634 )
 scale = Vector2( 0.855884, 0.232582 )
 texture = ExtResource( 3 )
 flip_h = true
@@ -40,12 +40,13 @@ flip_h = true
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 
 [node name="mountains" type="Sprite" parent="ParallaxLayer"]
-position = Vector2( 521.494, 289.225 )
-scale = Vector2( 0.448264, 0.189401 )
+visible = false
+position = Vector2( 686.308, 289.225 )
+scale = Vector2( 0.689242, 0.189401 )
 texture = ExtResource( 3 )
 
 [node name="grass" type="Sprite" parent="ParallaxLayer"]
-position = Vector2( 544.258, 446.572 )
+position = Vector2( 544.258, 454.572 )
 scale = Vector2( 0.406733, 0.240832 )
 texture = ExtResource( 1 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
@@ -15,19 +15,7 @@
 [ext_resource path="res://scenes/mainMenu/Polygon2D.gd" type="Script" id=13]
 [ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=15]
-
-[sub_resource type="Shader" id=1]
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.8 )
-colors = PoolColorArray( 0.509804, 0.815686, 1, 1, 0, 0, 0, 1 )
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-width = 100
+[ext_resource path="res://assets/images/mainMenu/sky.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFontData" id=5]
 antialiased = false
@@ -44,66 +32,12 @@ font_data = SubResource( 5 )
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
 
-[node name="FakeBackGround" type="Sprite" parent="."]
-material = SubResource( 2 )
-position = Vector2( 523.353, -3838.93 )
-rotation = -1.5708
-scale = Vector2( 80, 1200 )
-texture = SubResource( 4 )
+[node name="sky" type="Sprite" parent="."]
+position = Vector2( 579.781, -2709.33 )
+scale = Vector2( 7.51686, 15.4608 )
+texture = ExtResource( 16 )
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -1.49835
-margin_bottom = 2.50165
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 0, 300 )
-
-[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
-margin_left = 398.0
-margin_top = 110.0
-margin_right = 625.0
-margin_bottom = 190.0
-custom_fonts/font = ExtResource( 3 )
-text = "Cuvikingo"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 304.0
-margin_right = 1024.0
-margin_bottom = 604.0
-rect_min_size = Vector2( 0, 300 )
-alignment = 1
-
-[node name="Start" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 71.0
-margin_bottom = 121.0
-focus_neighbour_top = NodePath("../Exit")
-focus_neighbour_bottom = NodePath("../Controls")
-text = "Start"
-arrow_margin_from_center = 82
-
-[node name="Controls" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-focus_neighbour_top = NodePath("../Start")
-focus_neighbour_bottom = NodePath("../Exit")
-text = "Controls"
-arrow_margin_from_center = 95
-
-[node name="Exit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 179.0
-margin_bottom = 229.0
-focus_neighbour_top = NodePath("../Controls")
-focus_neighbour_bottom = NodePath("../Start")
-text = "Exit"
-arrow_margin_from_center = 61
 
 [node name="StartSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
@@ -274,11 +208,65 @@ scale = Vector2( 0.40625, 0.40625 )
 power = 0.3
 speed = 0.8
 
-[node name="Controls" parent="." instance=ExtResource( 14 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.49835
+margin_bottom = 2.50165
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/CenterContainer"]
+margin_left = 398.0
+margin_top = 110.0
+margin_right = 625.0
+margin_bottom = 190.0
+custom_fonts/font = ExtResource( 3 )
+text = "Cuvikingo"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 300 )
+alignment = 1
+
+[node name="Start" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 71.0
+margin_bottom = 121.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Controls")
+text = "Start"
+arrow_margin_from_center = 82
+
+[node name="Controls" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+focus_neighbour_top = NodePath("../Start")
+focus_neighbour_bottom = NodePath("../Exit")
+text = "Controls"
+arrow_margin_from_center = 95
+
+[node name="Exit" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 179.0
+margin_bottom = 229.0
+focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_bottom = NodePath("../Start")
+text = "Exit"
+arrow_margin_from_center = 61
+
+[node name="Controls" parent="CanvasLayer" instance=ExtResource( 14 )]
 isInputValid = false
 
-[connection signal="started_pressed" from="." to="VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="started_pressed" from="." to="CanvasLayer/VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
 [connection signal="timeout" from="Door/Timer" to="Door/RichTextLabel" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

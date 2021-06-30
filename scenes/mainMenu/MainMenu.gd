@@ -7,23 +7,28 @@ onready var startSFX = $StartSong
 onready var camera = $CameraMainMenu
 onready var controls = $Controls/Control
 onready var backGroundSFX = $BackGround
+
+var cameraSmoothness = 0.1;
+
 signal started_pressed
 
 func _ready():
-	$VBoxContainer/VBoxContainer/Start.grab_focus()
-	$VBoxContainer/VBoxContainer/Start.disabled = false
+	cameraSmoothness = 0.1;
+	$CanvasLayer/VBoxContainer.visible = true
+	$CanvasLayer/VBoxContainer/VBoxContainer/Start.grab_focus()
+	$CanvasLayer/VBoxContainer/VBoxContainer/Start.disabled = false
 
 
 func _process(delta):
 	# agrego offset a la camara
-	var offset = get_viewport().get_mouse_position();
-	var smoothness = 20;
-	$CameraMainMenu.offset = offset / smoothness;
+	$CameraMainMenu.offset = get_viewport().get_mouse_position() * cameraSmoothness;
 
 
 func _on_Start_pressed():
 	print("Start pressed")
-	$VBoxContainer/VBoxContainer/Start.disabled = true
+	cameraSmoothness = 0;
+	$CanvasLayer/VBoxContainer/VBoxContainer/Start.disabled = true
+	$CanvasLayer/VBoxContainer.visible = false
 	axeSFX.play()
 	winfSFX.play()
 	yield(axeSFX, "finished")
