@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/font/montserrat_eb_32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/images/mainMenu/Scroll.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/mainMenu/viking-control.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/powerup/health.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/powerup/fist.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/powerup/shield.png" type="Texture" id=6]
@@ -758,8 +758,8 @@ __meta__ = {
 }
 
 [node name="Scroll" type="Sprite" parent="Control"]
-position = Vector2( 509.424, 289.923 )
-scale = Vector2( 0.871174, 0.550508 )
+position = Vector2( 516.983, 311.972 )
+scale = Vector2( 1, 0.979221 )
 texture = ExtResource( 3 )
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Control/Scroll"]
@@ -767,26 +767,30 @@ anchor_left = 0.092
 anchor_top = 0.116
 anchor_right = 0.897
 anchor_bottom = 0.909
-margin_left = -535.44
-margin_top = -536.12
-margin_right = -534.79
-margin_bottom = -534.63
+margin_left = -556.36
+margin_top = -381.028
+margin_right = -285.76
+margin_bottom = -262.297
+rect_scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Utils" type="VBoxContainer" parent="Control/Scroll/VBoxContainer"]
-margin_right = 429.0
-margin_bottom = 850.0
+margin_right = 566.0
+margin_bottom = 700.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PowerUps" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/Utils"]
-margin_right = 429.0
-margin_bottom = 423.0
+margin_right = 566.0
+margin_bottom = 348.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Control/Scroll/VBoxContainer/Utils/PowerUps"]
-margin_right = 429.0
+margin_right = 566.0
 margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -795,22 +799,22 @@ align = 1
 
 [node name="Heal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/PowerUps"]
 margin_top = 84.0
-margin_right = 429.0
-margin_bottom = 194.0
+margin_right = 566.0
+margin_bottom = 169.0
 size_flags_vertical = 3
 
 [node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Heal"]
 margin_right = 100.0
-margin_bottom = 110.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 100, 0 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="HealDescription2" type="Label" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Heal"]
 margin_left = 104.0
-margin_top = 43.0
-margin_right = 429.0
-margin_bottom = 66.0
+margin_top = 31.0
+margin_right = 566.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.145098, 0.345098, 0.101961, 1 )
@@ -819,23 +823,23 @@ align = 1
 autowrap = true
 
 [node name="Shield" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/PowerUps"]
-margin_top = 198.0
-margin_right = 429.0
-margin_bottom = 308.0
+margin_top = 173.0
+margin_right = 566.0
+margin_bottom = 258.0
 size_flags_vertical = 3
 
 [node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Shield"]
 margin_right = 100.0
-margin_bottom = 110.0
+margin_bottom = 85.0
 rect_min_size = Vector2( 100, 0 )
 texture = ExtResource( 6 )
 expand = true
 
 [node name="ShieldDescription" type="Label" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Shield"]
 margin_left = 104.0
-margin_top = 30.0
-margin_right = 429.0
-margin_bottom = 79.0
+margin_top = 31.0
+margin_right = 566.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.278431, 0.32549, 0.34902, 1 )
@@ -844,23 +848,23 @@ align = 1
 autowrap = true
 
 [node name="Fist" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/PowerUps"]
-margin_top = 312.0
-margin_right = 429.0
-margin_bottom = 423.0
+margin_top = 262.0
+margin_right = 566.0
+margin_bottom = 348.0
 size_flags_vertical = 3
 
 [node name="Icon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Fist"]
 margin_right = 100.0
-margin_bottom = 111.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 100, 0 )
 texture = ExtResource( 5 )
 expand = true
 
 [node name="FistDescription" type="Label" parent="Control/Scroll/VBoxContainer/Utils/PowerUps/Fist"]
 margin_left = 104.0
-margin_top = 44.0
-margin_right = 429.0
-margin_bottom = 67.0
+margin_top = 31.0
+margin_right = 566.0
+margin_bottom = 54.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.364706, 0.137255, 0.0588235, 1 )
@@ -869,14 +873,14 @@ align = 1
 autowrap = true
 
 [node name="Portal" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/Utils"]
-margin_top = 427.0
-margin_right = 429.0
-margin_bottom = 850.0
+margin_top = 352.0
+margin_right = 566.0
+margin_bottom = 700.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Portal" type="Label" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
-margin_right = 429.0
+margin_right = 566.0
 margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -884,8 +888,8 @@ text = "Portal"
 
 [node name="HBoxPortal" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
 margin_top = 84.0
-margin_right = 429.0
-margin_bottom = 251.0
+margin_right = 566.0
+margin_bottom = 214.0
 size_flags_vertical = 3
 
 [node name="PortalImg" type="Node2D" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
@@ -911,16 +915,16 @@ texture = ExtResource( 17 )
 [node name="EmptyIcon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 160.0
-margin_bottom = 167.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 160, 0 )
 texture = ExtResource( 19 )
 expand = true
 
 [node name="PortalLabel" type="Label" parent="Control/Scroll/VBoxContainer/Utils/Portal/HBoxPortal"]
 margin_left = 164.0
-margin_top = 33.0
-margin_right = 429.0
-margin_bottom = 134.0
+margin_top = 27.0
+margin_right = 566.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.0588235, 0.0588235, 0.364706, 1 )
@@ -930,24 +934,24 @@ autowrap = true
 
 [node name="Ghost" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/Utils/Portal"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 255.0
-margin_right = 429.0
-margin_bottom = 423.0
+margin_top = 218.0
+margin_right = 566.0
+margin_bottom = 348.0
 size_flags_vertical = 3
 
 [node name="EmptyIcon" type="TextureRect" parent="Control/Scroll/VBoxContainer/Utils/Portal/Ghost"]
 modulate = Color( 1, 1, 1, 0 )
 margin_right = 160.0
-margin_bottom = 168.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 160, 0 )
 texture = ExtResource( 19 )
 expand = true
 
 [node name="PortalLabel" type="Label" parent="Control/Scroll/VBoxContainer/Utils/Portal/Ghost"]
 margin_left = 164.0
-margin_top = 33.0
-margin_right = 429.0
-margin_bottom = 134.0
+margin_top = 27.0
+margin_right = 566.0
+margin_bottom = 102.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0.0588235, 0.0588235, 0.364706, 1 )
@@ -955,14 +959,19 @@ text = "Una vez que limpies una zona de los enemigos podrás utilizar el portal 
 align = 1
 autowrap = true
 
+[node name="Margin" type="VBoxContainer" parent="Control/Scroll/VBoxContainer"]
+margin_left = 570.0
+margin_right = 570.0
+margin_bottom = 700.0
+
 [node name="KeyBoard" type="VBoxContainer" parent="Control/Scroll/VBoxContainer"]
-margin_left = 433.0
-margin_right = 862.0
-margin_bottom = 850.0
+margin_left = 574.0
+margin_right = 1140.0
+margin_bottom = 700.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard"]
-margin_right = 429.0
+margin_right = 566.0
 margin_bottom = 80.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
@@ -971,19 +980,19 @@ align = 1
 
 [node name="KeyBoardContainer" type="VBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard"]
 margin_top = 84.0
-margin_right = 429.0
-margin_bottom = 850.0
+margin_right = 566.0
+margin_bottom = 700.0
 size_flags_vertical = 3
 
 [node name="Movement" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
-margin_right = 429.0
-margin_bottom = 188.0
+margin_right = 566.0
+margin_bottom = 151.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Movement" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Movement"]
 margin_right = 121.0
-margin_bottom = 188.0
+margin_bottom = 151.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 custom_fonts/font = ExtResource( 1 )
@@ -995,7 +1004,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 80.421, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 42 )
-frame = 8
+frame = 24
 playing = true
 
 [node name="Flechas" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Movement/Movement"]
@@ -1003,18 +1012,18 @@ modulate = Color( 0.0196078, 0, 0, 1 )
 position = Vector2( 208.983, 84.7283 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 84 )
-frame = 19
+frame = 35
 playing = true
 
 [node name="Attack" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
-margin_top = 192.0
-margin_right = 429.0
-margin_bottom = 381.0
+margin_top = 155.0
+margin_right = 566.0
+margin_bottom = 306.0
 size_flags_vertical = 3
 
 [node name="Attack" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Attack"]
 margin_right = 75.0
-margin_bottom = 189.0
+margin_bottom = 151.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 custom_fonts/font = ExtResource( 1 )
@@ -1026,6 +1035,7 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 71.238, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
+frame = 6
 playing = true
 
 [node name="ClickDerecho" type="AnimatedSprite" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Attack/Attack"]
@@ -1033,18 +1043,19 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 172.251, 99.0117 )
 scale = Vector2( 0.6, 0.8 )
 frames = SubResource( 92 )
+frame = 6
 playing = true
 flip_h = true
 
 [node name="Dash" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
-margin_top = 385.0
-margin_right = 429.0
-margin_bottom = 573.0
+margin_top = 310.0
+margin_right = 566.0
+margin_bottom = 461.0
 size_flags_vertical = 3
 
 [node name="Dash" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Dash"]
 margin_right = 54.0
-margin_bottom = 188.0
+margin_bottom = 151.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -1054,18 +1065,18 @@ text = "Dash:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 117.153, 75.8554 )
 frames = SubResource( 134 )
-frame = 35
+frame = 10
 playing = true
 
 [node name="Pause" type="HBoxContainer" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer"]
-margin_top = 577.0
-margin_right = 429.0
-margin_bottom = 766.0
+margin_top = 465.0
+margin_right = 566.0
+margin_bottom = 616.0
 size_flags_vertical = 3
 
 [node name="Pause" type="Label" parent="Control/Scroll/VBoxContainer/KeyBoard/KeyBoardContainer/Pause"]
 margin_right = 62.0
-margin_bottom = 189.0
+margin_bottom = 151.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
 custom_fonts/font = ExtResource( 1 )
@@ -1076,7 +1087,7 @@ text = "Pausa:"
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 52.872, 67.2115 )
 frames = SubResource( 140 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="PageSFX" type="AudioStreamPlayer" parent="Control"]

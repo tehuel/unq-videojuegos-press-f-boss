@@ -17,17 +17,17 @@
 [ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/images/mainMenu/sky.png" type="Texture" id=16]
 
-[sub_resource type="DynamicFontData" id=5]
+[sub_resource type="DynamicFontData" id=1]
 antialiased = false
 font_path = "res://assets/font/PixelBit-Free.ttf"
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=2]
 size = 28
 extra_spacing_top = 2
 extra_spacing_bottom = 2
 extra_spacing_char = 2
 extra_spacing_space = 2
-font_data = SubResource( 5 )
+font_data = SubResource( 1 )
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
@@ -84,7 +84,7 @@ margin_left = 96.0
 margin_top = -6560.0
 margin_right = 992.0
 margin_bottom = -6432.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 script = ExtResource( 9 )
 __meta__ = {
@@ -264,7 +264,6 @@ arrow_margin_from_center = 61
 
 [node name="Controls" parent="CanvasLayer" instance=ExtResource( 14 )]
 isInputValid = false
-
 [connection signal="started_pressed" from="." to="CanvasLayer/VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
 [connection signal="timeout" from="Door/Timer" to="Door/RichTextLabel" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
