@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	# agrego offset a la camara
 	var offset = get_viewport().get_mouse_position();
-	var smoothness = 40;
+	var smoothness = 20;
 	$CameraMainMenu.offset = offset / smoothness;
 
 
