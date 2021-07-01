@@ -1,16 +1,15 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/images/terrain/tut-tiles.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/game/Tutorial.gd" type="Script" id=3]
 [ext_resource path="res://scenes/game/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://scenes/game/Soundtrack.gd" type="Script" id=5]
-[ext_resource path="res://scenes/game/Pause.gd" type="Script" id=7]
+[ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/audio/sfx/enemy/died.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/environment/Portal.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/enemies/RangedEnemy.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/utils/bloodPlayerView.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/enemies/MeleeEnemy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/images/light.png" type="Texture" id=15]
 
@@ -70,6 +69,7 @@ glow_bicubic_upscale = true
 extents = Vector2( 184, 256 )
 
 [node name="TileMap" type="TileMap"]
+position = Vector2( 0, -18 )
 z_index = -10
 tile_set = SubResource( 5 )
 occluder_light_mask = 524288
@@ -112,12 +112,6 @@ environment = SubResource( 6 )
 [node name="SoundTrack" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 5 )
 
-[node name="Pause" type="Node2D" parent="."]
-pause_mode = 2
-script = ExtResource( 7 )
-
-[node name="Controls" parent="Pause" instance=ExtResource( 13 )]
-
 [node name="RangedEnemy" parent="." instance=ExtResource( 11 )]
 position = Vector2( 3320, 344 )
 speed = 220
@@ -145,6 +139,19 @@ z_index = -9
 z_as_relative = false
 texture = ExtResource( 15 )
 
+[node name="Movimiento" type="Label" parent="Areawasd"]
+visible = false
+margin_left = -98.4128
+margin_top = -138.28
+margin_right = 173.587
+margin_bottom = -58.2799
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 6 )
+text = "Movimiento"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areawasd"]
 position = Vector2( 24, 120 )
 shape = SubResource( 7 )
@@ -163,6 +170,19 @@ scale = Vector2( 0.715625, 0.725 )
 z_index = -9
 z_as_relative = false
 texture = ExtResource( 15 )
+
+[node name="Dash" type="Label" parent="Areaspacebar"]
+visible = false
+margin_left = -16.0
+margin_top = -133.0
+margin_right = 100.0
+margin_bottom = -53.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 6 )
+text = "Dash"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areaspacebar"]
 position = Vector2( 24, 120 )
@@ -183,6 +203,19 @@ z_index = -9
 z_as_relative = false
 texture = ExtResource( 15 )
 
+[node name="AtaqueMele" type="Label" parent="Arealclick"]
+visible = false
+margin_left = -143.086
+margin_top = -110.665
+margin_right = 271.914
+margin_bottom = -30.6652
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 6 )
+text = "Ataque de cerca"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arealclick"]
 position = Vector2( 24, 120 )
 shape = SubResource( 7 )
@@ -201,6 +234,19 @@ scale = Vector2( 0.301953, 0.359375 )
 z_index = -9
 z_as_relative = false
 texture = ExtResource( 15 )
+
+[node name="AtaqueRango" type="Label" parent="Arearclick"]
+visible = false
+margin_left = -141.484
+margin_top = -110.908
+margin_right = 273.516
+margin_bottom = -30.9078
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 6 )
+text = "Ataque de rango"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arearclick"]
 position = Vector2( 24, 120 )
