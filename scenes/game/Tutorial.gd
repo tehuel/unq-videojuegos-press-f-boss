@@ -4,7 +4,6 @@ onready var enemyAudioDie = $AudioDie
 onready var portal = $Portal
 onready var outPutStreamSoundTrack = $SoundTrack
 
-var pause = false
 var enemiesLeft = 2
 
 var rng = RandomNumberGenerator.new()
@@ -32,7 +31,7 @@ func _ready():
 	$RangedEnemy.initialize(self, $AudioDie)
 	
 func _input(event):
-	if event.is_action_pressed("ui_cancel") && !pause:
+	if event.is_action_pressed("ui_cancel"):
 		Game.set_current_level(Game.level + 1)
 		get_tree().change_scene("res://scenes/levelSelection/LevelSelection.tscn")
 
