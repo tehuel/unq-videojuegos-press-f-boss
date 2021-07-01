@@ -88,7 +88,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.7, 4 ),
 "transitions": PoolRealArray( 1, 0.707107, 1 ),
 "update": 0,
-"values": [ Vector2( 864, 0 ), Vector2( 864, 0 ), Vector2( 1240, 0 ) ]
+"values": [ Vector2( 864, 0 ), Vector2( 864, 0 ), Vector2( 1400, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -113,10 +113,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 3 ),
+"transitions": PoolRealArray( 1, 0.707107, 1 ),
 "update": 0,
-"values": [ Vector2( 1250, 0 ), Vector2( 1850, 0 ) ]
+"values": [ Vector2( 1400, 0 ), Vector2( 1400, 0 ), Vector2( 1850, 0 ) ]
 }
 
 [node name="LevelSelection" type="Node2D"]
