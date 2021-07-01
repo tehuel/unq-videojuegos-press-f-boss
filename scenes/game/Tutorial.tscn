@@ -259,6 +259,7 @@ shape = SubResource( 7 )
 [node name="Controls" parent="." instance=ExtResource( 13 )]
 
 [node name="Trees" type="Node2D" parent="."]
+visible = false
 
 [node name="Tree" parent="Trees" instance=ExtResource( 7 )]
 position = Vector2( 578.849, 466.831 )
@@ -286,6 +287,7 @@ position = Vector2( 3803.9, 438.322 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Rocks" type="Node2D" parent="."]
+visible = false
 
 [node name="Rock2" parent="Rocks" instance=ExtResource( 16 )]
 position = Vector2( 465.142, 122.526 )
