@@ -259,7 +259,6 @@ shape = SubResource( 7 )
 [node name="Controls" parent="." instance=ExtResource( 13 )]
 
 [node name="Trees" type="Node2D" parent="."]
-visible = false
 
 [node name="Tree" parent="Trees" instance=ExtResource( 7 )]
 position = Vector2( 578.849, 466.831 )
@@ -272,7 +271,7 @@ scale = Vector2( 0.6, 0.6 )
 position = Vector2( 2517.44, 509.594 )
 
 [node name="Tree4" parent="Trees" instance=ExtResource( 7 )]
-position = Vector2( 2437.26, 39.1997 )
+position = Vector2( 2393.26, 131.2 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Tree5" parent="Trees" instance=ExtResource( 7 )]
@@ -287,22 +286,26 @@ position = Vector2( 3803.9, 438.322 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Rocks" type="Node2D" parent="."]
-visible = false
 
 [node name="Rock2" parent="Rocks" instance=ExtResource( 16 )]
 position = Vector2( 465.142, 122.526 )
+z_index = 3
 
 [node name="Rock4" parent="Rocks" instance=ExtResource( 16 )]
 position = Vector2( 2894.88, 452.577 )
+z_index = 3
 
 [node name="Rock5" parent="Rocks" instance=ExtResource( 16 )]
 position = Vector2( 3640.09, 155.017 )
+z_index = 3
 
 [node name="Rock3" parent="Rocks" instance=ExtResource( 8 )]
-position = Vector2( 1405.83, 477.666 )
+position = Vector2( 1396.93, 481.23 )
+z_index = 3
 
 [node name="Rock6" parent="Rocks" instance=ExtResource( 8 )]
 position = Vector2( 4402.82, 126.508 )
+z_index = 3
 [connection signal="bloodBackgroundSignal" from="Player" to="." method="_on_Player_bloodBackgroundSignal"]
 [connection signal="enemy_died" from="MeleeEnemy" to="." method="_on_enemy_died"]
 [connection signal="enemy_died" from="RangedEnemy" to="." method="_on_enemy_died"]
