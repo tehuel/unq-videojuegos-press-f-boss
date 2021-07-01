@@ -31,7 +31,7 @@ func _ready():
 	$RangedEnemy.initialize(self, $AudioDie)
 	$Trees.visible = true
 	$Rocks.visible = true
-	
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Game.set_current_level(Game.level + 1)

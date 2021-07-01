@@ -13,3 +13,9 @@ z_as_relative = false
 z_index = 5
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
+
+[node name="Under" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Under"]
+[connection signal="body_entered" from="Under" to="." method="_on_Under_body_entered"]
+[connection signal="body_exited" from="Under" to="." method="_on_Under_body_exited"]
