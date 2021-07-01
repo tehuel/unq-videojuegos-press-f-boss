@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/images/player/player.png" type="Texture" id=1]
 [ext_resource path="res://scenes/weapons/MeleeWeapon.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/audio/sfx/player/player_dash.ogg" type="AudioStream" id=7]
 [ext_resource path="res://scenes/sfx/AudioPlayerHit.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/player/dash_sprite.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/powerUpsEffect/powerEffect.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/powerUpsEffect/invincibilityEffect.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 16.1311
@@ -61,5 +63,12 @@ stream = ExtResource( 7 )
 volume_db = -10.0
 
 [node name="AudioPlayerHit" parent="." instance=ExtResource( 8 )]
+
+[node name="InvincibleEffect" parent="." instance=ExtResource( 11 )]
+visible = false
+
+[node name="PowerEffect" parent="." instance=ExtResource( 10 )]
+visible = false
+
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="SlowMotion" to="." method="_on_SlowMotion_timeout"]
