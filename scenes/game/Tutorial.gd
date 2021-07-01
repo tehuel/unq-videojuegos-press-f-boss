@@ -29,6 +29,8 @@ func _ready():
 	portal.enable_fourth()
 	$MeleeEnemy.initialize(self, $AudioDie)
 	$RangedEnemy.initialize(self, $AudioDie)
+	$Trees.visible = true
+	$Rocks.visible = true
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
