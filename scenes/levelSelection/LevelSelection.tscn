@@ -34,6 +34,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 288, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/continuar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "to_level_2"
@@ -61,6 +73,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 0.366022, 0.707107, 1 ),
 "update": 0,
 "values": [ Vector2( 288, 0 ), Vector2( 288, 0 ), Vector2( 864, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/continuar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -90,6 +114,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 864, 0 ), Vector2( 864, 0 ), Vector2( 1400, 0 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/continuar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "to_valhalla"
@@ -117,6 +153,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 0.707107, 1 ),
 "update": 0,
 "values": [ Vector2( 1400, 0 ), Vector2( 1400, 0 ), Vector2( 1850, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/continuar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="LevelSelection" type="Node2D"]
@@ -218,3 +266,21 @@ anims/to_level_1 = SubResource( 1 )
 anims/to_level_2 = SubResource( 2 )
 anims/to_level_3 = SubResource( 3 )
 anims/to_valhalla = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="continuar" type="Label" parent="CanvasLayer"]
+anchor_top = -0.0280632
+anchor_bottom = -0.0280624
+margin_left = 115.11
+margin_top = 522.424
+margin_right = 910.11
+margin_bottom = 602.424
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "Pulsa una tecla para continuar"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
