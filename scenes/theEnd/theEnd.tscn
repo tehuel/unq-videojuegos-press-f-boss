@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/images/level/space.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/level/field.png" type="Texture" id=10]
 [ext_resource path="res://scenes/levelSelection/AnimatedStar.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/audio/bgm/aggressive-synth-arp-4631-outro.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/bgm/victory-song.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/font/viking_font_bold2.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Animation" id=1]
@@ -261,6 +261,6 @@ autoplay = "end"
 anims/end = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 12 )
 volume_db = -16.0
 autoplay = true

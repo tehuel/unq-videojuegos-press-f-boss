@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/levelSelection/FloatingIsland.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/levelSelection/LevelSelection.gd" type="Script" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://assets/images/level/field.png" type="Texture" id=8]
 [ext_resource path="res://assets/images/level/gas2.png" type="Texture" id=9]
 [ext_resource path="res://scenes/levelSelection/AnimatedStar.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/audio/bgm/aggressive-synth-arp-4631-intro.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/bgm/boat-background-song.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sfx/ambience/horn.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "to_level_1"
@@ -369,3 +370,8 @@ __meta__ = {
 stream = ExtResource( 11 )
 volume_db = -16.0
 autoplay = true
+
+[node name="Horn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.0
+mix_target = 1

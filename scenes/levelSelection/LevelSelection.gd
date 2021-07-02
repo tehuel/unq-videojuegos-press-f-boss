@@ -4,6 +4,7 @@ onready var i1 = $ParallaxBackground/ParallaxLayer2/Island1
 onready var i2 = $ParallaxBackground/ParallaxLayer2/Island1
 onready var i3 = $ParallaxBackground/ParallaxLayer2/Island1
 onready var animation = $AnimationPlayer
+onready var horn = $Horn
 
 var end_game:int = 4
 
@@ -35,6 +36,9 @@ func _process(_delta):
 	if (inputEnter):	
 		# entro al level cuando termina la animacion
 		if (!animation.is_playing()):
+			print("GRITO")
+			horn.play()
+			yield(horn, "finished")
 			_start_level(Game.level)
 		# acelero la animacion 
 		else:
