@@ -40,7 +40,10 @@ func _on_Start_pressed():
 
 func _on_Exit_pressed():
 	print("Exit pressed")
-	get_tree().quit()
+	if OS.has_feature('JavaScript'):
+		JavaScript.eval("window.close()")
+	else:
+		get_tree().quit()
 
 
 func _on_Controls_pressed():

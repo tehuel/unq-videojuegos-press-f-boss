@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/viking_font_bold3.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/viking_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/images/mainMenu/creditos.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/utils/icon.png" type="Texture" id=4]
 [ext_resource path="res://scenes/mainMenu/Control.gd" type="Script" id=5]
-[ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=6]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -93,7 +92,3 @@ custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Tehuel Torres Baldi"
 align = 1
-
-[node name="PageSFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = 10.0

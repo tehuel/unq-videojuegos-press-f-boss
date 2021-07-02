@@ -1,6 +1,5 @@
 extends Control
 
-onready var page_sfx = $PageSFX
 var isInputValid
 
 func _input(event):
@@ -11,4 +10,3 @@ func openControls():
 	var new_pause_state = not get_tree().paused
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
-	page_sfx.play()
