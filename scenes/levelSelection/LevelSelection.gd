@@ -38,7 +38,7 @@ func _process(_delta):
 			_start_level(Game.level)
 		# acelero la animacion 
 		else:
-			animation.playback_speed = animation.playback_speed * 1.25
+			animation.playback_speed = animation.playback_speed * 1.5
 
 func _start_level(level): 
 	Game.set_current_level(level)
