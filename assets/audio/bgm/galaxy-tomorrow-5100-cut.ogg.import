@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/galaxy-tomorrow-5100-cut.ogg-70d06f0d325b7bc40e030afebc82e163.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/galaxy-tomorrow-5100-cut.ogg"
+dest_files=[ "res://.import/galaxy-tomorrow-5100-cut.ogg-70d06f0d325b7bc40e030afebc82e163.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
