@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/mainMenu/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/mainMenu/MainMenu.gd" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://scenes/mainMenu/Controls.tscn" type="PackedScene" id=14]
 [ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=15]
 [ext_resource path="res://assets/images/mainMenu/sky.png" type="Texture" id=16]
+[ext_resource path="res://scenes/mainMenu/Creditos.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/mainMenu/Creditos.gd" type="Script" id=18]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -241,31 +243,47 @@ rect_min_size = Vector2( 0, 300 )
 alignment = 1
 
 [node name="Start" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 71.0
-margin_bottom = 121.0
+margin_top = 44.0
+margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Controls")
 text = "Start"
 arrow_margin_from_center = 82
 
 [node name="Controls" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 98.0
+margin_bottom = 148.0
 focus_neighbour_top = NodePath("../Start")
-focus_neighbour_bottom = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Credits")
 text = "Controls"
 arrow_margin_from_center = 95
 
-[node name="Exit" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 179.0
-margin_bottom = 229.0
+[node name="Credits" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 152.0
+margin_bottom = 202.0
 focus_neighbour_top = NodePath("../Controls")
+focus_neighbour_bottom = NodePath("../Exit")
+text = "Credits"
+arrow_margin_from_center = 85
+
+[node name="Exit" parent="CanvasLayer/VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 206.0
+margin_bottom = 256.0
+focus_neighbour_top = NodePath("../Credits")
 focus_neighbour_bottom = NodePath("../Start")
 text = "Exit"
 arrow_margin_from_center = 61
 
 [node name="Controls" parent="CanvasLayer" instance=ExtResource( 14 )]
 isInputValid = false
+
+[node name="Credits" parent="CanvasLayer" instance=ExtResource( 17 )]
+layer = 100
+script = ExtResource( 18 )
+isVisible = false
 [connection signal="started_pressed" from="." to="CanvasLayer/VBoxContainer/VBoxContainer/Start" method="_on_MainMenu_started_pressed"]
 [connection signal="timeout" from="Door/Timer" to="Door/RichTextLabel" method="_on_Timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Controls" to="." method="_on_Controls_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

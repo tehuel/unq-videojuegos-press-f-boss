@@ -6,6 +6,7 @@ onready var pageSFX = $PageSFX
 onready var startSFX = $StartSong
 onready var camera = $CameraMainMenu
 onready var controls = $CanvasLayer/Controls/Control
+onready var credits = $CanvasLayer/Credits/Control
 onready var backGroundSFX = $BackGround
 
 var cameraSmoothness = 0.1;
@@ -47,6 +48,12 @@ func _on_Controls_pressed():
 	pageSFX.play()
 	controls.visible = true
 
+func _on_Credits_pressed():
+	print("Credits pressed")
+	pageSFX.play()
+	credits.visible = true
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		controls.visible = false
+		credits.visible = false

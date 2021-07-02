@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/images/level/space.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/level/gas1.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/ending/dark.png" type="Texture" id=11]
-[ext_resource path="res://assets/images/ending/derrota.png" type="Texture" id=12]
+[ext_resource path="res://assets/font/viking_font_bold.tres" type="DynamicFont" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "end"
@@ -130,18 +130,30 @@ scale = Vector2( 1.20762, 1.20762 )
 texture = ExtResource( 8 )
 
 [node name="dark" type="Sprite" parent="."]
-position = Vector2( 504.339, 2908.2 )
+position = Vector2( 510.689, -924.534 )
 scale = Vector2( 4.90094, 4.90094 )
 texture = ExtResource( 11 )
 
 [node name="derrota" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 513.904, 483.511 )
-texture = ExtResource( 12 )
+
+[node name="Label" type="RichTextLabel" parent="derrota"]
+margin_left = -522.127
+margin_top = -82.2368
+margin_right = 648.873
+margin_bottom = 278.763
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_text = "FUISTE DERROTADO"
+text = "FUISTE DERROTADO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 488 )
+position = Vector2( 512, 32 )
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "end"

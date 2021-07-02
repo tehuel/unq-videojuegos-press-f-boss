@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/font/viking_font_bold3.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/viking_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/images/mainMenu/creditos.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/utils/icon.png" type="Texture" id=4]
+[ext_resource path="res://scenes/mainMenu/Control.gd" type="Script" id=5]
+[ext_resource path="res://assets/audio/sfx/ambience/page.ogg" type="AudioStream" id=6]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="Sprite" parent="Control"]
+position = Vector2( 512, 304 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="Casco" type="Sprite" parent="Control"]
+position = Vector2( 504, 152 )
+texture = ExtResource( 4 )
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_left = 0.281
+anchor_top = 0.2
+anchor_right = 0.703
+anchor_bottom = 0.827
+margin_left = 0.255981
+margin_top = 56.0
+margin_right = 8.12799
+margin_bottom = -0.200012
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/HBoxContainer"]
+margin_right = 440.0
+margin_bottom = 158.0
+size_flags_vertical = 3
+
+[node name="Creditos" type="Label" parent="Control/HBoxContainer/CenterContainer"]
+margin_left = 74.0
+margin_top = 35.0
+margin_right = 365.0
+margin_bottom = 123.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Creditos"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer"]
+margin_top = 162.0
+margin_right = 440.0
+margin_bottom = 320.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_right = 440.0
+margin_bottom = 43.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.00784314, 0.00784314, 0.00784314, 1 )
+text = "Federico Ituarte"
+align = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 440.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Lucas Mur"
+align = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 440.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tehuel Torres Baldi"
+align = 1
+
+[node name="PageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 10.0
