@@ -274,57 +274,6 @@ position = Vector2( 528.487, 175.63 )
 scale = Vector2( 0.0955011, 0.095501 )
 texture = ExtResource( 6 )
 
-[node name="Control" type="Control" parent="ParallaxBackground/ParallaxLayer2"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="a" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
-anchor_top = -0.0280632
-anchor_bottom = -0.0280624
-margin_left = 486.324
-margin_top = 210.379
-margin_right = 570.324
-margin_bottom = 290.379
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 3 )
-text = "Primera"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="b" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
-margin_left = 1019.28
-margin_top = 433.423
-margin_right = 1348.28
-margin_bottom = 513.423
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 3 )
-text = "Segunda"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="c" type="Label" parent="ParallaxBackground/ParallaxLayer2/Control"]
-margin_left = 1722.95
-margin_top = 260.905
-margin_right = 1806.95
-margin_bottom = 340.905
-grow_horizontal = 2
-grow_vertical = 2
-custom_fonts/font = ExtResource( 3 )
-text = "Tercera"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="ParallaxLayer+1" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1.5, 1.5 )
 
