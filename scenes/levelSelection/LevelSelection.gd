@@ -15,32 +15,32 @@ const animations = {
 }
 
 func _ready():
-	
+
 	# cambio un poco la animación, para que no se vean tan iguales
 	i1.get_node("AnimationPlayer").advance(4)
 	i1.get_node("AnimationPlayer").set_speed_scale(1.5)
-	
+
 	i2.get_node("AnimationPlayer").advance(9)
 	i2.get_node("AnimationPlayer").set_speed_scale(2.8)
-	
+
 	i3.get_node("AnimationPlayer").advance(1)
 	i3.get_node("AnimationPlayer").set_speed_scale(0.8)
-	
+
 	animation.play(animations[Game.level])
-	
+
 func _process(_delta):
-	
+
 	var inputEnter = Input.is_action_just_pressed("ui_accept") || Input.is_action_just_pressed("left_click")
-	
-	if (inputEnter):	
+
+	if (inputEnter):
 		# entro al level cuando termina la animacion
 		if (!animation.is_playing()):
 			_start_level(Game.level)
-		# acelero la animacion 
+		# acelero la animacion
 		else:
 			animation.playback_speed = animation.playback_speed * 1.5
 
-func _start_level(level): 
+func _start_level(level):
 	Game.set_current_level(level)
 
 	if(level == end_game):
@@ -52,4 +52,4 @@ func _start_level(level):
 #		print("starting level ", level)
 # warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/game/Game.tscn")
-		
+
