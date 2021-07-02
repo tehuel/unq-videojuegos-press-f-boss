@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/aggressive-synth-arp-4631-intro.ogg-f9f5f4af3b77f5e7a19aa40a18ed51f8.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/bgm/aggressive-synth-arp-4631-intro.ogg"
+dest_files=[ "res://.import/aggressive-synth-arp-4631-intro.ogg-f9f5f4af3b77f5e7a19aa40a18ed51f8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
