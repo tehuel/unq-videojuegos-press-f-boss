@@ -3,10 +3,7 @@
 #### Build web:
 [GAME](https://tehuel.github.io/unq-videojuegos-press-f-boss/)
 
-#### Executable:
-Path: `/INSTALLER_RELEASE -> .exe`
-
-## Devs:
+### Devs:
 | Team  | Link |
 | ------------- | ------------- |
 | Tehuel Torres Baldi | [GitHub](https://github.com/tehuel)  |
